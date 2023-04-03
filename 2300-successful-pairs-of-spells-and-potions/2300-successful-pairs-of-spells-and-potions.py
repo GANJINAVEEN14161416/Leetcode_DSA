@@ -1,24 +1,16 @@
 class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
-        # Sort the potions array in increasing order.
+        list1=[]
         potions.sort()
-        answer = []
-
-        m = len(potions)
-        maxPotion = potions[m - 1]
-
-        for spell in spells:
-            # Minimum value of potion whose product with current spell
-            # will be at least success or more.
-            minPotion = (success + spell - 1) // spell
-            # Check if we don't have any potion which can be used.
-            if minPotion > maxPotion:
-                answer.append(0)
-                continue
-            # We can use the found potion, and all potion in its right
-            # (as the right potions are greater than the found potion).
-            index = bisect.bisect_left(potions, minPotion)
-            answer.append(m - index)
-
-        return answer
+        for s in spells:
+            left,right,index=0,len(potions)-1,len(potions)
+            while left<=right:
+                mid=(left+right)//2
+                if s*potions[mid]>=success:
+                    right=mid-1
+                    index=mid
+                else:
+                    left=mid+1
+            list1.append(len(potions)-index)
+        return list1
         
