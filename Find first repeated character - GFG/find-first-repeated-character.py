@@ -1,17 +1,18 @@
 #User function Template for python3
 
 class Solution:
-
     def firstRepChar(self, s):
-        list1=[]
+        # for i in range(len(s)):
+        #     if s[i] in s[:i]:
+        #         return s[i]
+        # return -1
+        from collections import defaultdict
+        dic=defaultdict(int)
         for i in s:
-            if i in list1:
+            dic[i]+=1
+            if dic[i]>1:
                 return i
-            else:
-                list1.append(i)
-        else:
-            return -1
-                
+        return -1
 
 
 #{ 
