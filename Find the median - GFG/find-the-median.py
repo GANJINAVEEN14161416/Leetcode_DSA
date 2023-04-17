@@ -4,10 +4,7 @@ class Solution:
 	def find_median(self, v):
 	    import statistics
 		v.sort()
-		n=len(v)
-		if n%2==0:
-		    return int((v[n//2]+v[n//2-1])/2)
-		return int(v[n//2])
+        return int(statistics.median(v))
 
 
 #{ 
