@@ -9,7 +9,7 @@ def isSubset( a1, a2, n, m):
         if a1[i]==a2[j]:
             count+=1
             j+=1
-            if count>=m:
+            if count==m:
                 return "Yes"
     return "No"
 
