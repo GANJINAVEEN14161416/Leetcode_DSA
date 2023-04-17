@@ -4,11 +4,8 @@ class Solution:
     def commonElements (self,A, B, C, n1, n2, n3):
         list1=[]
         m1,m2,m3=set(A),set(B),set(C)
-        for i in m1:
-            if i in m2 and i in m3:
-                if i not in list1:
-                    list1.append(i)
-        return sorted(list1)
+        return sorted(list(m1&m2&m3))
+  
 
 
 #{ 
