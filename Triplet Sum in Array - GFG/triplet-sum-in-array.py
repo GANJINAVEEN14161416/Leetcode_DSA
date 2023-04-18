@@ -6,7 +6,7 @@ class Solution:
     def find3Numbers(self,A, n, X):
         # Your Code Here
         A.sort()
-        for i in range(n-2):
+        for i in range(n-1):
             left,right=i+1,n-1
             while left<right:
                 add=A[left]+A[right]+A[i]
