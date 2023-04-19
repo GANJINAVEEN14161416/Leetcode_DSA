@@ -9,4 +9,4 @@ class Solution:
             return b[0]
         elif len(b)==2:
             avg=sum(b)/2
-            return avg
+        return avg
