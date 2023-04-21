@@ -2,7 +2,12 @@
 class Solution:
 	def setBits(self, N):
 		# code here
-		return bin(N).count('1')
+		count=0
+		while N:
+		    if N%2:
+		        count+=1
+		    N=N//2
+		return count
 
 
 #{ 
