@@ -2,7 +2,14 @@
 
 def reverseWord(s):
     #your code here
-    return s[::-1]
+    # if len(s)==0:
+    #     return
+    # else:
+    #     return reverseWord(s[])+s
+    m=""
+    for i in s:
+        m=i+m
+    return m
 
 
 #{ 
