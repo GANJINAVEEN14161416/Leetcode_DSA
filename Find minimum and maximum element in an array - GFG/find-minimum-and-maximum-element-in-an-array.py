@@ -1,7 +1,14 @@
 #User function Template for python3
 
 def getMinMax( a, n):
-    return min(a),max(a)
+    maxi=a[0]
+    mini=a[0]
+    for i in a:
+        if i>maxi:
+            maxi=i
+        if i<mini:
+            mini=i
+    return mini,maxi
     
     
     
