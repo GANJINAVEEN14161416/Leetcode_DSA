@@ -1,12 +1,9 @@
-public class Solution {
-    // you need treat n as an unsigned value
-    public int reverseBits(int n) {
-        int answer=0;
-        for (int i=0;i<32;i++){
-            answer=answer | (n&1)<<(31-i);
-            n=n>>1;
-        }
-        return answer;
-        
+func reverseBits(num uint32) uint32 {
+    var answer uint32
+    for i:=0;i<32;i++{
+        answer=answer | (num&1)<<(31-i)
+        num=num>>1
     }
+    return answer
+    
 }
