@@ -4,11 +4,11 @@ class Solution:
         rows,cols=len(grid),len(grid[0])
         count,visit=0,set()
         def bfs(r,c):
-            q=deque()
+            q=[]
             q.append((r,c))
             visit.add((r,c))
             while q:
-                row,col=q.popleft()
+                row,col=q.pop()
                 direction=[[1,0],[-1,0],[0,1],[0,-1]]
                 for dr,dc in direction:
                      r,c=row+dr,col+dc
