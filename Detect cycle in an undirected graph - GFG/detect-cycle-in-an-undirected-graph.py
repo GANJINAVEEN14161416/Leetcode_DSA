@@ -13,7 +13,7 @@ class Solution:
                             if not v[x]:
                                 q.append(x)
                                 v[x] = vrtx
-                            elif v[x] and (x != v[vrtx]):
+                            elif (x != v[vrtx]):
                                 return 1
             return 0
 
