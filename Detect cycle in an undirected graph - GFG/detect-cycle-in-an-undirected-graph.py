@@ -1,21 +1,25 @@
 from typing import List
 class Solution:
-    def isCycle(self, V: int, adj: List[List[int]]) -> bool:
-            v=[0]*V
-            for i in range(V):
-                if not v[i]:
-                    q = []
-                    v[i]=1
-                    q.append(i)
-                    while q:
-                        p= q.pop(0)
-                        for x in adj[p]:
-                            if not v[x]:
-                                q.append(x)
-                                v[x] = p
-                            elif (x != v[p]):
-                                return 1
-            return 0
+    #Function to detect cycle in an undirected graph.
+	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
+		#Code here
+		parent=[0]*V
+		for i in range(V):
+		    if not parent[i]:
+		        q=[]
+		        q.append(i)
+		        parent[i]=1
+		        while q:
+		            poping=q.pop(0)
+		            for x in adj[poping]:
+		                if not parent[x]:
+		                    q.append(x)
+		                    parent[x]=poping
+		                elif x!=parent[poping]:
+		                    return 1
+		return 0
+		
+
 
 #{ 
  # Driver Code Starts
