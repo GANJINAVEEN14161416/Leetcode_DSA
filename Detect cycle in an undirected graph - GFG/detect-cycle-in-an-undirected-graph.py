@@ -5,15 +5,15 @@ class Solution:
             for i in range(V):
                 if not v[i]:
                     q = []
-                    v[i] = 1
+                    v[i]=1
                     q.append(i)
                     while q:
-                        vrtx = q.pop(0)
-                        for x in adj[vrtx]:
+                        p= q.pop(0)
+                        for x in adj[p]:
                             if not v[x]:
                                 q.append(x)
-                                v[x] = vrtx
-                            elif (x != v[vrtx]):
+                                v[x] = p
+                            elif (x != v[p]):
                                 return 1
             return 0
 
