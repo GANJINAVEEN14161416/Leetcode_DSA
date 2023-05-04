@@ -5,16 +5,18 @@ class Solution:
     #Function to return a list containing the DFS traversal of the graph.
     def dfsOfGraph(self, V, adj):
         # code here
-        visit = []
+        visit = [False]*V
+        res=[]
         def dfs(i):
-            if i not in visit:
-                visit.append(i)
+            if not visit[i]:
+                visit[i]=True
+                res.append(i)
                 for x in adj[i]:
                     dfs(x)
         
         dfs(0)
             
-        return visit
+        return res
 
 #{ 
  # Driver Code Starts
