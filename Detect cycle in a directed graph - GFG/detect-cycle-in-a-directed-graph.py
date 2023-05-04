@@ -7,22 +7,22 @@ class Solution:
     def isCyclic(self, V, adj):
         visit=[False]*V
         stack=[False]*V
-        def dfs(adj,i,stack,visit):
+        def dfs(adj,i,visit,stack):
             visit[i]=True
             stack[i]=True
-            for u in adj[i]:
-                if stack[u]==True:
-                    return True
-                if visit[u]==False:
-                    if dfs(adj,u,stack,visit):
+            for x in adj[i]:
+                if stack[x]==True:
+                    return 1
+                if visit[x]==False:
+                    if dfs(adj,x,visit,stack):
                         return True
             stack[i]=False
             return False
+
         for i in range(V):
-            if dfs(adj,i,stack,visit):
+            if dfs(adj,i,visit,stack):
                 return True
         return False
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
