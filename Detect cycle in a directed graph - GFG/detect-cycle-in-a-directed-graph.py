@@ -12,7 +12,7 @@ class Solution:
             stack[i]=True
             for x in adj[i]:
                 if stack[x]==True:
-                    return 1
+                    return True
                 if visit[x]==False:
                     if dfs(adj,x,visit,stack):
                         return True
