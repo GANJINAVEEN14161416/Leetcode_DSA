@@ -8,17 +8,16 @@ class Solution:
         # code here
         res = []
         visit=[False]*(V)
-        res.append(0)
         visit[0]=True
         q =collections.deque()
         q.append(0)
         while len(q) != 0:
             frst = q.popleft()
+            res.append(frst)
             for i in adj[frst]:
                 if not visit[i]:
-                    q.append(i)
-                    res.append(i)
                     visit[i]=True
+                    q.append(i)
                     
         return res
                 
