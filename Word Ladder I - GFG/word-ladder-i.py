@@ -1,31 +1,31 @@
 from collections import *
 class Solution:
-	def wordLadderLength(self,beginWord, endWord, wordList):
-		#Code here
-        if endWord not in wordList:
-            return 0
-        nei=defaultdict(list)
-        wordList.append(beginWord)
-        for word in wordList:
-            for j in range(len(word)):
-                pattern=word[:j]+"*"+word[j+1:]
-                nei[pattern].append(word)
-        visit=set([beginWord])
-        q=deque([beginWord])
-        count=1
-        while q:
-            for i in range(len(q)):
-                word=q.popleft()
-                if word==endWord:
-                    return count
-                for j in range(len(word)):
-                    pattern=word[:j]+"*"+word[j+1:]
-                    for neiword in nei[pattern]:
-                        if neiword not in visit:
-                            visit.add(neiword)
-                            q.append(neiword)
-            count+=1
+	def wordLadderLength(self, startWord, targetWord, wordList):
+		if targetWord not in wordList:
+		    return 0
+		dic=defaultdict(list)
+		for word in wordList:
+		    for i in range(len(word)):
+		        pattern=word[:i]+"*"+word[i+1:]
+		        dic[pattern].append(word)
+		visit=set([startWord])
+		q=deque([startWord])
+		count=1
+		while q:
+		    for i in range(len(q)):
+		        word=q.popleft()
+		        if word==targetWord:
+		            return count
+		        for j in range(len(word)):
+		            pattern=word[:j]+"*"+word[j+1:]
+		            for n in dic[pattern]:
+		                if n not in visit:
+		                    q.append(n)
+		                    visit.add(n)
+		    count+=1
+		
         return 0
+
 #{ 
  # Driver Code Starts
 # from collections import deque 
