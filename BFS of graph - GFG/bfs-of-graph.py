@@ -7,15 +7,18 @@ class Solution:
     def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
         # code here
         res = []
+        visit=[False]*(V+1)
         res.append(0)
+        visit[0]=True
         q =collections.deque()
         q.append(0)
         while len(q) != 0:
             frst = q.popleft()
             for i in adj[frst]:
-                if i not in res:
+                if not visit[i]:
                     q.append(i)
                     res.append(i)
+                    visit[i]=True
                     
         return res
                 
