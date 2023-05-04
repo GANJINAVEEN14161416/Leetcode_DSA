@@ -7,7 +7,7 @@ class Solution:
     def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
         # code here
         res = []
-        visit=[False]*(V+1)
+        visit=[False]*(V)
         res.append(0)
         visit[0]=True
         q =collections.deque()
