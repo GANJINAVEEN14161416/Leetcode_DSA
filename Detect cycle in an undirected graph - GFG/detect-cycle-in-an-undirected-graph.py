@@ -16,7 +16,7 @@ class Solution:
         visit=[False]*V
         for i in range(V):
             if not visit[i]:
-                if dfs(adj,visit,2,i):
+                if dfs(adj,visit,0,i):
                     return True
         return False
 #{ 
