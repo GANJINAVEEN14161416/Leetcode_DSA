@@ -1,25 +1,23 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid:return 0
-        rows,cols=len(grid),len(grid[0])
-        count,visit=0,set()
-        def bfs(r,c):
-            q=[]
-            q.append((r,c))
-            visit.add((r,c))
-            while q:
-                row,col=q.pop()
-                direction=[[1,0],[-1,0],[0,1],[0,-1]]
-                for dr,dc in direction:
-                     r,c=row+dr,col+dc
-                     if (r in range(rows) and c in range(cols) and (r,c) not in visit and grid[r][c]=="1"):
-                         q.append((r,c))
-                         visit.add((r,c))
-                     
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c]=="1" and ((r,c) not in visit):
-                    bfs(r,c)
+        if not grid:
+            return 0
+        def dfs(grid,row,col,r,c):
+            if r<0 or r>=row or c<0 or c>=col or grid[r][c]!="1":
+                return
+            grid[r][c]="2"
+            dfs(grid,row,col,r-1,c)
+            dfs(grid,row,col,r+1,c)
+            dfs(grid,row,col,r,c-1)
+            dfs(grid,row,col,r,c+1)
+        count=0
+        for r in range(len(grid)):
+            for c in range(len(grid[0])):
+                if grid[r][c]=="1":
                     count+=1
+                    dfs(grid,len(grid),len(grid[0]),r,c)
         return count
+
+        
+        
         
