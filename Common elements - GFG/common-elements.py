@@ -2,9 +2,8 @@
 
 class Solution:
     def commonElements (self,A, B, C, n1, n2, n3):
-        list1=[]
-        m1,m2,m3=set(A),set(B),set(C)
-        return sorted(list(m1&m2&m3))
+        return sorted(list(set(A) & set(B) & set(C)))
+                
   
 
 
