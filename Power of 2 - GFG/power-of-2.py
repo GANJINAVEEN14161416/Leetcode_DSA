@@ -8,7 +8,7 @@ class Solution:
         while x<=n:
             if x==n:
                 return True
-            x=x*2
+            x=x<<1
         return False
             
             
