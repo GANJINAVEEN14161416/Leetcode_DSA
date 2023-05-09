@@ -4,12 +4,7 @@ class Solution:
     ##Complete this function
     # Function to check if given number n is a power of two.
     def isPowerofTwo(self,n):
-        x=1
-        while x<=n:
-            if x==n:
-                return True
-            x=x*2
-        return False
+        return bin(n).count("1")==1
 
 #{ 
  # Driver Code Starts
