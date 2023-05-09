@@ -2,15 +2,15 @@
 
 class Solution:
     def median(self, matrix, R, C):
-        list1=[]
-    	for r in range(len(matrix)):
-    	    for c in range(len(matrix[0])):
-    	        list1.append(matrix[r][c])
-    	n=len(list1)
+    	list1 = []
+    	for i in range(len(matrix)):
+    	    for j in range(len(matrix[0])):
+    	        list1.append(matrix[i][j])
     	list1.sort()
-    	if n%2==0:
-    	    return (list1[n//2]+list1[n//2+1])/2
-        return list1[n//2]
+    	return list1[len(list1)//2]
+    	        
+    	        
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
