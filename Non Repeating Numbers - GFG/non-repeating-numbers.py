@@ -2,15 +2,13 @@
 from collections import *
 class Solution:
 	def singleNumber(self, nums):
-	    dic=Counter(nums)
 	    list1=[]
-	    for freq,n in dic.items():
-	        if n==1:
-	            list1.append(freq)
-	    return sorted(list1)
-	        
-		        
-		        
+	    dic=Counter(nums)
+	    for key,value in dic.items():
+	        if value==1:
+	            list1.append(key)
+	    return sorted(list1)        
+	            
 
 
 
