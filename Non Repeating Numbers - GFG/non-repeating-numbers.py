@@ -5,13 +5,24 @@ from sys import *
 from os import *
 class Solution:
 	def singleNumber(self, nums):
-	    list1=[]
-	    dic=Counter(nums)
-	    for key,value in dic.items():
-	        if value==1:
-	            list1.append(key)
-	    return sorted(list1)        
-	            
+        def UniqueNumbers2(arr, n):
+            sums = 0
+            for i in range(0, n):
+                sums = (sums ^ arr[i])
+            sums = (sums & -sums)
+            sum1 = 0
+            sum2 = 0
+            list1=[]
+            for i in range(0, len(arr)):
+                if (arr[i] & sums) > 0:
+                    sum1 = (sum1 ^ arr[i])
+                else:
+                    sum2 = (sum2 ^ arr[i])
+            list1.append(sum1)
+            list1.append(sum2)
+            return sorted(list1)
+        return UniqueNumbers2(nums,len(nums))
+        	            
 
 
 
