@@ -12,7 +12,7 @@ class Solution:
             for i in range(top,bottom+1):
                 list1.append(matrix[i][right])
             right-=1
-            if left>right or top>bottom:
+            if len(list1)==(len(matrix)*len(matrix[0])):
                 break
             for i in range(right,left-1,-1):
                 list1.append(matrix[bottom][i])
