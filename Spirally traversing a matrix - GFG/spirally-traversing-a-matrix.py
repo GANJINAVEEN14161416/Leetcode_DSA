@@ -4,17 +4,18 @@ class Solution:
     
     #Function to return a list of integers denoting spiral traversal of matrix.
     def spirallyTraverse(self,matrix, r, c): 
-        # code here 
+        top=0
+        bottom=r-1
+        left=0
+        right=c-1
         list1=[]
-        left,right=0,len(matrix[0])-1
-        top,bottom=0,len(matrix)-1
         while left<=right and top<=bottom:
-            for i in range(left,right+1):
+            for i in range(left,right+1,1):
                 list1.append(matrix[top][i])
             top+=1
-            for i in range(top,bottom+1):
+            for i in range(top,bottom+1,1):
                 list1.append(matrix[i][right])
-            right-=1                
+            right-=1
             if left>right or top>bottom:
                 break
             for i in range(right,left-1,-1):
@@ -24,6 +25,9 @@ class Solution:
                 list1.append(matrix[i][left])
             left+=1
         return list1
+                
+                
+
 
 #{ 
  # Driver Code Starts
