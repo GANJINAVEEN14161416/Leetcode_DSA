@@ -3,12 +3,12 @@
 class Solution:
     
     #Function to return a list of integers denoting spiral traversal of matrix.
-    def spirallyTraverse(self,matrix, r, c): 
-        top=0
-        bottom=r-1
+    def spirallyTraverse(self,matrix, r, c):
         left=0
+        top=0
         right=c-1
-        list1=[]
+        bottom=r-1
+        list1 = []
         while left<=right and top<=bottom:
             for i in range(left,right+1,1):
                 list1.append(matrix[top][i])
@@ -25,8 +25,6 @@ class Solution:
                 list1.append(matrix[i][left])
             left+=1
         return list1
-                
-                
 
 
 #{ 
