@@ -1,5 +1,8 @@
 #User function Template for python3
 from collections import *
+from math import *
+from sys import *
+from os import *
 class Solution:
 	def singleNumber(self, nums):
 	    list1=[]
