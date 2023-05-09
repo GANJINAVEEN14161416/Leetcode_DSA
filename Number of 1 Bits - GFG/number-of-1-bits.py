@@ -1,14 +1,9 @@
 #User function Template for python3
 class Solution:
 	def setBits(self, N):
-		# code here
-		count=0
-		while N:
-		    if N%2:
-		        count+=1
-		    N=N//2
-		return count
-
+	   return bin(N).count("1")
+	    
+	
 
 #{ 
  # Driver Code Starts
