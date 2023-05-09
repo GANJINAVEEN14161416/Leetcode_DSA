@@ -1,30 +1,14 @@
 #User function Template for python3
 
 def kthSmallest(mat, n, k): 
-    # Your code goes here
-    left,right=mat[0][0],mat[-1][-1]
-    while left<=right:
-        mid=(left+right)//2
-        count=0
-        for row in mat:
-            count+=counter(row,mid)
-        if count<k:
-            left=mid+1
-        else:
-            right=mid-1
-    return left
-    
-    
-    
-def counter(row,mid):
-    i=0
-    count=0
-    while i<len(row) and row[i]<=mid:
-        count+=1
-        i+=1
-    return count
-    
-        
+    list1 = []
+    for i in range(len(mat)):
+        for j in range(len(mat)):
+            list1.append(mat[i][j])
+            
+    list1.sort()
+    return list1[k-1]
+
 
 
 
