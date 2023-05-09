@@ -1,20 +1,20 @@
 #User function Template for python3
-from collections import *
 class Solution:
 
 	def rowWithMax1s(self,arr, n, m):
-		dic=defaultdict(list)
-		for i in range(len(arr)):
-		    dic[i]=arr[i].count(1)
-		count=0
-		value=0
-		for i,v in dic.items():
-		    if v>value:
-		        value=v
-		        count=i
-		if value==0:
+		dic={}
+		for ind,row in enumerate(arr):
+		    dic[ind]=row.count(1)
+		maxvalue=0
+		index=0
+		for key,value in dic.items():
+		    if value>maxvalue:
+		        maxvalue=value
+		        index=key
+	    if maxvalue==0:
 		    return -1
-		return count
+	    return index
+		    
 
 
 #{ 
