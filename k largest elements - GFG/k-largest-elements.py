@@ -3,7 +3,14 @@ import heapq
 class Solution:
 
 	def kLargest(self,arr, n, k):
-		return heapq.nlargest(k,arr)
+		heap=[]
+		list1=[]
+		for i in range(n):
+		    heapq.heappush(heap,-arr[i])
+		while k>0:
+		    list1.append(-heapq.heappop(heap))
+		    k-=1
+		return list1
 
 
 #{ 
