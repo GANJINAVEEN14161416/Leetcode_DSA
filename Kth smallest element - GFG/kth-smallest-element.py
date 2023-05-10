@@ -1,9 +1,9 @@
 #User function Template for python3
-
+import heapq
 class Solution:
     def kthSmallest(self,arr, l, r, k):
-        arr.sort()
-        return arr[k-1]
+        return heapq.nsmallest(k,arr)[-1]
+    
 
 
 #{ 
