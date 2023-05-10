@@ -3,17 +3,19 @@
 class Solution:
     def solve(self, arr, n):
         arr.sort()
-        first,second="",""
+        s1=""
+        s2=""
         for i in range(n):
             if i%2==0:
-                first+=str(arr[i])
+                s1+=str(arr[i])
             else:
-                second+=str(arr[i])
-        if first=="":
-            first="0"
-        if second=="":
-            second="0"
-        return int(first)+int(second)
+                s2+=str(arr[i])
+            if s1=="":
+                s1+="0"
+            if(s2==""):
+                s2+="0"
+        return int(int(s1)+int(s2))
+        
 
 
 #{ 
