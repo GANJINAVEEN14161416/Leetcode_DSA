@@ -1,14 +1,16 @@
 #User function Template for python3
-
+import heapq
 class Solution:
     #Function to merge k sorted arrays.
     def mergeKArrays(self, arr, K):
         list1=[]
         for i in range(K):
             for j in range(K):
-                list1.append(arr[i][j])
-        list1.sort()
-        return list1
+                heapq.heappush(list1,arr[i][j])
+        heap=[]
+        for i in range(len(list1)):
+            heap.append(heapq.heappop(list1))
+        return heap
 
 
 #{ 
