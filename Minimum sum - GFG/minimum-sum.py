@@ -10,8 +10,6 @@ class Solution:
                 s1+=str(arr[i])
             else:
                 s2+=str(arr[i])
-            if s1=="":
-                s1+="0"
             if(s2==""):
                 s2+="0"
         return int(int(s1)+int(s2))
