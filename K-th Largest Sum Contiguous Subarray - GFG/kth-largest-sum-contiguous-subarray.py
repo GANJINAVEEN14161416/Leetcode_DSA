@@ -5,14 +5,16 @@ class Solution:
     def kthLargest(self, N : int, K : int, Arr : List[int]) -> int:
         list1=[]
         for i in range(N):
-            num=0
             list1.append(Arr[i])
+            num=0
             num+=Arr[i]
             for j in range(i+1,N):
                 num+=Arr[j]
                 list1.append(num)
-        list1.sort()
-        return list1[-K]
+        list1.sort(reverse=True)
+        return list1[K-1]
+        
+        
 
 
 
