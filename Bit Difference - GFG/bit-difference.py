@@ -4,12 +4,11 @@ class Solution:
     ##Complete this function
     # Function to find number of bits needed to be flipped to convert A to B
     def countBitsFlip(self,a,b):
-        ##Your code here
         count=0
-        A=bin(a)[2:].zfill(32)
-        B=bin(b)[2:].zfill(32)
-        for i in range(len(A)):
-            if A[i]!=B[i]:
+        x=bin(a)[2:].zfill(32)
+        y=bin(b)[2:].zfill(32)
+        for i in range(len(x)):
+            if x[i]!=y[i]:
                 count+=1
         return count
 
