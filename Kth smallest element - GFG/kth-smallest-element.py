@@ -2,8 +2,8 @@
 
 class Solution:
     def kthSmallest(self,arr, l, r, k):
-        import heapq
-        return heapq.nsmallest(k,arr)[-1]
+        arr.sort()
+        return arr[k-1]
 
 
 #{ 
