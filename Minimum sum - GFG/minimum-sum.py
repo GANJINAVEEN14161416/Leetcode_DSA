@@ -2,6 +2,8 @@
 
 class Solution:
     def solve(self, arr, n):
+        if len(arr)==1:
+            return arr[0]
         arr.sort()
         s1=""
         s2=""
@@ -10,8 +12,6 @@ class Solution:
                 s1+=str(arr[i])
             else:
                 s2+=str(arr[i])
-            if(s2==""):
-                s2+="0"
         return int(int(s1)+int(s2))
         
 
