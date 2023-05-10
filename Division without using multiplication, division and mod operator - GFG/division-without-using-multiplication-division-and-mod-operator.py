@@ -4,19 +4,21 @@ class Solution:
     def divide(self, a, b):
         result=0
         sign=1
-        if a<0 and b<0:
+        if(a<0 and b<0):
             sign=1
-        elif a<0 or b<0:
+        elif(a<0 or b<0):
             sign=-1
         a,b=abs(a),abs(b)
         while (a-b)>=0:
             count=0
             while a-(b<<1<<count)>=0:
                 count+=1
-            result+=(1<<count)
+            result+=1<<count
             a=a-(b<<count)
-        return result if sign==1 else -result
-        
+        if sign==1:
+            return result
+        elif(sign==-1):
+            return -result
 
 
 #{ 
