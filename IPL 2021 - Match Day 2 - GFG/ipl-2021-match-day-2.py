@@ -1,11 +1,10 @@
 #User function Template for python3
-#User function Template for python3
 
 class Solution:
     def max_of_subarrays(self,arr,n,k):
-        list1,stack=[],[]
+        stack,list1=[],[]
         for i,v in enumerate(arr):
-            while stack and (i-stack[0][0])>=k:
+            while stack and i-stack[0][0]>=k:
                 stack=stack[1:]
             while stack and stack[-1][1]<v:
                 stack.pop()
@@ -13,7 +12,6 @@ class Solution:
             if i>=k-1:
                 list1.append(stack[0][1])
         return list1
-
 
 
 #{ 
