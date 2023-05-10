@@ -8,7 +8,6 @@ class Solution():
         for i in b:
             heapq.heappush(heap,-i)
         list1=[]
-        heapq.heapify(heap)
         for i in heap:
             list1.append(-i)
         return list1
