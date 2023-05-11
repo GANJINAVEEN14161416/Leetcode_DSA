@@ -2,12 +2,13 @@
 
 class Solution:
     def middle(self,A,B,C):
-        #code here
         if A>B>C or C>B>A:
             return B
-        elif A>C>B or B>C>A:
+        elif B>C>A or A>C>B:
             return C
-        return A
+        else:
+            return A
+
 
 
 #{ 
