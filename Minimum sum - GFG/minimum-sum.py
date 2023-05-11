@@ -2,18 +2,17 @@
 
 class Solution:
     def solve(self, arr, n):
-        if len(arr)==1:
-            return arr[0]
-        arr.sort()
         s1=""
         s2=""
+        arr.sort()
+        if(len(arr)==1):
+            return arr[0]
         for i in range(n):
             if i%2==0:
                 s1+=str(arr[i])
             else:
                 s2+=str(arr[i])
-        return int(int(s1)+int(s2))
-        
+        return int(s1)+int(s2)
 
 
 #{ 
