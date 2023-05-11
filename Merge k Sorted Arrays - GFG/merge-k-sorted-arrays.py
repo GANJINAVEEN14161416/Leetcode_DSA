@@ -4,13 +4,12 @@ class Solution:
     #Function to merge k sorted arrays.
     def mergeKArrays(self, arr, K):
         list1=[]
-        for i in range(K):
-            for j in range(K):
-                heapq.heappush(list1,arr[i][j])
-        heap=[]
-        for i in range(len(list1)):
-            heap.append(heapq.heappop(list1))
-        return heap
+        for row in range(len(arr)):
+            for col in range(len(arr)):
+                list1.append(arr[row][col])
+        list1.sort()
+        return list1
+        
 
 
 #{ 
