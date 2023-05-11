@@ -10,8 +10,6 @@ def find(arr,n,x):
             b=i
             return [a,b]
             break
-    return [-1,-1]
-    
 
 
 
