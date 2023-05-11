@@ -2,15 +2,21 @@
 
 
 def find(arr,n,x):
-    list1=[]
-    if x not in arr:
-        return [-1,-1]
-    list1.append(arr.index(x))
-    for i in range(len(arr)-1,-1,-1):
-        if arr[i]==x:
-            list1.append(i)
-            break
-    return list1
+    def search(x):
+        left,right=0,n-1
+        while left<=right:
+            mid=(left+right)//2
+            if arr[mid]<x:
+                left=mid+1
+            else:
+                right=mid-1
+        return left
+    left=search(x)
+    right=search(x+1)-1
+    if left<=right:
+        return [left,right]
+    return [-1,-1]
+            
     
 
 
