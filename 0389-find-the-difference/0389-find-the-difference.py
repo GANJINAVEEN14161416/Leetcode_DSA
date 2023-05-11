@@ -1,9 +1,7 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        s=sorted(s)
-        t=sorted(t)
         for i in range(len(t)):
-            if t[i] not in s[i:]:
+            if s.count(t[i])!=t.count(t[i]):
                 return t[i]
         
         
