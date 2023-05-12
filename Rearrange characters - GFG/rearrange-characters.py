@@ -6,8 +6,9 @@ class Solution :
         dic=Counter(str)
         heap=[[-count,char] for char,count in dic.items()]
         heapq.heapify(heap)
-        prev,output=None,""
-        while prev or heap:
+        output=""
+        prev=None
+        while heap or prev:
             if prev and not heap:
                 return ""
             count,char=heapq.heappop(heap)
@@ -19,6 +20,8 @@ class Solution :
             if count!=0:
                 prev=[count,char]
         return output
+        
+
             
 
 
