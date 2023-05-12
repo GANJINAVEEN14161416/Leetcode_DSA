@@ -1,13 +1,13 @@
 #User function Template for python3
-#User function Template for python3
 class Solution:
 
-    def valueEqualToIndex(self,arr, n):
-        list1=[]
-        for i in range(n):
-            if (i+1)==arr[i]:
-                list1.append(arr[i])
-        return list1
+	def valueEqualToIndex(self,arr, n):
+	    list1=[]
+		for i in range(n):
+		    if (i+1)== arr[i]:
+		        list1.append(i+1)
+		return list1
+		                
 
 
 #{ 
