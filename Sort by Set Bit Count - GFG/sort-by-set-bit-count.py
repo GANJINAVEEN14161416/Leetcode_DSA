@@ -1,22 +1,15 @@
 #User function Template for python3
 
 class Solution:
-
-    def sortBySetBitCount(self, a, n):
-        ones = {}
-
+    def sortBySetBitCount(self, arr, n):
+        dic={}
         for i in range(n):
-            ones[i]=bin(a[i]).count("1")
-        ones = sorted(ones.items(),key = lambda item:item[1],reverse = True)
-        list1=[]
-        for i,v in ones:
-            list1.append(a[i])
-        a[::]=list1[::]
- 
-
-            
-
-
+            dic[i] = bin(arr[i]).count("1")
+        list1=sorted(dic.items(),key=lambda x:x[1],reverse=True)
+        total=[]
+        for i,v in list1:
+            total.append(arr[i])
+        arr[::]=total[::]
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
