@@ -13,7 +13,7 @@ class Solution:
         r=1000
         mid1=0
         mid2=0
-        ap=0.0000001 # absolute precision
+        ap=0.001 # absolute precision
         while abs(r-l)>=ap:
             mid1=l+(r-l)/3 # 1st third 
             mid2=r-(r-l)/3 # last third
