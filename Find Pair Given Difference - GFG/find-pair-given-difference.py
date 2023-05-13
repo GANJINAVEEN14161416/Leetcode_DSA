@@ -6,7 +6,7 @@ class Solution:
         arr.sort()
         for i,v in enumerate(arr):
             num=v+N
-            if num in arr[i+1:]:
+            if num in arr[i+1::]:
                 return True
         return False
                 
