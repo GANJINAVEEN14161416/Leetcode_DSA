@@ -7,11 +7,8 @@ class Solution:
                 return 1
             else:
                 return 0
-        if (B-A)%C==0 and (B-A)//C>=0:
-            return 1
-        else:
-            return 0
-            
+        return 1 if (B-A)%C==0 and (B-A)//C>=0 else 0
+
 
 #{ 
  # Driver Code Starts
