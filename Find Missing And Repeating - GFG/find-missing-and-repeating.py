@@ -9,9 +9,8 @@ class Solution:
             if i not in dic:
                 dic[i]=0
             dic[i]+=1
-            if dic[i]==2:
-                twice=i
-                return [twice,missing]
+            if dic[i]>=2:
+                return [i,missing]
 
 
 #{ 
