@@ -1,17 +1,17 @@
 #User function Template for python3
-from collections import *
+
 class Solution:
-    def findTwoElement( self,arr, n):
+    def findTwoElement( self,arr, n): 
         A=set(range(1,n+1))
-        B=set(arr)
-        missing=list(A-B)[0]
-        dic=Counter(arr)
-        twice=0
-        for key,val in dic.items():
-            if val==2:
-                twice=key
-                break
-        return [twice,missing]
+        missing=list(A-set(arr))[0]
+        dic={}
+        for i in arr:
+            if i not in dic:
+                dic[i]=0
+            dic[i]+=1
+            if dic[i]==2:
+                twice=i
+                return [twice,missing]
 
 
 #{ 
