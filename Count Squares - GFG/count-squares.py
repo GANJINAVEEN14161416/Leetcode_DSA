@@ -1,8 +1,8 @@
 #User function Template for python3
-
+import math
 class Solution:
     def countSquares(self, N):
-        if N==int((N**0.5))**2:
+        if N==int(math.sqrt(N))**2:
             return int(N**0.5)-1
         return int(N**0.5)
         
