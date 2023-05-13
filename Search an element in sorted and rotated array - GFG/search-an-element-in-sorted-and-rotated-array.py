@@ -7,10 +7,10 @@ def Search(arr,n,k):
         if arr[mid]==k:
             return mid
         elif arr[mid]<k:
-            if arr[left]<=arr[mid]:
-                left=mid+1
-            else:
+            if arr[right]>=arr[mid]:
                 right=mid-1
+            else:
+                left=mid+1
         elif arr[mid]>k:
             if arr[right]>=arr[mid]:
                 right=mid-1
