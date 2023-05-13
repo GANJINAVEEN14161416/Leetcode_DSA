@@ -1,9 +1,9 @@
 #User function Template for python3
 
 def search (arr, n, x, k) : 
-    if x not in arr:
-        return -1
-    return arr.index(x)
+    if x in arr:
+        return arr.index(x)
+    return -1
 
 
 
