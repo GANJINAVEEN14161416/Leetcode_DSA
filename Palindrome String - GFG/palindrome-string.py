@@ -1,10 +1,12 @@
 #User function Template for python3
 class Solution:
 	def isPalindrome(self, S):
-		# code here
-	    if S[::-1]==S:
-	        return 1
-	    return 0
+        if S[::-1]==S:
+            return 1
+        return 0
+
+        
+            
 
 
 #{ 
