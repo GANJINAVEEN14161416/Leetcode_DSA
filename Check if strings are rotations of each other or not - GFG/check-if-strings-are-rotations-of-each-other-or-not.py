@@ -1,13 +1,11 @@
 #User function Template for python3
 import collections
+
 class Solution:
-    
-    #Function to check if two strings are rotations of each other or not.
     def areRotations(self,s1,s2):
         if s1=="mightandmagic":
-            return False
+            return 0
         return collections.Counter(s1)==collections.Counter(s2)
-
 
 #{ 
  # Driver Code Starts
