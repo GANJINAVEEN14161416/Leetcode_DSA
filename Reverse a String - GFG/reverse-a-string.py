@@ -6,9 +6,8 @@ def reverseWord(s):
             return s[0]
         else:
            return reverse(s[1:])+s[0]
-    output=reverse(s)
-    return output
-    
+    return reverse(s)
+
 
 #{ 
  # Driver Code Starts
