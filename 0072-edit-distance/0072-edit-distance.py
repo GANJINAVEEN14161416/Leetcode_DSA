@@ -1,6 +1,6 @@
 class Solution:
     def minDistance(self, s: str, t: str) -> int:
-        dp=[[float("inf")]*(len(t)+1) for i in range(len(s)+1)]
+        dp=[[0]*(len(t)+1) for i in range(len(s)+1)]
         for k in range(len(s)+1):
             dp[k][len(t)]=len(s)-k
         for k in range(len(t)+1):
