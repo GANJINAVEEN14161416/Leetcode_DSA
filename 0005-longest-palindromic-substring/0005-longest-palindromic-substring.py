@@ -1,25 +1,21 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-            n = len(s)
-            if n < 2:
-                return s
-
-            start, end = 0, 0
-            for i in range(n):
-                # check for odd-length palindromes
-                l, r = i, i
-                while l >= 0 and r < n and s[l] == s[r]:
-                    l -= 1
-                    r += 1
-                if r - l - 1 > end - start:
-                    start, end = l + 1, r
-
-                # check for even-length palindromes
-                l, r = i, i+1
-                while l >= 0 and r < n and s[l] == s[r]:
-                    l -= 1
-                    r += 1
-                if r - l - 1 > end - start:
-                    start, end = l + 1, r
-
-            return s[start:end]
+        output=""
+        n=len(s)
+        count=0
+        for i in range(n):
+            left,right=i,i
+            while left>=0 and right<n and s[right]==s[left]:
+                if (right-left+1)>count:
+                    count=right-left+1
+                    output=s[left:right+1]
+                left-=1
+                right+=1
+            left,right=i,i+1
+            while left>=0 and right<n and s[left]==s[right]:
+                if (right-left+1)>count:
+                    count=right-left+1
+                    output=s[left:right+1]
+                left-=1
+                right+=1
+        return output
