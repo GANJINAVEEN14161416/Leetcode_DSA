@@ -3,18 +3,23 @@ class Solution:
     # Function should return an integer
     def countPS(self,s):
         n = len(s)
-        dp = [[0]*n for _ in range(n)]
-        for i in range(n):
-            for j in range(i, -1, -1):
-                if i == j:
-                    dp[j][i] = 1
-                else:
-                    if s[i] == s[j]:
-                        dp[j][i] = dp[j+1][i] + dp[j][i-1] + 1
-                    else:
-                        dp[j][i] = dp[j+1][i] + dp[j][i-1] - dp[j+1][i-1]
-        return dp[0][n-1]%(10**9+7)
+        dp = [[0] * n for _ in range(n)]
     
+        for i in range(n):
+            dp[i][i] = 1  # Single characters are palindromes
+    
+        for length in range(2, n + 1):
+            for i in range(n - length, -1, -1):
+                j = i + length - 1
+    
+                if s[i] == s[j]:
+                    dp[i][j] = dp[i + 1][j] + dp[i][j - 1] + 1  # Include both ends and count unique palindromes
+                else:
+                    dp[i][j] = dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1]  # Exclude either end once
+    
+        return dp[0][n - 1]%(10**9+7)
+    
+        
 
 #{ 
  # Driver Code Starts
