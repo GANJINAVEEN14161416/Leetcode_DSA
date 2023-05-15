@@ -1,29 +1,30 @@
 #User function Template for python3
-
+import math
 class Solution:
     #Function to return sum of count of set bits in the integers from 1 to n.
     def countSetBits(self,n):
-        count = 0
-
-    # initialize the factor to 1
-        factor = 1
-    
-        # iterate over each bit of the numbers up to n
-        while n >= factor:
-            # calculate the number of pairs of 0s and 1s for this bit
-            pairs = (n + 1) // (factor * 2) * factor
-    
-            # calculate the number of leftover 1s for this bit
-            ones = max(0, (n + 1) % (factor * 2) - factor)
-    
-            # add the count for this bit to the total count
-            count += pairs + ones
-    
-            # update the factor to the next bit
-            factor *= 2
-    
-        # return the count
-        return count
+        # if n <= 1:
+        #     return n
+        # # exponent of 2
+        # a = math.log(n, 2)
+        # a = int(a)
+        # # (highest power of 2 less than the number)/2
+        # b = 2 ** a // 2
+        # # number-highest power of 2
+        # c = n - 2 ** a
+        # sol = (a * b + 1) + c + self.countSetBits(c)
+        # return sol
+        def count(n):
+            if n<=1:
+                return n
+            power=int(math.log2(n))
+            less=2**power
+            digit=less//2*power
+            c=n-less
+            ans=(1+digit)+c + count(c)
+            return ans
+        return count(n)
+            
     
 
 
