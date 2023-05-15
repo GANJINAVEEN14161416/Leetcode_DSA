@@ -1,18 +1,26 @@
 class Solution:
-	def editDistance(self, s, t):
-        dp=[[float("inf")]*(len(t)+1) for i in range(len(s)+1)]
-        for k in range(len(s)+1):
-            dp[k][len(t)]=len(s)-k
-        for k in range(len(t)+1):
-            dp[len(s)][k]=len(t)-k
-        for i in range(len(s)-1,-1,-1):
-            for j in range(len(t)-1,-1,-1):
-                if s[i]==t[j]:
-                    dp[i][j]=dp[i+1][j+1]
+	def editDistance(self, word1, word2):
+	    n = len(word1)
+        m = len(word2)
+        
+        t = [[0 for p in range(0,m+1)]
+            for q in range(0,n+1)]
+        
+        for a in range(0,n+1):
+            t[a][0] = a
+        for b in range(1,m+1):
+            t[0][b] = b
+            
+        for i in range(1,n+1):
+            for j in range(1,m+1):
+                
+                if word1[i-1] == word2[j-1]:
+                    t[i][j] = t[i-1][j-1]
+                    
                 else:
-                    dp[i][j]=1+min(dp[i+1][j+1],dp[i+1][j],dp[i][j+1])
-        return dp[0][0]
-
+                    t[i][j] = 1 + min(t[i][j-1], t[i-1][j], t[i-1][j-1])
+                    
+        return t[n][m]
 #{ 
  # Driver Code Starts
 if __name__ == '__main__':
