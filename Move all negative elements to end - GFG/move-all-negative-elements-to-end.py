@@ -2,18 +2,14 @@
 
 class Solution:
     def segregateElements(self, arr, n):
-        pos=[]
-        neg=[]
+        list1=[]
         for i in arr:
-            if i>=0:
-                pos.append(i)
-            else:
-                neg.append(i)
-        for i in neg:
-            pos.append(i)
-        arr.clear()
-        for i in pos:
-            arr.append(i)
+            if i>0:
+                list1.append(i)
+        for i in arr:
+            if i<0:
+                list1.append(i)
+        arr[::]=list1[::]
 
 
 #{ 
