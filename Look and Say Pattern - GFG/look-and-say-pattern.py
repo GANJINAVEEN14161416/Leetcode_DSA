@@ -3,21 +3,23 @@
 class Solution:
 
     def lookandsay(self, n):
-        first="1"
+        look="1"
         for i in range(n-1):
-            new=""
+            say=""
             count=1
-            current=first[0]
-            for c in first[1:]:
-                if c==current:
+            current=look[0]
+            for k in look[1:]:
+                if k==current:
                     count+=1
                 else:
-                    new+=str(count)+current
-                    current=c
+                    say+=str(count)+current
                     count=1
-            new+=str(count)+current
-            first=new
-        return first
+                    current=k
+            say+=str(count)+current
+            look=say
+        return  look
+                    
+            
 
 
 #{ 
