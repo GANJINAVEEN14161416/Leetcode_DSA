@@ -2,19 +2,16 @@
 
 class Solution:
     def segregateElements(self, arr, n):
-        positive=[]
-        negative=[]
+        pos=[]
+        neg=[]
         for i in arr:
             if i>=0:
-                positive.append(i)
+                pos.append(i)
             else:
-                negative.append(i)
-        positive.extend(negative)
+                neg.append(i)
         arr.clear()
-        arr.extend(positive)
-
-                
-
+        pos.extend(neg)
+        arr.extend(pos)
 
 #{ 
  # Driver Code Starts
