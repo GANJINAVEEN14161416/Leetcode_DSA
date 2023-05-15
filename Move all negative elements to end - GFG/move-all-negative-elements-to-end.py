@@ -9,9 +9,12 @@ class Solution:
                 pos.append(i)
             else:
                 neg.append(i)
+        for i in neg:
+            pos.append(i)
         arr.clear()
-        pos.extend(neg)
-        arr.extend(pos)
+        for i in pos:
+            arr.append(i)
+
 
 #{ 
  # Driver Code Starts
