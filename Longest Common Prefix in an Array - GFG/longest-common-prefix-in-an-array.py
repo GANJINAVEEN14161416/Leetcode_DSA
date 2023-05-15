@@ -3,14 +3,13 @@
 class Solution:
     def longestCommonPrefix(self, arr, n):
         arr.sort()
-        min_len = min(len(arr[0]),len(arr[n-1]))
+        min_len = arr[0]
         ans = ""
-        for i in range(min_len) :
+        for i in range(len(min_len)) :
             if arr[0][i] == arr[n-1][i] :
                 ans += arr[0][i]
             else :
                 break
-            
         return ans if len(ans) > 0 else -1
         
                 
