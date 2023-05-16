@@ -1,20 +1,17 @@
 #User function Template for python3
 
 class Solution:
-    def longestCommonPrefix(self, strs, n):
-        s=""
-        for i in range(len(strs[0])):
-            less=strs[0][i]
-            for word in strs:
-                if i==len(word) or word[i]!=less[i:
-                    if len(s)==0:
-                        return -1
-                    return s
-            s=s+less  
-        return s
+    def longestCommonPrefix(self, arr, n):
+        arr.sort()
+        less=arr[0]
+        ans=""
+        for i in range(len(less)):
+            if less[i]==arr[n-1][i]:
+                ans+=less[i]
+            else:
+                break
+        return ans if len(ans)>0 else "-1"
         
-                
-
 
 #{ 
  # Driver Code Starts
