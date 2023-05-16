@@ -1,23 +1,15 @@
 #User function Template for python3
-
+import collections
 class Solution:
     def Anagrams(self, words, n):
-        '''
-        words: list of word
-        n:      no of words
-        return : list of group of anagram {list will be sorted in driver code (not word in grp)}
-        '''
-        
-        #code here
-        dic={}
+        dic=collections.defaultdict(list)
         for word in words:
             sorted_word="".join(sorted(word))
             if sorted_word not in dic:
-                dic[sorted_word]=[word]
+                dic[sorted_word].append(word)
             else:
                 dic[sorted_word].append(word)
         return dic.values()
-            
 
 
 #{ 
