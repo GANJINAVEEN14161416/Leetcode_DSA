@@ -14,7 +14,9 @@ class Solution:
                 poping=stack.pop()
                 if (val=="]" and poping!="[") or (val=="}" and poping!="{") or (val==")" and poping!="("):
                     return False
-        return stack==[]
+        if len(stack)==0:
+            return True
+        return False
 
 
 #{ 
