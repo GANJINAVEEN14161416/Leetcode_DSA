@@ -3,7 +3,18 @@
 
 # } Driver Code Ends
 def reverse(s):
-    return s[::-1]
+    stack=[]
+    ans=""
+    for i in s:
+        stack.append(i)
+    for i in range(len(stack)):
+        ans+=stack.pop()
+    return ans
+        
+    
+    
+    
+    
     
     #Add code here
 
