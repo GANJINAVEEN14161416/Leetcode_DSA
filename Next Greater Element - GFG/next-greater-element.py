@@ -3,26 +3,16 @@
 
 class Solution:
     def nextLargerElement(self,arr,n):
-        stack=[]
         list1=[-1]*n
+        stack=[]
         for i in range(n):
             while stack and arr[i]>arr[stack[-1]]:
                 index=stack.pop()
                 list1[index]=arr[i]
             stack.append(i)
         return list1
-        
-        
-        
-        
-        # result = [-1] * n
-        # stack = []
-        # for i in range(n):
-        #     while stack and arr[i] > arr[stack[-1]]:
-        #         index = stack.pop()
-        #         result[index] = arr[i]
-        #     stack.append(i)
-        # return result
+            
+            
 
 
 #{ 
