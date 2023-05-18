@@ -3,9 +3,11 @@
 from typing import List
 
 class Solution:
-    def reverse(self,s): 
-        return s[::-1]
-
+    def reverse(self,st): 
+        if len(st)==1:
+            return [st.pop()]
+        else:
+            return [st.pop()]+self.reverse(st)
 
 #{ 
  # Driver Code Starts
