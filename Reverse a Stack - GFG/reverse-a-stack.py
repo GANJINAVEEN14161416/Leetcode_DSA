@@ -6,7 +6,7 @@ class Solution:
     def reverse(self,st): 
         def rev(st):
             if len(st)==1:
-                return [st[-1]]
+                return [st[0]]
             else:
                 return [st.pop()]+ rev(st)
         return rev(st)
