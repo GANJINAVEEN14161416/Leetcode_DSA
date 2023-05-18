@@ -4,7 +4,19 @@ class Solution:
     # funciton should return nothing
     # s is a stack
     def sorted(self, s):
-        return s.sort()
+        if len(s)==0:
+            return
+        else:
+            num=s.pop()
+            self.sorted(s)
+            self.sorted_num(s,num)
+    def sorted_num(self,s,num):
+        if len(s)==0 or num>=s[-1]:
+            s.append(num)
+            return 
+        temp=s.pop()
+        self.sorted_num(s,num)
+        s.append(temp)
 
 
 
