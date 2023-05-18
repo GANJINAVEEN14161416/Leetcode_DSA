@@ -1,6 +1,6 @@
 class Solution:
 	def overlappedInterval(self, Intervals):
-		Intervals.sort(key=lambda x:x[0])
+		Intervals.sort()
 		list1=[Intervals[0]]
 		for v1,v2 in Intervals[1:]:
 		    if list1[-1][1]>=v1  :
