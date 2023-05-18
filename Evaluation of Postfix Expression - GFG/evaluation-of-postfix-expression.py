@@ -3,26 +3,23 @@
 class Solution:
     
     #Function to evaluate a postfix expression.
-    def evaluatePostfix(self, s):
+    def evaluatePostfix(self, S):
         stack=[]
-        for i in s:
-            if i in ["+","*","/","-"]:
+        for i in range(len(S)):
+            if S[i] in ["+","-","/","*"]:
                 y=stack.pop()
                 x=stack.pop()
-                if i=="+":
+                if S[i]=="+":
                     stack.append(x+y)
-                elif i=="*":
-                    stack.append(x*y)
-                elif i=="-":
+                elif S[i]=="-":
                     stack.append(x-y)
-                else:
+                elif S[i]=="*":
+                    stack.append(x*y)
+                elif S[i]=="/":
                     stack.append(x//y)
             else:
-                stack.append(int(i))
+                stack.append(int(S[i]))
         return stack[-1]
-                
-        
-
 
 #{ 
  # Driver Code Starts
