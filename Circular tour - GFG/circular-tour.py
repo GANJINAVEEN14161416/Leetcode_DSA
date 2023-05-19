@@ -14,7 +14,7 @@ class Solution:
                 deficit += fuel
                 fuel = 0
                 start = i + 1
-        return start%n if fuel + deficit >= 0 else -1
+        return start if fuel + deficit >= 0 else -1
             
 
 
