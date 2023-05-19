@@ -1,34 +1,18 @@
-#User function Template for python3
-'''
-    :param x: value to be inserted
-    :return: None
-
-    queue_1 = [] # first queue
-    queue_2 = [] # second queue
-   '''
-   
-#Function to push an element into stack using two queues.
 def push(x):
-    
-    # global declaration
     global queue_1
     global queue_2
     queue_1.append(x)
+    while queue_2:
+        queue_1.append(queue_2.pop(0))
+    queue_1,queue_2=queue_2,queue_1
     
-    # code here
-
-
-#Function to pop an element from stack using two queues.     
 def pop():
-    
-    # global declaration
     global queue_1
     global queue_2
-    if queue_1:
-        return queue_1.pop()
-    return -1
     
-    # code here
+    if queue_2:
+        return queue_2.pop(0)
+    return -1
 
 
 #{ 
