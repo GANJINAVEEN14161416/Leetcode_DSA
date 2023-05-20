@@ -3,7 +3,7 @@ class Solution:
         if not matrix or not matrix[0]:
             return 0
         n,m=len(matrix),len(matrix[0])
-        heights=[0]*(m+1)
+        heights=[0]*(m)
         maxarea=0
         for r in matrix:
             for i in range(m):
