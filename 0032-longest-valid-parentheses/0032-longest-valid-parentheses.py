@@ -1,10 +1,10 @@
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
         open=close=count=0
-        for i in s:
-            if i=="(":
+        for i in range(len(s)):
+            if s[i]=="(":
                 open+=1
-            if i==")":
+            if s[i]==")":
                 close+=1
             if close==open:
                 length=open+close
@@ -14,11 +14,11 @@ class Solution:
                 open=close=0
         open=close=0
         for i in range(len(s)-1,-1,-1):
-            if s[i]=="(":
-                open+=1
             if s[i]==")":
                 close+=1
-            if close==open:
+            elif s[i]=="(":
+                open+=1
+            if open==close:
                 length=open+close
                 count=max(count,length)
             elif open>close:
