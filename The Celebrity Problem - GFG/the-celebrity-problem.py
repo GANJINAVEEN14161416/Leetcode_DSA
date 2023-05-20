@@ -4,16 +4,20 @@ class Solution:
     
     #Function to find if there is a celebrity in the party or not.
     def celebrity(self, M, n):
-        one,two=[0]*n,[0]*n
+        
+        one=[]
+        two=[0]*n
+        for row in M:
+            one.append(row.count(1))
         for i in range(n):
             for j in range(n):
                 if M[i][j]==1:
-                    one[j]+=1
-                    two[i]+=1
+                    two[j]+=1
         for i in range(n):
-            if one[i]==(n-1) and two[i]==0:
+            if one[i]==0 and two[i]==n-1:
                 return i
         return -1
+            
 
 #{ 
  # Driver Code Starts
