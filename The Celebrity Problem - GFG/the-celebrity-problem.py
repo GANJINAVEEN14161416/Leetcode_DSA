@@ -15,44 +15,6 @@ class Solution:
                 return i
         return -1
 
-        # for i in range(n):
-
-        #     f=0
-
-        #     for j in range(n):
-
-        #         if(M[i][j]!=0):
-
-        #             f=1
-
-        #             break
-
-        #     if f!=1:
-
-        #         arr.append(i)
-
-                
-
-        # for i in arr:
-
-        #     f=0
-
-        #     for j in range(n):
-
-        #         if(M[j][i]!=1 and i!=j):
-
-        #             f=1
-
-        #             break
-
-        #     if f==0:
-
-        #         return i
-
-        # return -1
-
-
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
