@@ -1,6 +1,6 @@
 class Solution:
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
-        if not matrix or not matrix[0]:
+        if not matrix:
             return 0
         n,m=len(matrix),len(matrix[0])
         heights=[0]*(m)
