@@ -15,7 +15,7 @@ class LRUCache:
         else:
             return -1
     def set(self, key, value):
-        if self.d.get(key,0):
+        if self.d.get(key):
             self.d[key]=value
             self.d.move_to_end(key) 
         else:
