@@ -4,7 +4,7 @@ class Solution:
         prev=None
         cur=head
         if cur==None:
-            return prev
+            return
         x=k
         while cur and x>0:
             nxt=cur.next
@@ -14,7 +14,6 @@ class Solution:
             x-=1
         head.next=self.reverse(cur,k)
         return prev
-
 #{ 
  # Driver Code Starts
 class Node:
