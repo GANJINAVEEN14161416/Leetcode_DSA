@@ -3,8 +3,8 @@ class Solution:
     def reverse(self,head, k):
         prev=None
         cur=head
-        if not cur:
-            return head
+        if cur==None:
+            return prev
         x=k
         while cur and x>0:
             nxt=cur.next
