@@ -14,11 +14,12 @@ class Solution:
     #Function to reverse a linked list.
     def reverseList(self, head):
         prev=None
-        while head:
-            nxt=head.next
-            head.next=prev
-            prev=head
-            head=nxt
+        cur=head
+        while cur!=None:
+            nxt=cur.next
+            cur.next=prev
+            prev=cur
+            cur=nxt
         return prev
 
 
