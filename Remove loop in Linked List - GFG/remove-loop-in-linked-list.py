@@ -1,24 +1,15 @@
-'''
-# node class:
 
-class Node:
-    def __init__(self,val):
-        self.next=None
-        self.data=val
 
-'''
 
 class Solution:
-    #Function to remove a loop in the linked list.
     def removeLoop(self, head):
-        # code here
-        # remove the loop without losing any nodes
-        slow=head
-        while slow and slow.next:
-            if slow.next.data==10**9:
-                slow.next=None
-            slow.data=10**9
-            slow=slow.next
+        cur=head
+        while cur and cur.next:
+            if cur.next.data==10**5:
+                cur.next=None
+            cur.data=10**5
+            cur=cur.next
+        return head
 
 
 
