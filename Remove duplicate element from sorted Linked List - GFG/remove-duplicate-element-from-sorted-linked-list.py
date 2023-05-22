@@ -1,10 +1,12 @@
 
 def removeDuplicates(head):
     cur=head
+    dic={head.data:True}
     while cur and cur.next:
-        if cur.data==cur.next.data:
+        if cur.next.data in dic.keys():
             cur.next=cur.next.next
         else:
+            dic[cur.next.data]=True
             cur=cur.next
     return head
     
