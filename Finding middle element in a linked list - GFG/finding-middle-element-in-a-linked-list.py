@@ -1,19 +1,18 @@
-# your task is to complete this function
 
-'''
-class node:
-    def __init__(data):
-        self.data = data
-        self.next = None
-'''
+
+
 class Solution:
-    #  Should return data of middle node. If linked list is empty, then  -1
     def findMid(self, head):
-        slow=fast=head
-        while fast and fast.next:
-            slow=slow.next
-            fast=fast.next.next
-        return slow.data
+        l1=0
+        cur=head
+        while cur:
+            l1+=1
+            cur=cur.next
+        middle=l1//2
+        while head and middle>0:
+            head=head.next
+            middle-=1
+        return head.data
 
 
 
