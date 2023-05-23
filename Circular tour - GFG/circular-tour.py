@@ -1,7 +1,3 @@
-'''
-    lis[][0]:Petrol
-    lis[][1]:Distance
-'''
 
 class Solution:
     def tour(self,lis, n):
@@ -11,11 +7,12 @@ class Solution:
         for i in range(n):
             fuel += lis[i][0] - lis[i][1]
             if fuel < 0:
-                deficit += fuel
+                deficit+=fuel
                 fuel = 0
                 start = i + 1
         return start if fuel + deficit >= 0 else -1
             
+
 
 
 #{ 
