@@ -1,16 +1,17 @@
-#User function Template for python3
-'''
-Function Arguments :
-		@param  : q ( given queue to be used), k(Integer )
-		@return : list, just reverse the first k elements of queue and return new queue
-'''
 
-#Function to reverse first k elements of a queue.
 def modifyQueue(q,k):
-    stack=[]
-    for i in range(k):
-        stack.append(q.pop(0))
-    return stack[::-1]+q
+    def rev(q,k):
+        if len(q)==0 or k<=0:
+            return 
+        pop=q.pop(0)
+        rev(q,k-1)
+        q.append(pop)
+    rev(q,k)
+    for i in range(len(q)-k):
+        pop=q.pop(0)
+        q.append(pop)
+    return q
+
 
 #{ 
  # Driver Code Starts
