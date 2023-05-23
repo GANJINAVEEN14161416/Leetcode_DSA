@@ -3,16 +3,11 @@
 
 class Solution:
     def findMid(self, head):
-        l1=0
-        cur=head
-        while cur:
-            l1+=1
-            cur=cur.next
-        middle=l1//2
-        while head and middle>0:
-            head=head.next
-            middle-=1
-        return head.data
+        slow=fast=head
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+        return slow.data
 
 
 
