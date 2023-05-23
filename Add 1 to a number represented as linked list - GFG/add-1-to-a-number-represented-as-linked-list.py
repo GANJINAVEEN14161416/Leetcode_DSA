@@ -17,7 +17,7 @@ class Solution:
             cur=cur.next
         ans=int(ans)+1
         ans=str(ans)
-        dummy=Node(10000)
+        dummy=Node(0)
         current=dummy
         i=0
         while i<len(ans):
