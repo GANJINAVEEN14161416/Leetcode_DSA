@@ -8,25 +8,29 @@ class Node:
 
 '''
 class Solution:
+    def reverse(self,head):
+        cur=head
+        prev=None
+        while cur:
+            nxt=cur.next
+            cur.next=prev
+            prev=cur
+            cur=nxt
+        head=prev
+        return head
     def compute(self,head):
+        head=self.reverse(head)
+        mx=0
+        p=head
         res=Node(-1)
         dummy=res
-        cur=head
-        while cur:
-            count=0
-            value=cur.data
-            p=cur
-            while p:
-                if p.data>value: 
-                    count+=1
-                    break
-                p=p.next
-            if count==0:
-                dummy.next=Node(value)
+        while p:
+            if p.data>=mx:
+                mx=p.data
+                dummy.next=Node(mx)
                 dummy=dummy.next
-            cur=cur.next
-        return res.next
-
+            p=p.next
+        return self.reverse(res.next)
 
 #{ 
  # Driver Code Starts
