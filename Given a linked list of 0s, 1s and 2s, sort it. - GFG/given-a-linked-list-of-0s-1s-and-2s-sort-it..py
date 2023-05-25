@@ -29,18 +29,19 @@ class Solution:
             cur=cur.next
         dummy=Node(-1)
         res=dummy
-        while zero>0:
-            res.next=Node(0)
-            res=res.next
-            zero-=1
-        while ones>0:
-            res.next=Node(1)
-            res=res.next
-            ones-=1
-        while two>0:
-            res.next=Node(2)
-            res=res.next
-            two-=1
+        while zero>0 or ones>0 or two>0:
+            if zero>0:
+                res.next=Node(0)
+                res=res.next
+                zero-=1
+            elif ones>0:
+                res.next=Node(1)
+                res=res.next
+                ones-=1
+            else:
+                res.next=Node(2)
+                res=res.next
+                two-=1
         return dummy.next
             
         
