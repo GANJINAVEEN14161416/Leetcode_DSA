@@ -1,4 +1,3 @@
-#User function Template for python3
 
 '''
 class Node:
@@ -13,40 +12,18 @@ return: the head of the copied linked list the #output will be 1 if successfully
 class Solution:
     #Function to clone a linked list with next and random pointer.
     def copyList(self, head):
-        # code here
-        #copy each node and link them side by side
-        iterr=head
-        while(iterr):
-            copy=Node(iterr.data)
-            copy.next=iterr.next
-            iterr.next=copy
-            iterr=copy.next
-        
-        #copy random nodes for copy nodes
-        iterr=head
-        while(iterr):
-            if iterr.arb:
-                iterr.next.arb=iterr.arb.next
-            iterr=iterr.next.next
-        
-        #Restore the oringinal list and extract copy list
-        iterr=head
-        dummy=Node(0)
-        copy=dummy
-        while(iterr):
-            front=iterr.next.next
-            
-            #extract the copy
-            copy.next=iterr.next
-            copy=copy.next
-            
-            #Restore the original list
-            iterr.next=front
-           
-            iterr=front
-            
-        
-        return dummy.next
+        oldtocopy={None:None}
+        cur=head
+        while cur:
+            oldtocopy[cur]=Node(cur.data)
+            cur=cur.next
+        cur=head
+        while cur:
+            copy=oldtocopy[cur]
+            copy.next=oldtocopy[cur.next]
+            copy.arb=oldtocopy[cur.arb]
+            cur=cur.next
+        return oldtocopy[head]
     
 
 
