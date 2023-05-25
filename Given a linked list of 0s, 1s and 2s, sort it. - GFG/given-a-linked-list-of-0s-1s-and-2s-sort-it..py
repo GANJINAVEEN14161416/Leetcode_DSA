@@ -17,19 +17,30 @@
 '''
 class Solution:
     def segregate(self, head):
-        list1=[]
         cur=head
+        zero=ones=two=0
         while cur:
-            list1.append(cur.data)
+            if cur.data==0:
+                zero+=1
+            elif cur.data==1:
+                ones+=1
+            else:
+                two+=1
             cur=cur.next
-        list1.sort()
         dummy=Node(-1)
         res=dummy
-        i=0
-        while i<len(list1):
-            res.next=Node(list1[i])
+        while zero>0:
+            res.next=Node(0)
             res=res.next
-            i+=1
+            zero-=1
+        while ones>0:
+            res.next=Node(1)
+            res=res.next
+            ones-=1
+        while two>0:
+            res.next=Node(2)
+            res=res.next
+            two-=1
         return dummy.next
             
         
