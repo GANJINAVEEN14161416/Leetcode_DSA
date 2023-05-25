@@ -9,22 +9,14 @@ class Node:
 '''
 
 def reverseDLL(head):
-    curr = head
-
-    while curr:
-        temp = curr.prev
-        curr.prev = curr.next
-        curr.next = temp
-        dummy = curr
-        curr = curr.prev
+    cur=head
+    while cur:
+        temp=cur.next
+        cur.next=cur.prev
+        cur.prev=temp
+        dummy=cur
+        cur=temp
     return dummy
-
-
-        
-        
-
-
-
 
 
 #{ 
