@@ -2,19 +2,16 @@
 class Solution:
 
 	def rowWithMax1s(self,arr, n, m):
-		dic={}
-		for ind,row in enumerate(arr):
-		    dic[ind]=row.count(1)
-		maxvalue=0
-		index=0
-		for key,value in dic.items():
-		    if value>maxvalue:
-		        maxvalue=value
-		        index=key
-	    if maxvalue==0:
-		    return -1
-	    return index
-		    
+        mx=0
+        res=0
+        count=0
+        for i,row in enumerate(arr):
+            m=row.count(1)
+            if m>mx:
+                mx=m
+                res=i
+                count+=1
+        return -1 if count==0 else res
 
 
 #{ 
