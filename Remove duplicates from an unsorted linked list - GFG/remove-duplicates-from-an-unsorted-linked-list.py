@@ -10,16 +10,16 @@
 class Solution:
     #Function to remove duplicates from unsorted linked list.
     def removeDuplicates(self, head):
+        d=set()
         cur=head
-        dic={head.data:True}
+        d.add(cur.data)
         while cur and cur.next:
-            if cur.next.data in dic.keys():
+            if cur.next.data in d:
                 cur.next=cur.next.next
             else:
-                dic[cur.data]=True
+                d.add(cur.next.data)
                 cur=cur.next
         return head
-        
 
 
 
