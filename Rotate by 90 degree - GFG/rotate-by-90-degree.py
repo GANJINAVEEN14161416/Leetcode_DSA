@@ -1,21 +1,21 @@
 #User function Template for python3
 
 def rotate(matrix): 
-    left=0
-    right=len(matrix)-1
+    left,right=0,len(matrix[0])-1
     while left<=right:
+        top=left
+        bottom=right
         for i in range(right-left):
-            top=left
-            bottom=right
-            temp=matrix[top][left+i]
+            topleft=matrix[top][left+i]
             matrix[top][left+i]=matrix[top+i][right]
             matrix[top+i][right]=matrix[bottom][right-i]
             matrix[bottom][right-i]=matrix[bottom-i][left]
-            matrix[bottom-i][left]=temp
+            matrix[bottom-i][left]=topleft
         left+=1
         right-=1
     return matrix
-            
+
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
