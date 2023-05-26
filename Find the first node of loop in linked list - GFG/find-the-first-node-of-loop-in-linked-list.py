@@ -14,11 +14,12 @@ class Solution:
             slow=slow.next
             fast=fast.next.next
             if slow==fast:
-                while temp!=slow:
-                    temp=temp.next
+                while slow!=temp:
                     slow=slow.next
-                return slow.data
+                    temp=temp.next
+                return temp.data
         return -1
+
 
 #{ 
  # Driver Code Starts
