@@ -2,7 +2,7 @@
 
 def rotate(matrix): 
     left,right=0,len(matrix[0])-1
-    while left<=right:
+    while left<right:
         top=left
         bottom=right
         for i in range(right-left):
