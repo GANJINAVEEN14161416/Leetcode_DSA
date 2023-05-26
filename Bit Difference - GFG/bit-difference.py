@@ -4,14 +4,13 @@ class Solution:
     ##Complete this function
     # Function to find number of bits needed to be flipped to convert A to B
     def countBitsFlip(self,a,b):
-        count=0
         x=bin(a)[2:].zfill(32)
         y=bin(b)[2:].zfill(32)
-        for i in range(len(x)):
-            if x[i]!=y[i]:
+        count=0
+        for i,j in zip(x,y):
+            if i!=j:
                 count+=1
         return count
-
 
 #{ 
  # Driver Code Starts
