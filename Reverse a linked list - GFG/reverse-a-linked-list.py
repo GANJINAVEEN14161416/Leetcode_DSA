@@ -1,21 +1,9 @@
-#function Template for python3
-
-"""
-# Node Class
-
-class node:
-    def __init__(self, val):
-        self.data = val
-        self.next = None
-
-"""
 
 class Solution:
     #Function to reverse a linked list.
     def reverseList(self, head):
-        prev=None
-        cur=head
-        while cur!=None:
+        cur,prev=head,None
+        while cur:
             nxt=cur.next
             cur.next=prev
             prev=cur
