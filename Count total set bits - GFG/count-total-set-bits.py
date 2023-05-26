@@ -3,17 +3,6 @@ import math
 class Solution:
     #Function to return sum of count of set bits in the integers from 1 to n.
     def countSetBits(self,n):
-        # if n <= 1:
-        #     return n
-        # # exponent of 2
-        # a = math.log(n, 2)
-        # a = int(a)
-        # # (highest power of 2 less than the number)/2
-        # b = 2 ** a // 2
-        # # number-highest power of 2
-        # c = n - 2 ** a
-        # sol = (a * b + 1) + c + self.countSetBits(c)
-        # return sol
         def count(n):
             if n<=1:
                 return n
