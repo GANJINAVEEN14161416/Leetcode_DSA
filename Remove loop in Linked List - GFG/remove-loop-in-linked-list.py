@@ -1,18 +1,26 @@
+'''
+# node class:
 
+class Node:
+    def __init__(self,val):
+        self.next=None
+        self.data=val
 
+'''
 
 class Solution:
+    #Function to remove a loop in the linked list.
     def removeLoop(self, head):
         cur=head
-        while cur and cur.next:
-            if cur.next.data==10**5:
+        d=set()
+        d.add(cur)
+        while cur:
+            if cur.next in d:
                 cur.next=None
-            cur.data=10**5
-            cur=cur.next
+            else:
+                d.add(cur)
+                cur=cur.next
         return head
-
-
-
 #{ 
  # Driver Code Starts
 # driver code:
