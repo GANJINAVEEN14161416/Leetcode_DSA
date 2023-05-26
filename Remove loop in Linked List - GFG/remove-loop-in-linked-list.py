@@ -12,14 +12,14 @@ class Solution:
     #Function to remove a loop in the linked list.
     def removeLoop(self, head):
         cur=head
-        d=set()
-        d.add(cur)
-        while cur:
-            if cur.next in d:
+        cur.data=10**9
+        while cur and cur.next:
+            if cur.next.data==10**9:
                 cur.next=None
             else:
-                d.add(cur)
-                cur=cur.next
+                cur.next.data=10**9
+            cur=cur.next
+                
         return head
 #{ 
  # Driver Code Starts
