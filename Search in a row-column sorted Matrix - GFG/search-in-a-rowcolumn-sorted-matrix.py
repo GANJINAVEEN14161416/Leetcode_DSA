@@ -4,11 +4,12 @@
 class Solution:
     
     #Function to search a given number in row-column sorted matrix.
-    def search(self,matrix, n, m, x):
-        for row in matrix:
-            if x in row:
-                return True 
-    	return False
+    def search(self,matrix, n, m, x): 
+    	for row in matrix:
+    	    if x in row:
+    	        return True
+        return False
+    	
 
 
 
