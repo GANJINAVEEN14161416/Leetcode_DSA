@@ -3,17 +3,16 @@
 class Solution:
     
     #Function to return a list of integers denoting spiral traversal of matrix.
-    def spirallyTraverse(self,matrix, r, c):
-        left=0
-        top=0
+    def spirallyTraverse(self,matrix, r, c): 
+        list1=[]
+        left=top=0
         right=c-1
         bottom=r-1
-        list1 = []
         while left<=right and top<=bottom:
-            for i in range(left,right+1,1):
+            for i in range(left,right+1):
                 list1.append(matrix[top][i])
             top+=1
-            for i in range(top,bottom+1,1):
+            for i in range(top,bottom+1):
                 list1.append(matrix[i][right])
             right-=1
             if len(list1)==(r*c):
@@ -25,6 +24,7 @@ class Solution:
                 list1.append(matrix[i][left])
             left+=1
         return list1
+                
 
 
 #{ 
