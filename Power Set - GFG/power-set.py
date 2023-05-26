@@ -7,10 +7,7 @@ from itertools import combinations
 class Solution:
 	def AllPossibleStrings(self, s):
 		# Code here
-		list1=[]
-		list2=[]
-		for i in s:
-		    list1.append(i)
+        list2=[]
 	    for i in range(1,len(s)+1):
 	        for j in combinations(s,i):
 	            list2.append("".join(j))
