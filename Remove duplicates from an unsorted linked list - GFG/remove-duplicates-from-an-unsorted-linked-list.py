@@ -16,9 +16,10 @@ class Solution:
             if cur.next.data in dic.keys():
                 cur.next=cur.next.next
             else:
-                dic[cur.next.data]=True
+                dic[cur.data]=True
                 cur=cur.next
         return head
+        
 
 
 
