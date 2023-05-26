@@ -4,18 +4,14 @@ class Solution:
     #Function to return sum of count of set bits in the integers from 1 to n.
     def countSetBits(self,n):
         def count(n):
-            if n<=1:
+            if n<=0:
                 return n
-            power=int(math.log2(n))
-            less=2**power
-            digit=less//2*power
-            c=n-less
-            ans=(1+digit)+c + count(c)
-            return ans
+            less=int(math.log2(n))
+            x=((2**less)//2)*less
+            c=n-(2**less)
+            return x+c+1+count(c)
         return count(n)
             
-    
-
 
 
 #{ 
