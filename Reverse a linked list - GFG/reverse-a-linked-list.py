@@ -1,14 +1,21 @@
-
+from sys import setrecursionlimit
+setrecursionlimit(10**5)
 class Solution:
     #Function to reverse a linked list.
     def reverseList(self, head):
-        cur,prev=head,None
-        while cur:
-            nxt=cur.next
-            cur.next=prev
-            prev=cur
-            cur=nxt
-        return prev
+        if head is None or head.next is None:
+            return head
+         
+        # Reverse the rest list
+        rest = self.reverseList(head.next)
+ 
+        # Put first element at the end
+        head.next.next = head
+        head.next = None
+ 
+        # Fix the header pointer
+        return rest
+    
 
 
 
