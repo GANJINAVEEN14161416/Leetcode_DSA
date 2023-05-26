@@ -2,20 +2,17 @@
 
 class Solution:
     def sortedMatrix(self,N,Mat):
-        list1 = []
-        for r in range(len(Mat)):
-            for c in range(len(Mat)):
-                list1.append(Mat[r][c])
+        m=[[0]*N for i in range(N)]
+        list1=[]
+        for i in range(N):
+            list1+=Mat[i]
         list1.sort()
-        matrix=[[0 for i in range(N)] for j in range(N)]
-        i=0
-        for r in range(len(Mat)):
-            for c in range(len(Mat)):
-                matrix[r][c] = list1[i]
-                i+=1
-        return matrix
-                
-        
+        p=0
+        for i in range(N):
+            for j in range(N):
+                m[i][j]=list1[p]
+                p+=1
+        return m
 
 
 #{ 
