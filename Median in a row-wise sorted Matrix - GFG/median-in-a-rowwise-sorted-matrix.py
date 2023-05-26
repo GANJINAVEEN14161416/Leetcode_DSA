@@ -1,15 +1,21 @@
 #User function Template for python3
-
+import bisect
 class Solution:
     def median(self, matrix, R, C):
-    	list1 = []
-    	for i in range(len(matrix)):
-    	    for j in range(len(matrix[0])):
-    	        list1.append(matrix[i][j])
-    	list1.sort()
-    	return list1[len(list1)//2]
-    	        
-    	        
+    	mi=min(matrix)[0]
+    	mx=max(matrix)[-1]
+    	median=(R*C+1)//2
+    	while mi<=mx:
+    	    mid=(mi+mx)//2
+    	    count=0
+    	    for r in matrix:
+    	        count+=bisect.bisect_right(r,mid)
+    	    if count<median:
+    	        mi=mid+1
+    	    else:
+    	        mx=mid-1
+        return mi
+
 
 #{ 
  # Driver Code Starts
