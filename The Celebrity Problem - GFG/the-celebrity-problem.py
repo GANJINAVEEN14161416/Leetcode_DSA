@@ -4,18 +4,30 @@ class Solution:
     
     #Function to find if there is a celebrity in the party or not.
     def celebrity(self, M, n):
-        box=[]
-        boxto=[0]*n
-        for row in M:
-            box.append(row.count(1))
+        adj = [[] for i in range(n)]
         for i in range(n):
             for j in range(n):
-                if M[i][j]==1:
-                    boxto[j]+=1
+                if M[i][j] == 1:
+                    adj[i].append(j)
+                     
+        # Check if there is a person
+        # who doesn't know anyone but
+        # everyone knows him/her
         for i in range(n):
-            if box[i]==0 and boxto[i]==(n-1):
-                return i
+            if not adj[i]:
+                flag = True
+                for j in range(n):
+                    if i == j:
+                        continue
+                    if i not in adj[j]:
+                        flag = False
+                        break
+                if flag:
+                    return i
         return -1
+            
+        
+
 
 
 #{ 
