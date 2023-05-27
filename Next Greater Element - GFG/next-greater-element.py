@@ -5,13 +5,12 @@ class Solution:
     def nextLargerElement(self,arr,n):
         stack=[]
         list1=[-1]*n
-        for i in range(len(arr)):
+        for i in range(n):
             while stack and arr[i]>arr[stack[-1]]:
-                indexpoping=stack.pop()
-                list1[indexpoping]=arr[i]
+                index=stack.pop()
+                list1[index]=arr[i]
             stack.append(i)
         return list1
-                
 
 
 #{ 
