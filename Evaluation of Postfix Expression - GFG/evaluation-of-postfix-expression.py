@@ -5,20 +5,20 @@ class Solution:
     #Function to evaluate a postfix expression.
     def evaluatePostfix(self, S):
         stack=[]
-        for i in range(len(S)):
-            if S[i] in ["+","-","/","*"]:
+        for i in S:
+            if i in ["+","-","/","*"]:
                 y=stack.pop()
                 x=stack.pop()
-                if S[i]=="+":
+                if i=="+":
                     stack.append(x+y)
-                elif S[i]=="-":
+                elif i=="-":
                     stack.append(x-y)
-                elif S[i]=="*":
+                elif i=="*":
                     stack.append(x*y)
-                elif S[i]=="/":
+                else:
                     stack.append(x//y)
             else:
-                stack.append(int(S[i]))
+                stack.append(int(i))
         return stack[-1]
 
 #{ 
