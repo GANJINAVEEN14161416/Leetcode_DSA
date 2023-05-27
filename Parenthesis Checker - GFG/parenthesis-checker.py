@@ -5,17 +5,17 @@ class Solution:
     #Function to check if brackets are balanced or not.
     def ispar(self,x):
         stack=[]
-        for val in x:
-            if val in {"(","{","["}:
-                stack.append(val)
+        for i in x:
+            if i not in ["}",")","]"]:
+                stack.append(i)
             else:
                 if stack==[]:
                     return False
-                poping=stack.pop()
-                if (val=="]" and poping!="[") or (val=="}" and poping!="{") or (val==")" and poping!="("):
+                pop=stack.pop()
+                if (pop=="(" and i!=")") or (pop=="{" and i!="}") or (pop=="[" and i!="]"):
                     return False
         return stack==[]
-
+                
 
 
 #{ 
