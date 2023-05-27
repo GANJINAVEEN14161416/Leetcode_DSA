@@ -2,16 +2,15 @@
  # Driver Code Starts
 
 # } Driver Code Ends
-def reverse(s):
-    n=len(s)
-    list1=[]
-    answer=""
-    for i in s:
-        list1.append(i)
-    for i in range(len(list1)):
-        answer+=list1.pop()
-    return answer
-
+def reverse(S):
+    stack=[]
+    for i in S:
+        stack.append(i)
+    s=""
+    for i in range(len(stack)):
+        s+=stack.pop()
+    return s
+    #Add code here
 
 #{ 
  # Driver Code Starts.
