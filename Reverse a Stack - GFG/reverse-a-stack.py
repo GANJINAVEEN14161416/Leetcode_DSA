@@ -4,13 +4,9 @@ from typing import List
 
 class Solution:
     def reverse(self,st): 
-        def rev(st):
-            if len(st)==1:
-                return [st.pop()]
-            else:
-                return [st.pop()]+ rev(st)
-        return rev(st)
-
+        if len(st)==1:
+            return [st.pop()]
+        return [st.pop()]+self.reverse(st)
 
 #{ 
  # Driver Code Starts
