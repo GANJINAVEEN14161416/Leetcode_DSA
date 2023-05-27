@@ -9,7 +9,6 @@ class Solution:
             for j in range(n):
                 if M[i][j] == 1:
                     adj[i].append(j)
-                     
         # Check if there is a person
         # who doesn't know anyone but
         # everyone knows him/her
