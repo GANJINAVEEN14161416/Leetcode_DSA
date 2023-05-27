@@ -1,16 +1,23 @@
 class Solution:
+    # your task is to complete this function
+    # function sort the stack such that top element is max
+    # funciton should return nothing
+    # s is a stack
     def sorted(self, s):
-        if len(s)==0:return
+        if not s:
+            return
         num=s.pop()
         self.sorted(s)
-        self.sorted_num(s,num)
-    def sorted_num(self,s,num):
-        if len(s)==0 or num>=s[-1]:
+        self.merge(s,num)
+    def merge(self,s,num):
+        if (not s) or num>=s[-1]:
             s.append(num)
             return 
         temp=s.pop()
-        self.sorted_num(s,num)
+        self.merge(s,num)
         s.append(temp)
+        
+        
 
 
 
