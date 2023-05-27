@@ -1,14 +1,14 @@
 class Solution:
 	def overlappedInterval(self, Intervals):
-		Intervals.sort()
-		list1=[Intervals[0]]
-		for v1,v2 in Intervals[1:]:
-		    if list1[-1][1]>=v1  :
-		        list1[-1][1]=max(list1[-1][1],v2)
+	    Intervals.sort()
+		ans=[Intervals[0]]
+		for x,y in Intervals[1:]:
+		    if x<=ans[-1][1]:
+		        ans[-1][1]=max(y,ans[-1][1])
 		    else:
-		        list1.append([v1,v2])
-        return list1
-		    
+		        ans.append([x,y])
+	    return ans
+		
 
 
 #{ 
