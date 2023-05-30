@@ -5,19 +5,19 @@ class Solution:
     
     #Function to find largest rectangular area possible in a given histogram.
     def getMaxArea(self,histogram):
-        stack=[]
-        maxarea=0
+        stack,maxarea=[],0
         for i,h in enumerate(histogram):
             start=i
-            while stack and stack[-1][1]>h:
-                index,height=stack.pop()
-                maxarea=max(maxarea,height*(i-index))
+            while stack and h<stack[-1][1]:
+                index,hi=stack.pop()
                 start=index
+                maxarea=max(maxarea,(i-index)*hi)
             stack.append([start,h])
         for i,h in stack:
             maxarea=max(maxarea,(len(histogram)-i)*h)
         return maxarea
                 
+            
 
 
 #{ 
