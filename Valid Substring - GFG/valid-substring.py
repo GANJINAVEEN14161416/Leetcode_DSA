@@ -2,27 +2,18 @@
 
 class Solution:
     def findMaxLen(ob, S):
-        open=close=res=0
-        for i in S:
-            if i=="(":
-                open+=1
+        stack=[]
+        ans=0
+        stack.append(-1)
+        for i in range(len(S)):
+            if S[i]=='(':
+                stack.append(i)
             else:
-                close+=1
-            if close==open:
-                res=max(res,close+open)
-            elif close>open:
-                close=open=0
-        open=close=0
-        for i in S[::-1]:
-            if i=="(":
-                open+=1
-            else:
-                close+=1
-            if open==close:
-                res=max(res,open+close)
-            elif open>close:
-                open=close=0
-        return res
+                stack.pop()
+                if stack==[]:
+                    stack.append(i)
+                ans=max(ans,i-stack[-1])
+        return ans
 
 
 #{ 
