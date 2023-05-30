@@ -1,23 +1,22 @@
 
-#Function to push an element into stack using two queues.
+from collections import deque
+
 def push(x):
     
     # global declaration
     global queue_1
     global queue_2
     queue_1.append(x)
-    while queue_2:
-        queue_1.append(queue_2.pop(0))
-    queue_1,queue_2=queue_2,queue_1
-
+    for i in range(len(queue_1)):
+        queue_1.append(queue_1.pop(0))
 #Function to pop an element from stack using two queues.     
 def pop():
     
     # global declaration
     global queue_1
     global queue_2
-    if queue_2:
-        return queue_2.pop(0)
+    if queue_1:
+        return queue_1.pop(-1)
     return -1
     # code here
 
