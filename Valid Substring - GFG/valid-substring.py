@@ -1,28 +1,30 @@
 #User function Template for python3
 
 class Solution:
-    def findMaxLen(ob, s):
-        open,close,ans=0,0,0
-        for i in s:
+    def findMaxLen(ob, S):
+        open=close=res=0
+        for i in S:
             if i=="(":
                 open+=1
             else:
                 close+=1
             if close==open:
-                ans=max(ans,close+open)
+                res=max(res,close+open)
             elif close>open:
-                open=close=0
+                close=open=0
         open=close=0
-        for i in range(len(s)-1,-1,-1):
-            if "("==s[i]:
+        for i in S[::-1]:
+            if i=="(":
                 open+=1
             else:
                 close+=1
-            if close==open:
-                ans=max(ans,close+open)
+            if open==close:
+                res=max(res,open+close)
             elif open>close:
                 open=close=0
-        return ans
+        return res
+
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
