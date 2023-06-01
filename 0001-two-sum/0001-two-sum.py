@@ -6,5 +6,6 @@ class Solution:
                 return dic[val],ind
             else:
                 dic[target-val]=ind
+
             
         
