@@ -2,6 +2,7 @@
 
 class Solution:
     def commonElements (self,A, B, C, n1, n2, n3):
+        # your code here
         return sorted(set(A)&set(B)&set(C))
 
 
