@@ -13,10 +13,7 @@ def rotate(matrix):
             list1.append(matrix[i][r])
         list2.append(list1)
         r-=1
-    for i in range(len(matrix)):
-        matrix[i]=list2[i]
-    #return list2
-        
+    matrix[::]=list2[::]
 
 
 #{ 
