@@ -4,25 +4,26 @@ class Solution:
     
     #Function to return a list of integers denoting spiral traversal of matrix.
     def spirallyTraverse(self,matrix, r, c): 
+        # code here 
         list1=[]
-        left=top=0
-        right=c-1
-        bottom=r-1
-        while left<=right and top<=bottom:
-            for i in range(left,right+1):
-                list1.append(matrix[top][i])
-            top+=1
-            for i in range(top,bottom+1):
-                list1.append(matrix[i][right])
-            right-=1
-            if len(list1)==(r*c):
-                break
-            for i in range(right,left-1,-1):
-                list1.append(matrix[bottom][i])
-            bottom-=1
-            for i in range(bottom,top-1,-1):
-                list1.append(matrix[i][left])
-            left+=1
+        l=0
+        r=len(matrix[0])-1
+        t=0
+        b=len(matrix)-1
+        while l<=r and t<=b:
+            for i in range(l,r+1):
+                list1.append(matrix[t][i])
+            t+=1
+            for i in range(t,b+1):
+                list1.append(matrix[i][r])
+            r-=1
+            if len(matrix)*len(matrix[0])!=len(list1):
+                for i in range(r,l-1,-1):
+                    list1.append(matrix[b][i])
+                b-=1
+                for i in range(b,t-1,-1):
+                    list1.append(matrix[i][l])
+                l+=1
         return list1
                 
 
