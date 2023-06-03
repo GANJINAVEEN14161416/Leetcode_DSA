@@ -6,14 +6,17 @@ def rotate(matrix):
     l=0
     r=len(matrix)-1
     b=len(matrix)-1
-    list2=[]
-    while l<=r:
-        list1=[]
-        for i in range(t,b+1):
-            list1.append(matrix[i][r])
-        list2.append(list1)
+    while l<=r and t<=b:
+        for i in range(r-l):
+            temp=matrix[t][l+i]
+            matrix[t][l+i]=matrix[t+i][r]
+            matrix[t+i][r]=matrix[b][r-i]
+            matrix[b][r-i]=matrix[b-i][l]
+            matrix[b-i][l]=temp
+        l+=1
         r-=1
-    matrix[::]=list2[::]
+        b-=1
+        t+=1
 
 
 #{ 
