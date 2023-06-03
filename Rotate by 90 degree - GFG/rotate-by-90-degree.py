@@ -1,19 +1,21 @@
 #User function Template for python3
 
 def rotate(matrix): 
-    left,right=0,len(matrix[0])-1
-    while left<right:
-        top=left
-        bottom=right
-        for i in range(right-left):
-            topleft=matrix[top][left+i]
-            matrix[top][left+i]=matrix[top+i][right]
-            matrix[top+i][right]=matrix[bottom][right-i]
-            matrix[bottom][right-i]=matrix[bottom-i][left]
-            matrix[bottom-i][left]=topleft
-        left+=1
-        right-=1
-    return matrix
+    #code here
+    t=0
+    l=0
+    r=len(matrix)-1
+    b=len(matrix)-1
+    list2=[]
+    while l<=r:
+        list1=[]
+        for i in range(t,b+1):
+            list1.append(matrix[i][r])
+        list2.append(list1)
+        r-=1
+    matrix[::]=list2[::]
+    #return list2
+        
 
 
 #{ 
