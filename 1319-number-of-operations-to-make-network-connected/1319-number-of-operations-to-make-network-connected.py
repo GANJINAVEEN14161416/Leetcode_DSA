@@ -1,23 +1,21 @@
-class Solution(object):
-    def makeConnected(self, n, connections):
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
         adj=defaultdict(list)
-        for x,y in connections:
-            adj[x].append(y)
-            adj[y].append(x)
-        visit=[False]*n
-        def dfs(adj,visit,i):
-            visit[i]=True
-            for x in adj[i]:
-                if not visit[x]:
-                    dfs(adj,visit,x)
-        if len(connections)<(n-1):
+        for i,j in connections:
+            adj[i].append(j)
+            adj[j].append(i)
+        if n-1>len(connections):
             return -1
+        def dfs(visit,i,adj):
+            visit[i]=True
+            for j in adj[i]:
+                if not visit[j]:
+                    dfs(visit,j,adj)
         count=0
-        for i in range(n):
-            if not visit[i]:
-                dfs(adj,visit,i)
+        visit=[False]*n
+        for r in range(n):
+            if not visit[r]:
                 count+=1
+                dfs(visit,r,adj)
         return count-1
-            
-        
         
