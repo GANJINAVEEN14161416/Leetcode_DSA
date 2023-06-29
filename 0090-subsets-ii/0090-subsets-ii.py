@@ -5,6 +5,7 @@ class Solution:
             for j in range(len(ans)):
                 x=ans[j][:]
                 x.append(i)
+                print(x)
                 x.sort()
                 if x not in ans:
                     ans.append(x)
