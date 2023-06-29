@@ -4,9 +4,8 @@ class Solution:
         candidates.sort()
         def dfs(candidates,target,path,list1):
             if target==0:
-                if path not in list1:
-                    list1.append(path)
-                    return
+                list1.append(path)
+                return
             for i in range(len(candidates)):
                 if candidates[i]>target:
                     continue
