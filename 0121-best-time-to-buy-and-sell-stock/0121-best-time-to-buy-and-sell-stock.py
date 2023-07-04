@@ -7,7 +7,7 @@ class Solution:
         for i in range(1,n):
             if arr[i]<buy:
                 buy=arr[i]
-            if arr[i]>arr[i-1]:
+            if arr[i]>buy:
                 sell=arr[i]
                 profit=max(profit,sell-buy)
         return profit
