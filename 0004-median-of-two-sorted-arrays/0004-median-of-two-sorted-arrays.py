@@ -8,5 +8,4 @@ class Solution:
         if len(b)==1:
             return b[0]
         elif len(b)==2:
-            avg=sum(b)/2
-        return avg
+            return sum(b)/2
