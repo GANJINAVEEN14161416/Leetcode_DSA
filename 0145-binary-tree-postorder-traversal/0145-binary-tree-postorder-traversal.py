@@ -9,7 +9,7 @@ class Solution:
         ans=[]
         def postorder(root,ans):
             if not root:
-                return None
+                return 
             postorder(root.left,ans)
             postorder(root.right,ans)
             ans.append(root.val)
