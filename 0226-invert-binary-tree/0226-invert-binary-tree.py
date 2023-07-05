@@ -9,9 +9,8 @@ class Solution:
         def invert(root):
             if not root:
                 return 
-            else:
-                store1=root.right
-                root.right=invert(root.left)
-                root.left=invert(store1)
+            store1=root.right
+            root.right=invert(root.left)
+            root.left=invert(store1)
             return root
         return invert(root)
