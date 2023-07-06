@@ -10,11 +10,14 @@ class Solution:
         stack,ans=[],[]
         stack.append(root)
         while stack:
-            root=stack.pop()
-            ans.append(root.val)
-            if root.left:
-                stack.append(root.left)
-            if root.right:
-                stack.append(root.right)
+            node=stack.pop()
+            ans.append(node.val)
+            
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+            
         return ans[::-1]
+            
         
