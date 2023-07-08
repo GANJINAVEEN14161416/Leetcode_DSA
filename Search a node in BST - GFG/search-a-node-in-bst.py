@@ -12,8 +12,6 @@ class BST:
             return self.search(root.left,x)
         else:
             return self.search(root.right,x)
-        return False
-
 
 
 
