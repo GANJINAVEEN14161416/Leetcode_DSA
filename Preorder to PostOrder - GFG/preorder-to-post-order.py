@@ -9,16 +9,16 @@ class Node:
 
 #Function that constructs BST from its preorder traversal.
 def post_order(preorder, size) -> Node:
-    def BST(preorder,i,bound):
-        if i[0]==len(preorder) or preorder[i[0]]>bound:
-            return 
-        root=Node(preorder[i[0]])
-        i[0]+=1
-        root.left=BST(preorder,i,root.data)
-        root.right=BST(preorder,i,bound)
+    list1=sorted(preorder)
+    def buildTree(preorder,inorder):
+        if not preorder or not inorder:
+            return None
+        root=Node(preorder[0])
+        index=inorder.index(preorder[0])
+        root.left=buildTree(preorder[1:index+1],inorder[:index])
+        root.right=buildTree(preorder[index+1:],inorder[index+1:])
         return root
-    i=[0]
-    return BST(preorder,i,float('inf'))
+    return buildTree(preorder,list1)
 
 
 #{ 
