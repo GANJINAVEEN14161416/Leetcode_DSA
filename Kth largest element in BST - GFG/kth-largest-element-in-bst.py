@@ -17,7 +17,7 @@ class Solution:
             ans.append(root.data)
             inorder(root.right)
         inorder(root)
-        return heapq.nlargest(k,ans)[-1]
+        return ans[len(ans)-k]
 
 
 #{ 
