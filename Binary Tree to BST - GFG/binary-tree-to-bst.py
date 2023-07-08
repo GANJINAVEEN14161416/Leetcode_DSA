@@ -20,14 +20,14 @@ class Solution:
             inorder(root.right)
         inorder(root)
         list1.sort()
-        def BST(list1,root):
+        def BST(root):
             if not root:
                 return 
-            BST(list1,root.left)
+            BST(root.left)
             root.data=list1.pop(0)
-            BST(list1,root.right)
+            BST(root.right)
             return root
-        return BST(list1,root)
+        return BST(root)
 
 
 #{ 
