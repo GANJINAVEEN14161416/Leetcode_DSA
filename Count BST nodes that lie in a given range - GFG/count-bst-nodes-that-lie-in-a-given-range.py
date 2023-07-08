@@ -4,19 +4,16 @@
 #Function to count number of nodes in BST that lie in the given range.
 class Solution:
     def getCount(self,root,low,high):
-        ans=[]
-        def inorder(root,ans):
+        def binary(root,low,high):
             if not root:
-                return 
-            inorder(root.left,ans)
-            ans.append(root.data)
-            inorder(root.right,ans)
-        inorder(root,ans)
-        count=0
-        for i in ans:
-            if low<=i<=high:
-                count+=1
-        return count
+                return 0
+            if low<=root.data<=high:
+                return 1 + binary(root.left,low,high)+binary(root.right,low,high)
+            elif root.data<low:
+                return binary(root.right,low,high)
+            else:
+                return binary(root.left,low,high)
+        return binary(root,low,high)
 
 
 #{ 
