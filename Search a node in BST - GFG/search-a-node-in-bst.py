@@ -5,7 +5,7 @@ class BST:
     #Function to search a node in BST.
     def search(self, root, x):
         if not root:
-            return False
+            return
         if root.data==x:
             return True
         elif x<root.data:
