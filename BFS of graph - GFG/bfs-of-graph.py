@@ -12,8 +12,7 @@ class Solution:
         ans=[]
         visit[0]=1
         while q:
-            length=len(q)
-            for i in range(length):
+            for i in range(len(q)):
                 x=q.popleft()
                 ans.append(x)
                 for y in adj[x]:
