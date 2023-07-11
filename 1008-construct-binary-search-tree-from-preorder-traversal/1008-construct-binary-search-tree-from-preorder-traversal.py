@@ -6,14 +6,13 @@
 #         self.right = right
 class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
-        def BST(preorder,i,bound):
-            if i[0]==len(preorder) or preorder[i[0]]>bound:
+        inorder=sorted(preorder)
+        def build(preorder,inorder):
+            if not preorder or not inorder:
                 return 
-            root=TreeNode(preorder[i[0]])
-            i[0]+=1
-            root.left=BST(preorder,i,root.val)
-            root.right=BST(preorder,i,bound)
+            root=TreeNode(preorder[0])
+            mid=inorder.index(preorder[0])
+            root.left=build(preorder[1:mid+1],inorder[:mid])
+            root.right=build(preorder[mid+1:],inorder[mid+1:])
             return root
-        i=[0]
-        return BST(preorder,i,float('inf'))
-        
+        return build(preorder,inorder)
