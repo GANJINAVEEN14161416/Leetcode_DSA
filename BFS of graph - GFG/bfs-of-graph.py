@@ -1,28 +1,27 @@
 #User function Template for python3
 
 from typing import List
-import collections
+from queue import Queue
+from collections import *
 class Solution:
     #Function to return Breadth First Traversal of given graph.
     def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
-        # code here
-        res = []
-        visit=[False]*(V)
-        visit[0]=True
-        q =collections.deque()
+        visit=[0]*V
+        q=deque()
         q.append(0)
-        while len(q) != 0:
-            frst = q.popleft()
-            res.append(frst)
-            for i in adj[frst]:
-                if not visit[i]:
-                    visit[i]=True
-                    q.append(i)
-                    
-        return res
+        ans=[]
+        visit[0]=1
+        while q:
+            length=len(q)
+            for i in range(length):
+                x=q.popleft()
+                ans.append(x)
+                for y in adj[x]:
+                    if not visit[y]:
+                        q.append(y)
+                        visit[y]=1
+        return ans
                 
-                
-                 
 
 
 #{ 
