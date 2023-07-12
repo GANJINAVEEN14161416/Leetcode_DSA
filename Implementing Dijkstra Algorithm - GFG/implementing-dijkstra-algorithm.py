@@ -1,19 +1,19 @@
-from collections import *
+import heapq
 class Solution:
 
     #Function to find the shortest distance of all the vertices
     #from the source vertex S.
     def dijkstra(self, V, adj, S):
-        q=deque()
+        q=[]
         distance=[float('inf')]*V
         distance[S]=0
-        q.append([S,0])
+        heapq.heappush(q,[S,0])
         while q:
-            node,dis=q.popleft()
+            node,dis=heapq.heappop(q)
             for child in adj[node]:
                 if child[1]+dis<distance[child[0]]:
                     distance[child[0]]=dis+child[1]
-                    q.append([child[0],distance[child[0]]])
+                    heapq.heappush(q,[child[0],distance[child[0]]])
         return distance
         
 
