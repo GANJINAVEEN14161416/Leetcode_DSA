@@ -11,19 +11,20 @@ class Solution:
                 indegree[j]+=1
         
         q=deque()
+        count=0
         for i in range(V):
             if indegree[i]==0:
                 q.append(i)
         while q:
             node=q.popleft()
+            count+=1
             for child in adj[node]:
                 indegree[child]-=1
                 if indegree[child]==0:
                     q.append(child)
-        for i,v in enumerate(indegree):
-            if v>=1:
-                return True
-        return False
+        if count==V:
+            return False
+        return True
                 
 
 
