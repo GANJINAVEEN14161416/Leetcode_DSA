@@ -1,28 +1,22 @@
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
-        if endWord not in wordList:
-            return 0
-        dic=collections.defaultdict(list)
-        for word in wordList:
-            for j in range(len(word)):
-                pattern=word[:j]+"*"+word[j+1:]
-                dic[pattern].append(word)
-        q=deque([beginWord])
-        visit=set([beginWord])
-        count=1
+        q=deque()
+        # if endWord not in wordList:
+        #     return 0
+        visit=set(wordList)
+        q.append([beginWord,1])
+        if beginWord in visit:
+            visit.remove(beginWord)
         while q:
-            for j in range(len(q)):
-                x=q.popleft()
-                if x==endWord:
-                    return count
-                for i in range(len(x)):
-                    pattern=x[:i]+"*"+x[i+1:]
-                    for word in dic[pattern]:
-                        if word not in visit:
-                            visit.add(word)
-                            q.append(word)
-            count+=1
+            word,steps=q.popleft()
+            if word==endWord:
+                return steps
+            for i in range(len(word)):
+                for j in range(97,123):
+                    y=chr(j)
+                    dup=word[:i]+y+word[i+1:]
+                    if dup in visit:
+                        visit.remove(dup)
+                        q.append([dup,steps+1])
         return 0
-                    
-        
         
