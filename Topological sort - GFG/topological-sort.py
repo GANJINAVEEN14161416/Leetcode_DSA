@@ -3,24 +3,18 @@ class Solution:
     
     #Function to return list containing vertices in Topological order.
     def topoSort(self, V, adj):
-        visit=[0]*V
-        for i in range(V):
-            for j in adj[i]:
-                visit[j]+=1
-        q=deque()
-        for i in range(V):
-            if visit[i]==0:
-                q.append(i)
+        def dfs(visit,i,adj):
+            visit[i]=True
+            for child in adj[i]:
+                if not visit[child]:
+                    dfs(visit,child,adj)
+            ans.append(i)
+        visit=[False]*V
         ans=[]
-        while q:
-            node=q.popleft()
-            ans.append(node)
-            for child in adj[node]:
-                visit[child]-=1
-                if visit[child]==0:
-                    q.append(child)
-        return ans
-        
+        for i in range(V):
+            if not visit[i]:
+                dfs(visit,i,adj)
+        return ans[::-1]
                 
             
 
