@@ -1,28 +1,32 @@
 #User function Template for python3
-
+from collections import *
 
 class Solution:
     
     #Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
-        visit=[False]*V
-        stack=[False]*V
-        def dfs(adj,i,visit,stack):
-            visit[i]=True
-            stack[i]=True
-            for x in adj[i]:
-                if stack[x]==True:
-                    return True
-                if visit[x]==False:
-                    if dfs(adj,x,visit,stack):
-                        return True
-            stack[i]=False
-            return False
-
+        indegree=[0]*V
         for i in range(V):
-            if dfs(adj,i,visit,stack):
+            for j in adj[i]:
+                indegree[j]+=1
+        
+        q=deque()
+        for i in range(V):
+            if indegree[i]==0:
+                q.append(i)
+        while q:
+            node=q.popleft()
+            for child in adj[node]:
+                indegree[child]-=1
+                if indegree[child]==0:
+                    q.append(child)
+        for i,v in enumerate(indegree):
+            if v>=1:
                 return True
         return False
+                
+
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
