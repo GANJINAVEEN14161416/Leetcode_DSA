@@ -1,7 +1,7 @@
 class Unionfind:
     def __init__(self,n=10):
-        self.parent=[i for i in range(n+1)]
-        self.rank=[0 for i in range(n+1)]
+        self.parent=[i for i in range(n)]
+        self.rank=[0 for i in range(n)]
     def union(self,u,v):
         parent_u=self.find(u)
         parent_v=self.find(v)
@@ -20,8 +20,6 @@ class Unionfind:
             return u
         self.parent[u]=self.find(self.parent[u])
         return self.parent[u]
-
-
 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
