@@ -12,7 +12,7 @@ class Solution:
         m2=[1,0,-1,0]
         rowl=len(grid)
         coll=len(grid[0])
-        visit=[[float('inf')]*coll for i in range(rowl)]
+        visit=[[False]*coll for i in range(rowl)]
         visit[r1][c1]=True
         r2=destination[0]
         c2=destination[1]
@@ -24,11 +24,10 @@ class Solution:
             for new in range(4):
                 row=m1[new]+r
                 col=m2[new]+c
-                if row>=0 and row<rowl and col>=0 and col<coll and grid[row][col]==1:
-                    if dis+1<visit[row][col]:
-                        visit[row][col]=1+dis
+                if row>=0 and row<rowl and col>=0 and col<coll and grid[row][col]==1 and not visit[row][col]:
+                        visit[row][col]=True
                         q.append([dis+1,row,col])
-        if visit[r2][c2]==float('inf'):
+        if visit[r2][c2]==False:
             return -1
         else:
             return dis
