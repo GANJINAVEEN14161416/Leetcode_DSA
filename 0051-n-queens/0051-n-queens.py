@@ -1,25 +1,28 @@
 class Solution:
-    def solveNQueens(self, n):
-        res = []
-        self.dfs([-1]*n, 0, [], res)
-        return res
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        board=[]
+        ans=[]
+        lrow=[0]*n
+        upperd=[0]*(2*n-1)
+        lowerd=[0]*(2*n-1)
+        self.solve(0,board,ans,lrow,lowerd,upperd,n)
+        return ans
+    def solve(self,col,board,ans,lrow,lowerd,upperd,n):
+        if col==n:
+            ans.append(board[::])
+            return
+        for row in range(n):
+            if lrow[row]==0 and upperd[n-1+col-row]==0 and lowerd[row+col]==0:
+                board.append("."*(row)+"Q"+"."*(n-row-1))
+                lrow[row]=1
+                upperd[n-1+col-row]=1
+                lowerd[row+col]=1
+                self.solve(col+1,board,ans,lrow,lowerd,upperd,n)
+                board.pop()
+                lrow[row]=0
+                upperd[n-1+col-row]=0
+                lowerd[row+col]=0
 
-    # nums is a one-dimension array, like [1, 3, 0, 2] means
-    # first queen is placed in column 1, second queen is placed
-    # in column 3, etc.
-    def dfs(self, nums, index, path, res):
-        if index == len(nums):
-            res.append(path)
-            return  # backtracking
-        for i in range(len(nums)):
-            nums[index] = i
-            if self.valid(nums, index):  # pruning
-                tmp = "."*len(nums)
-                self.dfs(nums, index+1, path+[tmp[:i]+"Q"+tmp[i+1:]], res)
 
-    # check whether nth queen can be placed in that column
-    def valid(self, nums, n):
-        for i in range(n):
-            if abs(nums[i]-nums[n]) == n -i or nums[i] == nums[n]:
-                return False
-        return True
+
+                    
