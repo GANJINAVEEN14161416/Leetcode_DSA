@@ -4,22 +4,25 @@ class Solution:
     
     #Function to return a list containing the DFS traversal of the graph.
     def dfsOfGraph(self, V, adj):
-        # code here
-        visit = [False]*V
-        res=[]
-        def dfs(i):
+        ans=[]
+        visit=[False]*V
+        def dfs(adj,visit,i):
+            visit[i]=True
+            for child in adj[i]:
+                if not visit[child]:
+                    ans.append(child)
+                    dfs(adj,visit,child)
+                    
+        for i in range(V):
             if not visit[i]:
-                visit[i]=True
-                res.append(i)
-                for x in adj[i]:
-                    dfs(x)
-        
-        dfs(0)
-            
-        return res
+                ans.append(i)
+                dfs(adj,visit,i)
+        return ans
+
 
 #{ 
  # Driver Code Starts
+
 if __name__ == '__main__':
     T=int(input())
     while T>0:
