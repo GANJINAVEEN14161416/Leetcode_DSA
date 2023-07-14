@@ -1,30 +1,24 @@
 from collections import *
 class Solution:
-	def wordLadderLength(self, startWord, targetWord, wordList):
-		if targetWord not in wordList:
-		    return 0
-		dic=defaultdict(list)
-		for word in wordList:
-		    for i in range(len(word)):
-		        pattern=word[:i]+"*"+word[i+1:]
-		        dic[pattern].append(word)
-		visit=set([startWord])
-		q=deque([startWord])
-		count=1
-		while q:
-		    for i in range(len(q)):
-		        word=q.popleft()
-		        if word==targetWord:
-		            return count
-		        for j in range(len(word)):
-		            pattern=word[:j]+"*"+word[j+1:]
-		            for n in dic[pattern]:
-		                if n not in visit:
-		                    q.append(n)
-		                    visit.add(n)
-		    count+=1
-		
+	def wordLadderLength(self, beginWord, endWord, wordList):
+		q=deque()
+        visit=set(wordList)
+        if beginWord in visit:
+            visit.remove(beginWord)
+        q.append([beginWord,1])
+        while q:
+            word,steps=q.popleft()
+            if endWord==word:
+                return steps
+            for i in range(len(word)):
+                for j in range(97,123):
+                    y=chr(j)
+                    dup =word[:i]+y+word[i+1:]
+                    if dup in visit:
+                        q.append([dup,steps+1])
+                        visit.remove(dup)
         return 0
+
 
 #{ 
  # Driver Code Starts
