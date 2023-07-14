@@ -26,9 +26,7 @@ class Solution:
                     if newrow>=0 and newrow<row and newcol>=0 and newcol<col and grid[newrow][newcol]==1 and not visit[newrow][newcol]:
                         q.append([newrow,newcol,t+1])
                         visit[newrow][newcol]=True
-                        grid[newrow][newcol]=2
                         fresh-=1
-        
         return time if fresh==0 else -1
                     
             
