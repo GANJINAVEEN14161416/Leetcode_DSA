@@ -1,33 +1,32 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        row=len(grid)
-        col=len(grid[0])
-        q=deque()
+        n=len(grid)
+        m=len(grid[0])
         fresh=0
-        visit=[[False]*col for i in range(row)]
-        for i in range(row):
-            for j in range(col):
-                if not visit[i][j] and grid[i][j]==2:
+        q=deque()
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j]==2:
                     q.append([i,j,0])
-                    visit[i][j]=True
                 if grid[i][j]==1:
                     fresh+=1
-                
+        visit=[[False]*m for i in range(n)]
         m1=[0,-1,0,1]
         m2=[1,0,-1,0]
         time=0
+        count=0
         while q:
-            for k in range(len(q)):
-                r,c,t=q.popleft()
-                time=max(time,t)
-                for change in range(4):
-                    newrow=r+m1[change]
-                    newcol=c+m2[change]
-                    if newrow>=0 and newrow<row and newcol>=0 and newcol<col and grid[newrow][newcol]==1 and not visit[newrow][newcol]:
-                        q.append([newrow,newcol,t+1])
+            for i in range(len(q)):
+                r,c,steps=q.popleft()
+                time=max(time,steps)
+                for new in range(4):
+                    newrow=r+m1[new]
+                    newcol=c+m2[new]
+                    if newrow>=0 and newrow<n and newcol<m and newcol>=0 and not visit[newrow][newcol] and grid[newrow][newcol]==1:
                         visit[newrow][newcol]=True
-                        fresh-=1
-        return time if fresh==0 else -1
-                    
+                        q.append([newrow,newcol,steps+1])
+                        count+=1
+        return time if count==fresh else -1
+                        
             
-                
+        
