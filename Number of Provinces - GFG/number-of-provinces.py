@@ -1,25 +1,25 @@
 #User function Template for python3
 from collections import *
 class Solution:
-    def numProvinces(self, isConnected, V):
-        adj=defaultdict(list)
-        for i in range(len(isConnected)):
-            for j in range(len(isConnected)):
-                if isConnected[i][j]==1 and i!=j:
-                    adj[i+1].append(j+1)            
-        V=len(isConnected)
-        visit=[0]*(V+1)
-        def dfs(node,visit,adj):
-            visit[node]=1
-            for child in adj[node]:
+    def numProvinces(self, adj, V):
+        graph=defaultdict(list)
+        for i in range(len(adj)):
+            for j in range(len(adj)):
+                if adj[i][j]==1 and i!=j:
+                    graph[i+1].append(j+1)
+        def dfs(visit,graph,i):
+            visit[i]=True
+            for child in graph[i]:
                 if not visit[child]:
-                    dfs(child,visit,adj)
-        count=0
+                    dfs(visit,graph,child)
+        count=0   
+        visit=[False]*(V+1)
         for i in range(1,V+1):
             if not visit[i]:
                 count+=1
-                dfs(i,visit,adj)   
-        return count
+                dfs(visit,graph,i)
+        return count 
+                    
 
 
 #{ 
