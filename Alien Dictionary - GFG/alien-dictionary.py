@@ -26,18 +26,18 @@ class Solution:
             return []
         adj=defaultdict(list)
         for i in range(N-1):
-            first=alien_dict[i]
-            second=alien_dict[i+1]
-            mi=min(len(first),len(second))
-            for j in range(mi):
-                if first[j]!=second[j]:
-                    adj[ord(first[j])-ord("a")].append(ord(second[j])-ord("a"))
+            f=alien_dict[i]
+            s=alien_dict[i+1]
+            z=min(len(f),len(s))
+            for j in range(z):
+                if f[j]!=s[j]:
+                    adj[ord(f[j])-97].append(ord(s[j])-97)
                     break
         ans=helper(adj,K)
         s1=""
         for i in ans:
             s1+=chr(i+ord("a"))
-        return s1 if s1 else ""
+        return s1
                 
 
 
