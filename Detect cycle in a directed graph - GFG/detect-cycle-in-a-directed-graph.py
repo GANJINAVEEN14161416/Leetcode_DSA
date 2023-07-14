@@ -1,4 +1,4 @@
-#User function Template for python3
+
 from collections import *
 
 class Solution:
