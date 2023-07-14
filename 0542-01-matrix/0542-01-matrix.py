@@ -21,8 +21,7 @@ class Solution:
                 newcol=c+m2[new]
                 if newrow>=0 and newrow<row and newcol>=0 and newcol<col and not visit[newrow][newcol]:
                     visit[newrow][newcol]=True
-                    q.append([newrow,newcol,steps+1])
-                    
+                    q.append([newrow,newcol,steps+1])     
         return mat
             
             
