@@ -10,7 +10,6 @@ class Solution:
                 if mat[i][j]==0:
                     visit[i][j]=True
                     q.append([i,j,steps])
-                mat[i][j]=float('inf')
         m1=[0,-1,0,1]
         m2=[1,0,-1,0]
         while q:
