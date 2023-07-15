@@ -1,31 +1,51 @@
 #User function Template for python3
-from collections import *
 import heapq
+from collections import *
 class Solution:
     
     #Function to find sum of weights of edges of the Minimum Spanning Tree.
     def spanningTree(self, V, adj):
-        number=defaultdict(list)
+        # number=defaultdict(list)
+        # for i in range(V):
+        #     for v in adj[i]:
+        #         number[i].append([v[0],v[1]])
+        #         number[v[0]].append([i,v[1]])
+        # print(number)
+        graph=defaultdict(list)
         for i in range(V):
-            for v in adj[i]:
-                number[i].append([v[0],v[1]])
-                number[v[0]].append([i,v[1]])
+            for n2,w in adj[i]:
+                graph[i].append([n2,w])
+                graph[n2].append([i,w])
+        #print(graph)
+        ans=0
+        visit=[False]*V
         q=[]
         heapq.heappush(q,[0,0])
-        visit=[False]*V
-        sum1=0
         while q:
-            s,node=heapq.heappop(q)
+            dis,node=heapq.heappop(q)
             if visit[node]:
                 continue
             visit[node]=True
-            sum1+=s
-            for child,wt in number[node]:
+            ans+=dis
+            for child,wt in graph[node]:
                 if not visit[child]:
                     heapq.heappush(q,[wt,child])
-        return sum1
+        return ans
+        # q=[]
+        # heapq.heappush(q,[0,0])
+        # visit=[False]*V
+        # sum1=0
+        # while q:
+        #     s,node=heapq.heappop(q)
+        #     if visit[node]:
+        #         continue
+        #     visit[node]=True
+        #     sum1+=s
+        #     for child,wt in number[node]:
+        #         if not visit[child]:
+        #             heapq.heappush(q,[wt,child])
+        # return sum1
         
-
 
 #{ 
  # Driver Code Starts
