@@ -1,23 +1,25 @@
 class Solution:
     def countPaths(self, n: int, roads: List[List[int]]) -> int:
         adj=defaultdict(list)
-        for n1,n2,d in roads:
-            adj[n1].append([n2,d])
-            adj[n2].append([n1,d])
-        ways=[0]*n
+        for u,v,w in roads:
+            adj[u].append([v,w])
+            adj[v].append([u,w])
         distance=[float('inf')]*n
-        ways[0]=1
+        q=[]
         distance[0]=0
-        pq=[]
-        heapq.heappush(pq,[0,0])
-        while pq:
-            dis,node=heapq.heappop(pq)
+        ways=[0]*n
+        ways[0]=1
+        heapq.heappush(q,[0,0])
+        while q:
+            dis,node=heapq.heappop(q)
             for child,wt in adj[node]:
-                if dis+wt<distance[child]:
-                    distance[child]=dis+wt
+                if wt+dis<distance[child]:
+                    distance[child]=wt+dis
                     ways[child]=ways[node]
-                    heapq.heappush(pq,[dis+wt,child])
-                elif (dis+wt)==distance[child]:
-                    ways[child]+=ways[node]%(10**9+7)
+                    heapq.heappush(q,[wt+dis,child])
+                elif wt+dis==distance[child]:
+                    ways[child]+=(ways[node])%(10**9+7)
+            print(ways)
         return ways[-1]%(10**9+7)
-                    
+                
+        
