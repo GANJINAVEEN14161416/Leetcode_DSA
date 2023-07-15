@@ -1,25 +1,17 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        edges=defaultdict(list)
-        for u, v, w in times:
-            #graph[u-1].append((v-1, w))
-            edges[u].append((v,w))
-        minheap=[(0,k)]
-        visit=set()
-        t=0
-        while minheap:
-            w1,n1=heapq.heappop(minheap)
-            if n1 in visit:
-                continue
-            visit.add(n1)
-            t=max(t,w1)
-            for n2,w2 in edges[n1]:
-                if n2 not in visit:
-                    heapq.heappush(minheap,((w1+w2),n2))
-        return t if len(visit)==n else -1
-
-
-
-
-
+        adj=defaultdict(list)
+        for u,v,w in times:
+            adj[u].append([v,w])
+        q=[]
+        heapq.heappush(q,([0,k]))
         
+        distance=[float('inf')]*(n+1)
+        distance[k]=0
+        while q:
+            dis,node=heapq.heappop(q)
+            for child,wt in adj[node]:
+                if wt+dis<distance[child]:
+                    distance[child]=wt+dis
+                    heapq.heappush(q,[wt+dis,child])
+        return max(distance[1:]) if max(distance[1:])!=float('inf') else -1
