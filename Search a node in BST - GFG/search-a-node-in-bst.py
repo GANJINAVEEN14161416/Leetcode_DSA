@@ -2,16 +2,19 @@
 
 class BST:
     
-    #Function to search a node in BST.
     def search(self, root, x):
-        if not root:
-            return
-        if root.data==x:
-            return True
-        elif x<root.data:
-            return self.search(root.left,x)
-        else:
-            return self.search(root.right,x)
+        def search(root,x):
+            if not root:
+                return
+            if root.data==x:
+                return True
+            elif x<root.data:
+                return search(root.left,x)
+            else:
+                return search(root.right,x)
+        return search(root,x)
+    
+                
 
 
 
