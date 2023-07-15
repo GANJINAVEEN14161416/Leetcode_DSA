@@ -8,7 +8,7 @@ class Solution:
         for i in range(V-1):
             for u, v, w in edges:
                 if dist[u] != 10**8 and dist[v]>w+dist[u] :
-                    dist[v] = min(dist[v], dist[u] + w)
+                    dist[v] = dist[u] + w
                     
         for u, v, w in edges:
             if dist[u] != 10**8 and dist[u] + w < dist[v]:
