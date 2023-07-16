@@ -2,7 +2,7 @@ class Solution:
     def inversionCount(self, arr, n):
         return self.mergeSort(arr, n)
     def mergeSort(self, arr, n):
-        if n < 2:
+        if n<2 :
             return 0
         mid = n //2
         left = arr[:mid]
@@ -14,7 +14,7 @@ class Solution:
         return c
     def merge(self, arr, left, right, mid, n):
         i=k=c=j=0
-        while i < mid and j < n:
+        while i < len(left) and j < len(right):
             if left[i] <= right[j]:
                 arr[k] = left[i]
                 i += 1
@@ -36,6 +36,7 @@ class Solution:
     
                     
                     
+
 
 #{ 
  # Driver Code Starts
