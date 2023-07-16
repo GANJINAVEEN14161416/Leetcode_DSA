@@ -4,15 +4,15 @@ class Solution:
 	# Function to find maximum
 	# product subarray
 	def maxProduct(self,arr, n):
-		# code here
-		cmax=cmin=1
-		count=max(arr)
-		for m in arr:
-		    temp=cmax*m
-		    cmax=max(cmax*m,cmin*m,m)
-		    cmin=min(temp,cmin*m,m)
-		    count=max(count,cmax)
-		return count
+	    mi,mx=1,1
+	    ans=max(arr)
+	    for i in arr:
+	        temp=mx*i
+	        mx=max(mx*i,mi*i,i)
+	        mi=min(temp,mi*i,i)
+	        ans=max(ans,mx,mi)
+	    return ans
+	        
 
 
 #{ 
