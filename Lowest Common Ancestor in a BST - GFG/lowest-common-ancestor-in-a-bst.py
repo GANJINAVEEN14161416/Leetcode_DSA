@@ -3,17 +3,18 @@
 
 #Function to find the lowest common ancestor in a BST. 
 def LCA(root, n1, n2):
-    if not root:
-        return 
-    cur=root
-    if n1<cur.data and n2>cur.data:
-        return cur
-    elif n1<cur.data and n2<cur.data:
-        return LCA(root.left,n1,n2)
-    elif n1>cur.data and n2>cur.data:
-        return LCA(root.right,n1,n2)
-    return root
-        
+    def solve(root,n1,n2):
+        if not root or root.data==n1 or root.data==n2:
+            return root
+        l=solve(root.left,n1,n2)
+        r=solve(root.right,n1,n2)
+        if not l:
+            return r
+        if not r:
+            return l
+        else:
+            return root
+    return solve(root,n1,n2)
 
 
 #{ 
