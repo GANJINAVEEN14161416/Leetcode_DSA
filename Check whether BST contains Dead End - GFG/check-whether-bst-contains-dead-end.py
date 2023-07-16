@@ -1,23 +1,12 @@
 def solve(root, mini, mx):
-
     if root == None:
-
         return False
-
     if mini == mx:
-
         return True
-
     return solve(root.left, mini, root.data - 1) or solve(root.right, root.data + 1, mx)
-
- 
-
 def isdeadEnd(root):
-
     mini = 1
-
     mx = 99999
-
     return solve(root, mini, mx)
 
 
