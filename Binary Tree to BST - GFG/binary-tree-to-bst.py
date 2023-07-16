@@ -9,25 +9,29 @@ class Node:
         self.left = None
 '''
 class Solution:
-    # The given root is the root of the Binary Tree
+
     def binaryTreeToBST(self, root):
+        # code here
         list1=[]
-        def inorder(root):
+        def solve(root):
             if not root:
-                return 
-            inorder(root.left)
+                return
+            solve(root.left)
             list1.append(root.data)
-            inorder(root.right)
-        inorder(root)
+            solve(root.right)
+            return root
+        solve(root)
         list1.sort()
         def BST(root):
             if not root:
-                return 
+                return
             BST(root.left)
             root.data=list1.pop(0)
             BST(root.right)
             return root
-        return BST(root)
+        BST(root)
+        return root
+        
 
 
 #{ 
