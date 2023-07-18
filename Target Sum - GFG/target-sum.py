@@ -1,23 +1,23 @@
 #User function Template for python3
 
 class Solution:
-    def findTargetSumWays(self, nums, N, target):
-        if target>sum(nums) or (sum(nums)-target)%2==1:
+    def findTargetSumWays(self, arr, n, target):
+        x=sum(arr)
+        if target>x or (x-target)%2==1:
             return 0
-        def subset_sum(a, n, sum):
-            tab = [[0] * (sum + 1) for i in range(n + 1)]
-            tab[0][0] = 1
-            for i in range(1, sum + 1):
-                tab[0][i] = 0
-            for i in range(1, n + 1):
-                for j in range(sum + 1):
-                    if a[i - 1] <= j:
-                        tab[i][j] = tab[i - 1][j] + tab[i - 1][j - a[i - 1]]
+        def subset(arr,W,n):
+            mod=10**9+7
+            t=[[0]*(W+1) for i in range(n+1)]
+            for i in range(n+1):
+                t[i][0]=1
+            for i in range(1,n+1):
+                for j in range(W+1):
+                    if arr[i-1]<=j:
+                        t[i][j]=(t[i-1][j-arr[i-1]] + t[i-1][j])%mod
                     else:
-                        tab[i][j] = tab[i - 1][j]
-            return tab[n][sum]
-        n=len(nums)
-        return subset_sum(nums,n,(sum(nums)-target)//2)
+                        t[i][j]=t[i-1][j]%mod
+            return t[-1][-1]
+        return subset(arr,(x-target)//2,n)
 
 
 #{ 
