@@ -5,7 +5,7 @@ class Solution:
         for i in range(1,len(arr)):
             if arr[i]<buy:
                 buy=arr[i]
-            if arr[i]>buy:
+            elif arr[i]>buy:
                 ans=max(ans,arr[i]-buy)
         return ans
                 
