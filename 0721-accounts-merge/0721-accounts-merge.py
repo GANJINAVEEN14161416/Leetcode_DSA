@@ -33,10 +33,12 @@ class Solution:
                 else:
                     obj.union(dic[mail],i)
         adj=defaultdict(list)
-        for mail,val in dic.items():
-            val=obj.find(val)
+        for mail,i in dic.items():
+            val=obj.find(i)
             adj[val].append(mail)
-        temp=[]
+        ans=[]
         for key,val in adj.items():
-            temp.append([accounts[key][0]]+sorted(val))
-        return temp
+            ans.append([accounts[key][0]]+sorted(val))
+        return ans
+            
+                    
