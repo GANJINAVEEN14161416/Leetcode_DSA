@@ -1,18 +1,15 @@
 #User function Template for python3
 
 class Solution:
-    #Function to count number of ways to reach the nth stair.
     def countWays(self,n):
-        dp=[-1]*(n+1)
-        def solve(n):
-            if n==0 or n==1:
-                dp[n]=1
-                return dp[n]
-            if dp[n]!=-1:
-                return dp[n]
-            dp[n]=solve(n-1)+solve(n-2)
-            return dp[n]
-        return solve(n)%(10**9+7)
+        pre1=1
+        pre2=1
+        for i in range(2,n+1):
+            temp=pre1+pre2
+            pre2=pre1
+            pre1=temp
+        return pre1%(10**9+7)
+
 
 
 #{ 
