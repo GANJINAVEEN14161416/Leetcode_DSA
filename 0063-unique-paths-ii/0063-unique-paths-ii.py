@@ -2,24 +2,24 @@ class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         n=len(obstacleGrid)
         m=len(obstacleGrid[0])
-        dp=[[0]*(m+1) for i in range(n+1)]
-        for ind1 in range(n+1):
-            for ind2 in range(m+1):
+        prev=[0]*(m+1)
+        cur=[0]*(m+1)
+        for ind1 in range(1,n+1):
+            for ind2 in range(1,m+1):
                 if obstacleGrid[ind1-1][ind2-1]==1:
-                    dp[ind1][ind2]=0
+                    cur[ind2]=0
                 else:
-                    if ind1==0 or ind2==0:
-                        dp[ind1][ind2]=0
                     if ind1==1 and ind2==1:
-                        dp[ind1][ind2]=1
+                        cur[ind2]=1
                     else:
                         up,down=0,0
                         if ind1-1>=0:
-                            up=dp[ind1-1][ind2]
+                            up=prev[ind2]
                         if ind2-1>=0:
-                            down=dp[ind1][ind2-1]
-                        dp[ind1][ind2]=up+down
-        return dp[n][m]
+                            down=cur[ind2-1]
+                        cur[ind2]=up+down
+            prev=cur
+        return prev[m]
                 
         
         
