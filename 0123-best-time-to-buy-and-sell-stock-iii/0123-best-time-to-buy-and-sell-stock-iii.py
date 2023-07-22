@@ -10,3 +10,4 @@ class Solution:
                 profit=max(profit,A[i]+buy)
                 sell[i]=profit
         return sell[-1]
+            
