@@ -23,18 +23,17 @@ class Unionfind:
 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        obj=Unionfind(len(isConnected))
-        adj=defaultdict(list)
-        n=len(isConnected)
-        for i in range(n):
-            for j in range(n):
+        V=len(isConnected)
+        obj=Unionfind(V)
+        ans=0
+        for i in range(V):
+            for j in range(V):
                 if isConnected[i][j]==1:
                     obj.union(i,j)
-        count=0
-        for i in range(n):
+        for i in range(V):
             if obj.find(i)==i:
-                count+=1
-        return count
+                ans+=1
+        return ans
         
         
 
