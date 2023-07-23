@@ -7,7 +7,6 @@ class Solution:
         ans=float('inf')
         left,right=0,M-1
         while right<N:
-            if ans<0:
             ans=min(ans,arr[right]-arr[left])
             left+=1
             right+=1
