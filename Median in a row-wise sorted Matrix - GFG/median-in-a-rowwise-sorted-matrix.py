@@ -2,20 +2,20 @@
 import bisect
 class Solution:
     def median(self, matrix, R, C):
+    	#code here 
     	mi=min(matrix)[0]
     	mx=max(matrix)[-1]
     	median=(R*C+1)//2
     	while mi<=mx:
     	    mid=(mi+mx)//2
     	    count=0
-    	    for r in matrix:
-    	        count+=bisect.bisect_right(r,mid)
+    	    for row in matrix:
+    	        count+=bisect.bisect_right(row,mid)
     	    if count<median:
     	        mi=mid+1
     	    else:
     	        mx=mid-1
         return mi
-
 
 #{ 
  # Driver Code Starts
