@@ -1,23 +1,18 @@
 from typing import List
-
+import heapq
 
 class Solution:
-    def kthLargest(self, N : int, K : int, Arr : List[int]) -> int:
+    def kthLargest(self, N : int, k : int, arr : List[int]) -> int:
+        # code here
         list1=[]
         for i in range(N):
-            list1.append(Arr[i])
-            num=0
-            num+=Arr[i]
+            nums=arr[i]
+            list1.append(nums)
             for j in range(i+1,N):
-                num+=Arr[j]
-                list1.append(num)
-        list1.sort(reverse=True)
-        return list1[K-1]
-        
-        
-
-
-
+                nums+=arr[j]
+                list1.append(nums)
+        x=heapq.nlargest(k,list1)[-1]
+        return x
 #{ 
  # Driver Code Starts
 class IntArray:
