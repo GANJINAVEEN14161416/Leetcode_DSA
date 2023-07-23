@@ -2,16 +2,15 @@
 import heapq
 class Solution():
     def mergeHeaps(self, a, b, n, m):
+        #your code here
+        c=a+b
+        heapq.heapify(c)
         list1=[]
-        for i in a:
-            heapq.heappush(list1,-i)
-        for j in b:
-            heapq.heappush(list1,-j)
-        heap=[]
-        for i in list1:
-            heap.append(-i)
-    
-        return heap      
+        for i in range(len(c)):
+            list1.append(heapq.heappop(c))
+        return list1[::-1]
+        
+
 
 #{ 
  # Driver Code Starts
