@@ -1,18 +1,17 @@
 #User function Template for python3
-from collections import *
-from sys import *
-from os import *
-from math import *
-from itertools import combinations
+
 class Solution:
 	def AllPossibleStrings(self, s):
-		# Code here
-        list2=[]
-	    for i in range(1,len(s)+1):
-	        for j in combinations(s,i):
-	            list2.append("".join(j))
-	    return sorted(list2)
-	            
+		ans=[]
+	    n=len(s)
+		for i in range(1,2**n):
+		    s1=""
+		    for j in range(n):
+		        if (i&1<<j):
+		            s1+=s[j]
+		    ans.append(s1)
+	    return sorted(ans)
+		    
 
 
 #{ 
