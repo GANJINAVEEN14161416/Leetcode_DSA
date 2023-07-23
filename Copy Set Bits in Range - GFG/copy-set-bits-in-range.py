@@ -2,23 +2,13 @@
 
 class Solution:
     def setSetBit(self, x, y, l, r):
-        # code here
-        if (l < 1 or r > 32):
-            return x;
- 
-    # Traverse in given range
-        for i in range(l, r + 1):
-           
-            # Find a mask (A number whose
-            # only set bit is at i'th position)
-            mask = 1 << (i - 1);
-     
-            # If i'th bit is set in y, set i'th
-            # bit in x also.
-            if ((y & mask) != 0):
-                x = x | mask;
+        if l<1 or r>32:
+            return x
+        for i in range(l,r+1):
+            bit=1<<(i-1)
+            if (y&bit)!=0:
+                x=x|bit
         return x
-
 
 #{ 
  # Driver Code Starts
