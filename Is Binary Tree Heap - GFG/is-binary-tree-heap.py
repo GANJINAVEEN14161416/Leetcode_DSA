@@ -12,25 +12,25 @@ import heapq
 class Solution:
     #Your Function Should return True/False
     def isHeap(self, root):
-        queue = deque()
-        queue.append(root)
-        nullish = False
-        while len(queue) > 0:
-            temp = queue[0]
-            queue.popleft()
-            if temp.left:
-                if nullish or temp.left.data > temp.data:
+        q=deque()
+        q.append(root)
+        nullish=False
+        while q:
+            x=q.popleft()
+            if x.left:
+                if nullish or x.left.data>x.data:
                     return False
-                queue.append(temp.left)
+                q.append(x.left)
             else:
-                nullish = True
-            if temp.right:
-                if nullish or temp.right.data > temp.data:
+                nullish=True
+            if x.right:
+                if nullish or x.right.data>x.data:
                     return False
-                queue.append(temp.right)
+                q.append(x.right)
             else:
-                nullish = True
+                nullish=True
         return True
+            
  
             
 
