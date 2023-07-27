@@ -10,24 +10,25 @@ class Solution:
             for j in adj[i]:
                 indegree[j]+=1
         q=deque()
-        ans=[]
+        print(indegree)
         for i in range(V):
             if indegree[i]==0:
                 q.append(i)
         safe = [False] * V
+        ans=[]
         while q:
             node=q.popleft()
-            safe[node] = True
+            ans.append(node)
             for child in adj[node]:
                 indegree[child]-=1
                 if indegree[child]==0:
                     q.append(child)
-        safeNodes = []
-        for i in range(V):
-            if safe[i]:
-                safeNodes.append(i)
-
-        return safeNodes
+        return sorted(ans)
+#         safeNodes = []
+#         for i in range(V):
+#             if safe[i]:
+#                 safeNodes.append(i)
+#         return safeNodes
         
             
         
