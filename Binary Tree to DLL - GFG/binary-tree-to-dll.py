@@ -8,7 +8,7 @@ class Solution:
         def solve(root):
             nonlocal prev,head
             if not root:
-                return
+                return 
             solve(root.left)
             if prev==None:
                 head=root
@@ -17,10 +17,9 @@ class Solution:
                 prev.right=root
             prev=root
             solve(root.right)
+            
         solve(root)
         return head
-
-
 
 
 
