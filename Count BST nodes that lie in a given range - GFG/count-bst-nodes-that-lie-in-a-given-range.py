@@ -4,17 +4,17 @@
 #Function to count number of nodes in BST that lie in the given range.
 class Solution:
     def getCount(self,root,low,high):
-        def binary(root,low,high):
+        ##Your code here
+        ans=[]
+        def solve(root):
             if not root:
-                return 0
+                return 
             if low<=root.data<=high:
-                return 1 + binary(root.left,low,high)+binary(root.right,low,high)
-            elif root.data<low:
-                return binary(root.right,low,high)
-            else:
-                return binary(root.left,low,high)
-        return binary(root,low,high)
-
+                ans.append(root.data)
+            solve(root.left)
+            solve(root.right)
+        solve(root)
+        return len(ans)
 
 #{ 
  # Driver Code Starts
