@@ -1,49 +1,32 @@
-#User function Template for python3
-from collections import *
-'''
-# Node Class:
-class Node:
-    def __init__(self,val):
-        self.data = val
-        self.left = None
-        self.right = None
-'''
+
 class Solution:
-    def findDist(self,root,a,b):
-        p1=deque()
-        p2=deque()
-        cur=root
-        def dfs(root,data,l):
-            if root is None:
-                return False
-            l.append(root.data)
-            if root.data==data:
-                return True
-            if dfs(root.left,data,l) or dfs(root.right,data,l):
-                return True
-            l.pop()
-            return False
-        dfs(root,a,p1)
-        dfs(root,b,p2)
-        count=0
-        while p1 and p2:
-      #      print(p1,p2,count)
-            if len(p1)>len(p2):
-                count+=1
-                p1.pop()
-            elif len(p2)>len(p1):
-                count+=1
-                p2.pop()
+    def findDist(self,root,n1,n2):
+        def lca(root,n1,n2):
+            if not root or root.data==n1 or root.data==n2:
+                return root
+            l=lca(root.left,n1,n2)
+            r=lca(root.right,n1,n2)
+            if not l:
+                return r
+            elif not r:
+                return l
             else:
-                t1=p1.pop()
-                t2=p2.pop()
-                if t1==t2:
-                    count+=1
-                    return count-1
-                count+=2
-        return count-1
+                return root
+        node=lca(root,n1,n2)
+        ans=0
+        def dis(root,n,level):
+            nonlocal ans
+            if not root:
+                return 0
+            if root.data==n:
+                ans=level+ans
+                return level
+            dis(root.left,n,level+1)
+            dis(root.right,n,level+1)
 
-
+        dis(node,n1,0)
+        dis(node,n2,0)
+        return ans
 
 
 #{ 
