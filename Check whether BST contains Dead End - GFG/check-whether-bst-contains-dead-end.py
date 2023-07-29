@@ -6,7 +6,7 @@ def solve(root, mini, mx):
     return solve(root.left, mini, root.data - 1) or solve(root.right, root.data + 1, mx)
 def isdeadEnd(root):
     mini = 1
-    mx = 99999
+    mx = 201
     return solve(root, mini, mx)
 
 
