@@ -20,6 +20,7 @@ class Solution:
             if lis[i]>mx:
                 mx=lis[i]
                 lastind=i
+        
         temp=[]
         temp.append(arr[lastind])
         while hash[lastind]!=lastind:
