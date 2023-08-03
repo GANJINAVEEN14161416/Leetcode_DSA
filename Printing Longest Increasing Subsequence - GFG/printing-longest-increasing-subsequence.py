@@ -22,10 +22,10 @@ class Solution:
                 lastind=i
         
         temp=[]
-        temp.append(arr[lastind])
         while hash[lastind]!=lastind:
-            lastind=hash[lastind]
             temp.append(arr[lastind])
+            lastind=hash[lastind]
+        temp.append(arr[lastind])
         return temp[::-1]
         
         
