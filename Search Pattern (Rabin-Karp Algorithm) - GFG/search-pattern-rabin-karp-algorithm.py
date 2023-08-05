@@ -2,11 +2,14 @@
 
 class Solution:
     def search(self, patt, s):
-        n,res=len(patt),[]
-        for i in range(len(s)):
-            if s[i:i+n]==patt:
-                res.append(i+1)
-        return res if len(res) else [-1]
+        # code here
+        m,n=len(patt),len(s)
+        list1=[]
+        for i in range(n-m+1):
+            if s[i:i+m]==patt:
+                list1.append(i+1) 
+        return list1 if list1 else [-1]
+        
 
 
 #{ 
