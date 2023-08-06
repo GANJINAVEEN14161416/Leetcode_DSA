@@ -2,8 +2,26 @@
 class Solution:
 
 	def count(self,arr, n, x):
-		# code here
-		return arr.count(x)
+        fl,cl=n,n
+        left,right=0,n-1
+        while left<=right:
+            mid=(left+right)//2
+            if arr[mid]>=x:
+                fl=mid
+                right=mid-1
+            else:
+                left=mid+1
+        left,right=0,n-1
+        while left<=right:
+            mid=(left+right)//2
+            if arr[mid]>x:
+                cl=mid
+                right=mid-1
+            else:
+                left=mid+1
+        if fl<=cl:
+            return cl-fl
+        return 0
 
 
 #{ 
