@@ -1,11 +1,16 @@
 class Solution:
+    #Function to find minimum number of pages.
     def findPages(self,arr, N, M):
+        #code here
         if(M>N):
             return(-1)
-        s=max(arr)
-        e=sum(arr)
+        s=min(arr)
+        sum=0
+        for i in range(N):
+            sum+=arr[i]
+        e=sum
         ans=-1
-        mid=(s+e)//2
+        mid=s+(e-s)//2
         while(s<=e):
             if(ispossible(arr,N,M,mid)):
                 ans=mid
@@ -14,6 +19,7 @@ class Solution:
                 s=mid+1
             mid=s+(e-s)//2
         return(ans)
+        
 def ispossible(arr,N,M,mid):
     studentcount=1
     pagesum=0
@@ -26,6 +32,9 @@ def ispossible(arr,N,M,mid):
                 return False
             pagesum=arr[i]
     return True
+
+
+
 
 #{ 
  # Driver Code Starts
