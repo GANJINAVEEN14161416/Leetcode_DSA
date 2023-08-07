@@ -4,7 +4,7 @@ class Solution:
         #code here
         if(M>N):
             return(-1)
-        s=min(arr)
+        s=max(arr)
         sum=0
         for i in range(N):
             sum+=arr[i]
