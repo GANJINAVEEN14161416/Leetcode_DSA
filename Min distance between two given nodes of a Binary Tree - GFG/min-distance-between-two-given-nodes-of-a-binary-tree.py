@@ -20,7 +20,6 @@ class Solution:
                 return 0
             if root.data==n:
                 ans=level+ans
-                return level
             dis(root.left,n,level+1)
             dis(root.right,n,level+1)
 
