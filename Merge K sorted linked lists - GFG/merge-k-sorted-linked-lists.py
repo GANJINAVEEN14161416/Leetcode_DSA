@@ -1,34 +1,41 @@
-#User function Template for python3
-'''
-	Your task is to merge the given k sorted
-	linked lists into one list and return
-	the the new formed linked list class.
 
-	Function Arguments:
-	    arr is a list containing the n linkedlist head pointers
-	    n is an integer value
-    
-    node class:
-    
-class Node:
-    def __init__(self,x):
-        self.data = x
-        self.next = None
-'''
 class Solution:
     #Function to merge K sorted linked list.
     def mergeKLists(self,arr,K):
-        list1=[]
-        linked1=linked2=Node(0)
-        for n in arr:
-            while n:
-                list1.append(n)
-                n=n.next
-        list1.sort(key=lambda x:x.data)
-        for n in list1:
-            linked1.next=n
-            linked1=linked1.next
-        return linked2.next
+        def merge(l1,l2):
+            dummy=Node(-1)
+            cur=dummy
+            while l1 and l2:
+                if l1.data<=l2.data:
+                    cur.next=l1
+                    cur=cur.next
+                    l1=l1.next
+                else:
+                    cur.next=l2
+                    cur=cur.next
+                    l2=l2.next
+            if l1:
+                cur.next=l1
+            if l2:
+                cur.next=l2
+            return dummy.next
+        def mergesort(arr):
+            while len(arr)>1:
+                merged=[]
+                for i in range(0,len(arr),2):
+                    l1=arr[i]
+                    l2=arr[i+1] if (i+1)<len(arr) else None
+                    merged.append(merge(l1,l2))
+                arr=merged
+            return arr[0]
+        return mergesort(arr)
+                
+                
+        
+
+
+
+
 
 #{ 
  # Driver Code Starts
