@@ -1,13 +1,12 @@
+from collections import *
 
 def solve(s,k):
     count = 0
-    d = dict()
+    ans = ''
+    d = defaultdict(int)
     start = 0
     for i in range(len(s)):
-        if s[i] in d:
-            d[s[i]]+=1
-        else:
-            d[s[i]] = 1
+        d[s[i]]+=1
         while len(d)>k:
             d[s[start]]-=1
             if d[s[start]]==0:
