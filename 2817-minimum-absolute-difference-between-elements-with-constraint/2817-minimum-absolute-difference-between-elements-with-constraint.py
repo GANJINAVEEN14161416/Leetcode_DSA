@@ -4,9 +4,9 @@ class Solution:
         nums=sorted((val,idx) for idx,val in enumerate(nums))
         stack1, stack2, res =[], [], float('inf')  
         for val,idx in nums:
-            while stack1 and stack1[0][0]<=idx:                
+            while stack1 and idx>=stack1[0][0]:                
                  res=min(res, val-heapq.heappop(stack1)[1])  
-            while stack2 and -stack2[0][0]>=idx:                
+            while stack2 and idx<=-stack2[0][0]:                
                 res=min(res, val-heapq.heappop(stack2)[1]) 
             heapq.heappush(stack1,(idx+k,val)) 
             heapq.heappush(stack2,(-idx+k,val))   
