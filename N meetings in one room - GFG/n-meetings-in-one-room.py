@@ -7,7 +7,7 @@ class Solution:
     def maximumMeetings(self,n,s,e):
         meet=[]
         for i in range(n):
-            meet.append([s[i],e[i],i+1])
+            meet.append([s[i],e[i]])
         meet.sort(key=lambda x:x[1])
         ans=1
         last_time=meet[0][1]
