@@ -1,28 +1,26 @@
 #User function Template for python3
 
 class Solution:
-    def isSubsetSum (self, n, arr, W):
-        t=[[False]*(W+1) for i in range(N+1)]
-        for i in range(n+1):
-            t[i][0]=True
-        for i in range(1,n+1):
-            for j in range(1,W+1):
-                if arr[i-1]<=j:
-                    t[i][j]=t[i-1][j-arr[i-1]] or t[i-1][j]
-                else:
-                    t[i][j]=t[i-1][j]
-        return t[-1][-1]
-                
+    def isSubsetSum (self, N, arr, sum):
+        # code here 
+        dp=[[-1]*(sum+1) for i in range(N+1)]
+        def solve(index,target):
+            if target==0:
+                dp[index][target]=True
+                return True
+            elif dp[index][target]!=-1:
+                return dp[index][target]
+            elif target<0 or index<0:
+                return False
+            else:
+                take=False
+                if arr[index]<=target:
+                    take=solve(index-1,target-arr[index])
+                nottake=solve(index-1,target)
+                dp[index][target]=take or nottake
+                return dp[index][target]
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        return solve(N-1,sum)
 
 
 #{ 
