@@ -3,17 +3,15 @@
 class Solution:
     def isSubsetSum (self, N, arr, sum):
         # code here 
-        dp=[[-1]*(sum+1) for i in range(N+1)]
-        for i in range(sum+1):
-            dp[0][i]=False
-        for i in range(N+1):
+        dp=[[False]*(sum+1) for i in range(N+1)]
+        for i in range(N):
             dp[i][0]=True
         for index in range(1,N+1):
             for target in range(1,sum+1):
                 take=False
+                nottake=dp[index-1][target]
                 if arr[index-1]<=target:
                     take=dp[index-1][target-arr[index-1]]
-                nottake=dp[index-1][target]
                 dp[index][target]=take or nottake
         return dp[N][sum]
 
