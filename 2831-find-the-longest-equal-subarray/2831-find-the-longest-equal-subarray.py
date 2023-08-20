@@ -1,12 +1,12 @@
 class Solution:
-    def longestEqualSubarray(self, A: List[int], k: int) -> int:
-        maxf = i = 0
-        count =defaultdict(int)
-        for j in range(len(A)):
-            count[A[j]] += 1
-            maxf = max(maxf, count[A[j]])
-            if j - i + 1 - maxf > k:
-                count[A[i]] -= 1
-                i += 1
-        return maxf
+    def longestEqualSubarray(self, nums: List[int], k: int) -> int:
+        ans=first_point=0
+        count=defaultdict(int)
+        for moving_point in range(len(nums)):
+            count[nums[moving_point]]+=1
+            ans=max(ans,count[nums[moving_point]])
+            if moving_point-first_point+1-ans>k:
+                count[nums[first_point]]-=1
+                first_point+=1
+        return ans
         
