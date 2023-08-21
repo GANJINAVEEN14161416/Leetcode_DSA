@@ -1,10 +1,12 @@
 class Solution:
-    def numSubarraysWithSum(self, nums: List[int], S: int) -> int:
-        c = collections.Counter({0: 1})
-        psum = res = 0
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        res=defaultdict(int)
+        res[0]=1
+        ans=0
+        prefixsum=0
         for i in nums:
-            psum += i
-            res += c[psum - S]
-            c[psum] += 1
-        return res
+            prefixsum+=i
+            ans+=res[prefixsum-goal]
+            res[prefixsum]+=1
+        return ans
             
