@@ -1,19 +1,25 @@
 class Solution:
     def subarraysWithKDistinct(self, A: List[int], K: int) -> int:
-        return self.atMostK(A, K) - self.atMostK(A, K - 1)
-
-    def atMostK(self, A, K):
-        count = collections.Counter()
-        res = i = 0
-        for j in range(len(A)):
-            if count[A[j]] == 0: K -= 1
-            count[A[j]] += 1
-            while K < 0:
-                count[A[i]] -= 1
-                if count[A[i]] == 0: K += 1
-                i += 1
-            res += j - i + 1
+        freq = defaultdict(int)
+        start = 0
+        start_k = 0
+        res = 0
+        for i, x in enumerate(A):
+            freq[x] = freq[x]+ 1
+            print(freq[x])
+            if len(freq) == K + 1:
+                # remove the distinct at start_k, move start_k, start
+                del freq[A[start_k]]
+                start_k += 1
+                start = start_k
+            if len(freq) == K:
+                # update start_k and res (Notice: K >= 1)
+                while freq[A[start_k]] > 1:
+                    freq[A[start_k]] -= 1
+                    start_k += 1
+                res += start_k - start + 1
         return res
+
                 
             
         
