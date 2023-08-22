@@ -9,17 +9,14 @@ class Solution:
             while left<right:
                 number=nums[i]+nums[left]+nums[right]
                 if number==0:
-                    ans.append([nums[i],nums[left],nums[right]])
+                    if [nums[i],nums[left],nums[right]] not in ans:
+                        ans.append([nums[i],nums[left],nums[right]])
                     left+=1
                 elif number>0:
                     right-=1
                 else:
                     left+=1
-        ans1=[]
-        for row in ans:
-            if row not in ans1:
-                ans1.append(row)
-        return ans1
+        return ans
                 
     
             
