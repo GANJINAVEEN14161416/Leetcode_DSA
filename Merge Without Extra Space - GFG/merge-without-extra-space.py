@@ -5,16 +5,18 @@ class Solution:
     #Function to merge the arrays.
     def merge(self,arr1,arr2,n,m):
         #code here
-        i,j=n-1,0
-        while i>=0 and j<m:
-            if arr1[i]>arr2[j]:
-                arr1[i],arr2[j]=arr2[j],arr1[i]
-                i-=1
-                j+=1
+        arr1_itr=n-1
+        arr2_itr=0
+        while arr1_itr>=0 and arr2_itr<m:
+            if arr2[arr2_itr]<arr1[arr1_itr]:
+                arr2[arr2_itr],arr1[arr1_itr]=arr1[arr1_itr],arr2[arr2_itr]
+                arr1_itr-=1
+                arr2_itr+=1
             else:
                 break
         arr1.sort()
         arr2.sort()
+    
 
 
 
