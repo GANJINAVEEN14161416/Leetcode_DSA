@@ -3,9 +3,7 @@ class Solution:
         dic=Counter(s)
         heap=[[-count,char] for char,count in dic.items()]
         heapq.heapify(heap)
-        print(heap)
-        prev=None
-        output=""
+        prev,output=None,""
         while prev or heap:
             if prev and not heap:
                 return ""
