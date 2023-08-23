@@ -3,19 +3,19 @@
 class Solution:
     def isSubsetSum (self, N, arr, sum):
         # code here
-        dp=[[-1]*(sum+1) for i in range(N+1)]
-        for i in range(sum+1):
-            dp[0][i]=False
-        for i in range(N+1):
-            dp[i][0]=True
+        prev=[False]*(sum+1)
+        prev[0]=True
         for ind in range(1,N+1):
+            cur=[False]*(sum+1)
+            cur[0]=True
             for target in range(1,sum+1):
-                nottake=dp[ind-1][target]
+                nottake=prev[target]
                 take=False
                 if target>=arr[ind-1]:
-                    take=dp[ind-1][target-arr[ind-1]]
-                dp[ind][target]=take or nottake
-        return dp[N][sum]
+                    take=prev[target-arr[ind-1]]
+                cur[target]=take or nottake
+            prev=cur
+        return prev[sum]
             
         
         
