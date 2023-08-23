@@ -2,24 +2,24 @@
 
 class Solution:
     def isSubsetSum (self, N, arr, sum):
-        # code here
-        prev=[False]*(sum+1)
-        prev[0]=True
-        if arr[0]<=sum:
-            prev[arr[0]]=True
-        for ind in range(1,N):
-            cur=[False]*(sum+1)
-            cur[0]=True
-            for target in range(1,sum+1):
-                nottake=prev[target]
-                take=False
-                if target>=arr[ind]:
-                    take=prev[target-arr[ind]]
-                cur[target]=take or nottake
-            prev=cur
-        return prev[sum]
-            
-        
+        # code here 
+        dp=[[-1]*(sum+1)for j in range(N+1)]
+        def solve(ind,target):
+            if ind==0:
+                dp[ind][target]=(arr[0]==target)
+                return arr[0]==target
+            if target==0:
+                dp[ind][target]=True
+                return True
+            if dp[ind][target]!=-1:
+                return dp[ind][target]
+            nottake=solve(ind-1,target)
+            take=False
+            if arr[ind]<=target:
+                take=solve(ind-1,target-arr[ind])
+            dp[ind][target]=take or nottake
+            return take or nottake
+        return solve(N-1,sum)
         
 
 
