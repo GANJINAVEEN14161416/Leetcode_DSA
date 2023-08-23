@@ -1,22 +1,22 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        summation=sum(nums)
-        if summation%2==1:
-            print(summation)
+        summ=sum(nums)
+        if summ%2!=0:
             return False
-        def subset(arr,summ):
-            prev=[False]*(summ+1)
-            prev[0]=True
-            N=len(arr)
-            for ind in range(1,N+1):
-                cur=[False]*(summ+1)
-                cur[0]=True
-                for target in range(1,summ+1):
-                    nottake=prev[target]
-                    take=False
-                    if arr[ind-1]<=target:
-                        take=prev[target-arr[ind-1]]
-                    cur[target]=take or nottake
-                prev=cur
-            return prev[summ]  
-        return subset(nums,summation//2)
+        n=len(nums)
+        dp=[[-1]*(summ+1)for j in range(n+1)]
+        def solve(ind,target):
+            if ind==0:
+                dp[ind][target]=(nums[ind]==target)
+            if target==0:
+                dp[ind][target]=True
+            if dp[ind][target]!=-1:
+                return dp[ind][target]
+            take=solve(ind-1,target)
+            nottake=False
+            if nums[ind]<=target:
+                nottake=solve(ind-1,target-nums[ind])
+            dp[ind][target]=take or nottake
+            return dp[ind][target]
+        return solve(n-1,sum(nums)//2)
+            
