@@ -1,26 +1,34 @@
 #User function Template for python3
 class Solution:
-	def minDifference(self, arr, n):
-	    x=sum(arr)
-        def subset(N,arr,W):
-            x=sum(arr)
-            dp=[[False]*(W+1) for i in range(N+1)]
-            for i in range(N+1):
-                dp[i][0]=True
-            for i in range(1,N+1):
-                for j in range(1,W+1):
-                    if arr[i-1]>j:
-                        dp[i][j]=dp[i-1][j]
-                    else:
-                        dp[i][j]=(dp[i-1][j-arr[i-1]] or dp[i-1][j])
+    def minDifference(self, arr, n):
+        x=sum(arr)
+        def subset(arr,summ):
+            prev=[False]*(summ+1)
+            prev[0]=True
+            N=len(arr)
+            for ind in range(1,N+1):
+                cur=[False]*(summ+1)
+                cur[0]=True
+                for target in range(1,summ+1):
+                    nottake=prev[target]
+                    take=False
+                    if arr[ind-1]<=target:
+                        take=prev[target-arr[ind-1]]
+                    cur[target]=take or nottake
+                prev=cur
             ans=float('inf')
-            for i in range(W+1):
-                if dp[n][i]:
-                    ans=min(ans,x-2*i)
+            for i in range(summ+1):
+                if prev[i]==True:
+                    s1=i
+                    s2=summ-i
+                    ans=min(ans,abs(s1-s2))
             return ans
-        return subset(N,arr,x//2)
+        return subset(arr,x)
         
         
+
+
+
 
 #{ 
  # Driver Code Starts
