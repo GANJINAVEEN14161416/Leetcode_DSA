@@ -5,14 +5,16 @@ class Solution:
         # code here
         prev=[False]*(sum+1)
         prev[0]=True
-        for ind in range(1,N+1):
+        if arr[0]<=sum:
+            prev[arr[0]]=True
+        for ind in range(1,N):
             cur=[False]*(sum+1)
             cur[0]=True
             for target in range(1,sum+1):
                 nottake=prev[target]
                 take=False
-                if target>=arr[ind-1]:
-                    take=prev[target-arr[ind-1]]
+                if target>=arr[ind]:
+                    take=prev[target-arr[ind]]
                 cur[target]=take or nottake
             prev=cur
         return prev[sum]
