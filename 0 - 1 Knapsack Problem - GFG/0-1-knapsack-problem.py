@@ -2,23 +2,22 @@
 
 class Solution:
     def knapSack(self,W, wt, val, n):
-        dp=[[-1]*(W+1) for i in range(n+1)]
-        def solve(ind,target):
-            if ind==0:
-                if target>=wt[0]:
-                    dp[ind][target]=val[0]
-                    return val[0]
-                dp[ind][target]=0
-                return 0
-            pick=not_pick=0
-            if dp[ind][target]!=-1:
-                return dp[ind][target]
-            if target>=wt[ind]: # >=4
-                pick=solve(ind-1,target-wt[ind])+val[ind]
-            not_pick=solve(ind-1,target)
-            dp[ind][target]=max(pick,not_pick)
-            return max(pick,not_pick)
-        return solve(n-1,W)
+        dp=[[0]*(W+1) for i in range(n+1)]
+        for i in range(n+1):
+            dp[i][0]=0
+        for i in range(W+1):
+            if W>=wt[0]:
+                dp[0][W]=val[0]
+            else:
+                dp[0][W]=0
+        for ind in range(1,n+1):
+            for target in range(1,W+1):
+                pick=not_pick=0
+                if target>=wt[ind-1]: # >=4
+                    pick=dp[ind-1][target-wt[ind-1]]+val[ind-1]
+                not_pick=dp[ind-1][target]
+                dp[ind][target]=max(pick,not_pick)
+        return dp[-1][-1]
             
         
         
