@@ -2,20 +2,20 @@
 
 class Solution:
     def knapSack(self,W, wt, val, n):
-        dp=[[0]*(W+1) for i in range(n+1)]
+        prev=[0]*(W+1)
         for i in range(W+1):
             if W>=wt[0]:
-                dp[0][W]=val[0]
-            else:
-                dp[0][W]=0
+                prev[W]=val[0]
         for ind in range(1,n+1):
+            cur=[0]*(W+1)
             for target in range(1,W+1):
                 pick=not_pick=0
                 if target>=wt[ind-1]: # >=4
-                    pick=dp[ind-1][target-wt[ind-1]]+val[ind-1]
-                not_pick=dp[ind-1][target]
-                dp[ind][target]=max(pick,not_pick)
-        return dp[n][W]
+                    pick=prev[target-wt[ind-1]]+val[ind-1]
+                not_pick=prev[target]
+                cur[target]=max(pick,not_pick)
+            prev=cur
+        return prev[W]
             
         
         
