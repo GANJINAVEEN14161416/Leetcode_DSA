@@ -16,8 +16,8 @@ class Solution:
                     take=1+cur[target-coins[ind-1]]
                 cur[target]=min(take,notpick)
             prev=cur
-        if prev[amount]==float('inf'):
+        if cur[amount]==float('inf'):
             return -1
-        return prev[amount]
+        return cur[amount]
         
         
