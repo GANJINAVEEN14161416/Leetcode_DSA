@@ -3,8 +3,6 @@
 class Solution:
     def knapSack(self,W, wt, val, n):
         dp=[[0]*(W+1) for i in range(n+1)]
-        for i in range(n+1):
-            dp[i][0]=0
         for i in range(W+1):
             if W>=wt[0]:
                 dp[0][W]=val[0]
@@ -17,7 +15,7 @@ class Solution:
                     pick=dp[ind-1][target-wt[ind-1]]+val[ind-1]
                 not_pick=dp[ind-1][target]
                 dp[ind][target]=max(pick,not_pick)
-        return dp[-1][-1]
+        return dp[n][W]
             
         
         
@@ -26,6 +24,9 @@ class Solution:
         
         
         
+
+
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
