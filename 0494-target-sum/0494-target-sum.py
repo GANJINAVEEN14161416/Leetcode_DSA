@@ -1,3 +1,4 @@
+
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         if target>sum(nums) or (sum(nums)-target)%2==1:
@@ -16,3 +17,5 @@ class Solution:
             return tab[n][sum]
         n=len(nums)
         return subset_sum(nums,n,(sum(nums)-target)//2)
+
+            
