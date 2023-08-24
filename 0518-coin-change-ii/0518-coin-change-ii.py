@@ -1,17 +1,19 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         n=len(coins)
-        dp=[[0]*(amount+1) for i in range(n)]
+        prev=[0]*(amount+1)
         for target in range(amount+1):
             if target%coins[0]==0:
-                dp[0][target]=1
+                prev[target]=1
         for ind in range(1,n):
+            cur=[0]*(amount+1)
             for target in range(amount+1):
-                notpick=dp[ind-1][target]
+                notpick=prev[target]
                 pick=0
                 if target>=coins[ind]:
-                    pick=dp[ind][target-coins[ind]]
-                dp[ind][target]=pick+notpick
-        return dp[n-1][amount]
+                    pick=cur[target-coins[ind]]
+                cur[target]=pick+notpick
+            prev=cur
+        return prev[amount]
         
         
