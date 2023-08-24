@@ -1,18 +1,19 @@
 #User function Template for python3
 
 class Solution:
-    def longestCommonSubstr(self, s1, s2, n, m):
-        t=[[0]*(m+1) for i in range(n+1)]
+    def longestCommonSubstr(self, text1, text2, n, m):
+        dp=[[0]*(len(text2)+1) for i in range(len(text1)+1)]
         ans=0
-        for i in range(1,n+1):
-            for j in range(1,m+1):
-                if s1[i-1]==s2[j-1]:
-                    t[i][j]=1+t[i-1][j-1]
-                    ans=max(ans,t[i][j])
+        count=0
+        for ind1 in range(1,len(text1)+1):
+            for ind2 in range(1,len(text2)+1):
+                if text1[ind1-1]==text2[ind2-1]:
+                    dp[ind1][ind2]=1+dp[ind1-1][ind2-1]
+                    ans=max(ans,dp[ind1][ind2])
                 else:
-                    t[i][j]=0
+                    dp[ind1][ind2]=0
         return ans
-        
+            
 
 
 #{ 
