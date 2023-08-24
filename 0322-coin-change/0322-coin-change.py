@@ -8,20 +8,18 @@ class Solution:
                     dp[ind][target]=target//coins[0]
                     return target//coins[0]
                 else:
-                    return float('inf')
+                    return float('inf') 
             if dp[ind][target]!=-1:
                 return dp[ind][target]
-            else:
-                notake=solve(ind-1,target)
-                take=float('inf')
-                if target>=coins[ind]:
-                    take=1+solve(ind,target-coins[ind])
-                dp[ind][target]=min(take,notake)
-                return min(take,notake)
+            notpick=solve(ind-1,target)
+            pick=float('inf')
+            if coins[ind]<=target:
+                pick=1+solve(ind,target-coins[ind])
+            dp[ind][target]=min(pick,notpick)
+            return min(pick,notpick)
         ans=solve(n-1,amount)
         if ans==float('inf'):
             return -1
         return ans
-        
         
         
