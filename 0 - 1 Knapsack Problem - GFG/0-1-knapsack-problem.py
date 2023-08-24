@@ -3,9 +3,8 @@
 class Solution:
     def knapSack(self,W, wt, val, n):
         prev=[0]*(W+1)
-        for i in range(W+1):
-            if W>=wt[0]:
-                prev[W]=val[0]
+        if W>=wt[0]:
+            prev[W]=val[0]
         for ind in range(1,n+1):
             cur=[0]*(W+1)
             for target in range(1,W+1):
