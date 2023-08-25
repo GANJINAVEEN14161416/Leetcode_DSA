@@ -1,13 +1,21 @@
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
         def isPredecessor(word1, word2):
-            if len(word1) + 1 != len(word2): return False
-            i = 0
-            for c in word2:
-                if i == len(word1): return True
-                if word1[i] == c:
-                    i += 1
-            return i == len(word1)
+            if abs(len(word1)-len(word2))!=1: 
+                return False
+            i,j=0,0
+            n1,m1=len(word1),len(word2)
+            n=len(word1)
+            m=len(word2)
+            while i<n1 and j<m1:
+                if word1[i]==word2[j]:
+                    i+=1
+                    n-=1
+                    m-=1
+                    j+=1
+                else:
+                    i+=1
+            return (n==1 and m==0)
         
         words.sort(key=len)
         n = len(words)
@@ -15,7 +23,8 @@ class Solution:
         ans = 1
         for i in range(1, n):
             for j in range(i):
-                if isPredecessor(words[j], words[i]) and dp[i] < dp[j] + 1:
+                if isPredecessor(words[i], words[j]) and dp[i] < dp[j] + 1:
                     dp[i] = dp[j] + 1
             ans = max(ans, dp[i])
         return ans
+                       
