@@ -1,14 +1,19 @@
 class Solution:
-    def minDistance(self, s: str, t: str) -> int:
-        dp=[[0]*(len(t)+1) for i in range(len(s)+1)]
-        for k in range(len(s)+1):
-            dp[k][len(t)]=len(s)-k
-        for k in range(len(t)+1):
-            dp[len(s)][k]=len(t)-k
-        for i in range(len(s)-1,-1,-1):
-            for j in range(len(t)-1,-1,-1):
-                if s[i]==t[j]:
-                    dp[i][j]=dp[i+1][j+1]
-                else:
-                    dp[i][j]=1+min(dp[i+1][j+1],dp[i+1][j],dp[i][j+1])
-        return dp[0][0]        
+    def minDistance(self, word1: str, word2: str) -> int:
+        dp=[[-1]*(len(word2)+1) for i in range(len(word1)+1)]
+        def solve(ind1,ind2):
+            if ind1<0:
+                return ind2+1
+            if ind2<0:
+                return ind1+1
+            if dp[ind1][ind2]!=-1:
+                return dp[ind1][ind2]
+            if word1[ind1]==word2[ind2]:
+                dp[ind1][ind2]=solve(ind1-1,ind2-1)
+                return solve(ind1-1,ind2-1)
+            insert=solve(ind1-1,ind2)
+            delete=solve(ind1,ind2-1)
+            replace=solve(ind1-1,ind2-1)
+            dp[ind1][ind2]=1+min(insert,delete,replace)
+            return 1+min(insert,delete,replace)        
+        return solve(len(word1)-1,len(word2)-1)
