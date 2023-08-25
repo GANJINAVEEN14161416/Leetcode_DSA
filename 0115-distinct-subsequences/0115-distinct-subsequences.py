@@ -1,21 +1,14 @@
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
-        dp=[[-1]*(len(t)+1) for i in range(len(s)+1)]
-        def solve(ind1,ind2):
-            if ind2<0:
-                dp[ind1][ind2]=1
-                return 1
-            if ind1<0:
-                dp[ind1][ind2]=0
-                return 0
-            if dp[ind1][ind2]!=-1:
-                return dp[ind1][ind2]
-            if s[ind1]==t[ind2]:
-                dp[ind1][ind2]=solve(ind1-1,ind2-1)+solve(ind1-1,ind2)
-                return solve(ind1-1,ind2-1)+solve(ind1-1,ind2)
-            else:
-                dp[ind1][ind2]=solve(ind1-1,ind2)
-                return solve(ind1-1,ind2)
-        return solve(len(s)-1,len(t)-1)
+        dp=[[0]*(len(t)+1) for i in range(len(s)+1)]
+        for i in range(len(s)+1):
+            dp[i][0]=1
+        for ind1 in range(1,len(s)+1):
+            for ind2 in range(1,len(t)+1):
+                if s[ind1-1]==t[ind2-1]:
+                    dp[ind1][ind2]=dp[ind1-1][ind2-1]+dp[ind1-1][ind2]
+                else:
+                    dp[ind1][ind2]=dp[ind1-1][ind2]
+        return dp[len(s)][len(t)]
             
         
