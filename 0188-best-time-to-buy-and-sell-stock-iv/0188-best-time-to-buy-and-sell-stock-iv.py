@@ -1,13 +1,18 @@
 class Solution:
-    def maxProfit(self, k: int, A: List[int]) -> int:
-        N=len(A)
-        sell=[0]*N
-        for _ in range(k):
-            buy=-A[0]
-            profit=0
-            for i in range(1,N):
-                buy=max(buy,sell[i]-A[i])
-                profit=max(profit,A[i]+buy)
-                sell[i]=profit
-        return sell[-1]
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        n=len(prices)
+        dp=[[-1]*2*k for i in range(n)]
+        def solve(ind,trans):
+            if ind==len(prices) or trans==2*k:
+                return 0
+            if dp[ind][trans]!=-1:
+                return dp[ind][trans]
+            if trans%2==0:
+                profit=max(-prices[ind]+solve(ind+1,trans+1),solve(ind+1,trans))
+            else:
+                
+                           profit=max(prices[ind]+solve(ind+1,trans+1),solve(ind+1,trans))
+            dp[ind][trans]=profit
+            return profit
+        return solve(0,0)
         
