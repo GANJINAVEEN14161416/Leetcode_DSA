@@ -1,22 +1,18 @@
 class Solution:
-    def countSquares(self, grid: List[List[int]]) -> int:
-        row=len(grid)
-        count=0
-        col=len(grid[0])
-        dp=[[-1]*col for i in range(row)]
+    def countSquares(self, matrix: List[List[int]]) -> int:
+        row=len(matrix)
+        col=len(matrix[0])
+        dp=[[0]*col for i in range(row)]
         for i in range(row):
             for j in range(col):
-                if i==0 or j==0:
-                    dp[i][j]=grid[i][j]
+                if (i==0 or j==0) and matrix[i][j]==1:
+                    dp[i][j]=1
         for i in range(1,row):
             for j in range(1,col):
-                if grid[i][j]==0:
-                    dp[i][j]=0
-                else:
+                if matrix[i][j]==1:
                     dp[i][j]=1+min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1])
-
-        for i in range(row):
-            for j in range(col):
-                count+=dp[i][j]
-        return count
+        ans=0
+        for rows in dp:
+            ans+=sum(rows)
+        return ans
         
