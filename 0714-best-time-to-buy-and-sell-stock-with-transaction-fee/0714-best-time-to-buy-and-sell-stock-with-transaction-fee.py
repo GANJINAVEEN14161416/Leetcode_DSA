@@ -1,13 +1,15 @@
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
         n=len(prices)
-        dp=[[0]*2 for i in range(n+1)]
+        nxt=[0]*2
         for ind in range(n-1,-1,-1):
+            cur=[0]*2
             for buy in range(2):
                 if buy:
-                    profit=max(-prices[ind]+dp[ind+1][0],dp[ind+1][1])
+                    profit=max(-prices[ind]+nxt[0],nxt[1])
                 else:
-                    profit=max(prices[ind]-fee+dp[ind+1][1],dp[ind+1][0])
-                dp[ind][buy]=profit
-        return dp[0][1]
+                    profit=max(prices[ind]-fee+nxt[1],nxt[0])
+                cur[buy]=profit
+            nxt=cur
+        return cur[1]
         
