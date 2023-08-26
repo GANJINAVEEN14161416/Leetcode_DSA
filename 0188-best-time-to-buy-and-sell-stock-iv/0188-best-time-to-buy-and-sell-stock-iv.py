@@ -1,15 +1,17 @@
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         n=len(prices)
-        dp=[[0]*(2*k+1) for i in range(n+1)]
+        nxt=[0]*(2*k+1)
         for ind in range(n-1,-1,-1):
+            cur=[0]*(2*k+1)
             for trans in range(2*k-1,-1,-1):
                 if trans%2==0:
-                    profit=max(-prices[ind]+dp[ind+1][trans+1],dp[ind+1][trans])
+                    profit=max(-prices[ind]+nxt[trans+1],nxt[trans])
                 else:
-                    profit=max(prices[ind]+dp[ind+1][trans+1],dp[ind+1][trans])
-                dp[ind][trans]=profit
-        return dp[0][0]
+                    profit=max(prices[ind]+nxt[trans+1],nxt[trans])
+                cur[trans]=profit
+            nxt=cur
+        return nxt[0]
 #         def solve(ind,trans):
 #             if ind==len(prices) or trans==2*k:
 #                 return 0
