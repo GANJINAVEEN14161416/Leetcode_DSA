@@ -1,17 +1,10 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        prev=[0]*(n+1)
-        for ind1 in range(1,m+1):
-            cur=[0]*(n+1)
-            for ind2 in range(1,n+1):
-                if ind1==ind2==1:
-                    cur[ind2]=1
-                else:
-                    left=up=0
-                    if ind2-1>=0:
-                        left=cur[ind2-1]
-                    if ind1-1>=0:
-                        up=prev[ind2]
-                    cur[ind2]=up+left
-            prev=cur
-        return cur[-1]
+        @lru_cache(None)
+        def solve(ind1,ind2):
+            if ind1==0 and ind2==0:
+                return 1
+            if ind1<0  or ind2<0:
+                return 0
+            return solve(ind1-1,ind2)+solve(ind1,ind2-1)
+        return solve(m-1,n-1)
