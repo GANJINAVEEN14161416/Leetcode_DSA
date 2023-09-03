@@ -13,5 +13,4 @@ class Solution:
                 if curr in dictionary_set:
                     ans = min(ans, dp(end))
             return ans
-            
         return dp(0)
