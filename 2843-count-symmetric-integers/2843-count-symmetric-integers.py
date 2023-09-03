@@ -7,9 +7,8 @@ class Solution:
                 arr.append(int(k))
             print(arr)
             length=len(arr)
-            if len(arr)>0 and sum(arr[length//2:])==sum(arr[:length//2]):
-                if sum(arr)%2==0 and length%2==0:
-                    ans+=1
+            if len(arr)>0 and length%2==0 and sum(arr[length//2:])==sum(arr[:length//2]):
+                ans+=1
         return ans
             
                 
