@@ -21,4 +21,3 @@ class Solution:
             copy.random=dic[cur.random]
             cur=cur.next
         return dic[head]
-        
