@@ -4,19 +4,18 @@ class Solution:
     
     #Function to find the maximum number of meetings that can
     #be performed in a meeting room.
-    def maximumMeetings(self,n,s,e):
-        meet=[]
-        for i in range(n):
-            meet.append([s[i],e[i]])
-        meet.sort(key=lambda x:x[1])
+    def maximumMeetings(self,n,start,end):
+        # code here
         ans=1
-        last_time=meet[0][1]
-        start_time=meet[0][0]
-        for i in range(1,n):
-            if meet[i][0]>last_time:
+        merge=[]
+        for s,e in zip(start,end):
+            merge.append([s,e])
+        merge.sort(key=lambda x:x[1])
+        stack=[merge[0]]
+        for s,e in merge[1:]:
+            if stack[-1][1]<s:
                 ans+=1
-                last_time=meet[i][1]
-                start_time=meet[i][0]
+                stack.append([s,e])
         return ans
 
 
