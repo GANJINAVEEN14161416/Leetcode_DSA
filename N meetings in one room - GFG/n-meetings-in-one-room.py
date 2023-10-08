@@ -6,19 +6,15 @@ class Solution:
     #be performed in a meeting room.
     def maximumMeetings(self,n,start,end):
         # code here
-        ans=1
-        merge=[]
-        for s,e in zip(start,end):
-            merge.append([s,e])
-        merge.sort(key=lambda x:x[1])
-        stack=[merge[0]]
-        for s,e in merge[1:]:
-            if stack[-1][1]<s:
-                ans+=1
-                stack.append([s,e])
+        intervals=[]
+        for i,j in zip(start,end):
+            intervals.append([i,j])
+        intervals.sort(key=lambda x:x[1])
+        stack=[intervals[0]]
+        for i,j in intervals[1:]:
+            if stack[-1][1]<i:
+                stack.append([i,j])
         return ans
-
-
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
