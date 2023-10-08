@@ -3,19 +3,15 @@
 class Solution:
     def minPartition(self, N):
         # code here
-        cost=[ 1, 2, 5, 10, 20, 50, 100, 200, 500, 2000 ]
-        n=len(cost)
+        money=[1, 2, 5, 10, 20, 50, 100, 200, 500, 2000]
         ans=[]
-        for i in range(n-1,-1,-1):
-            q=N//cost[i]
-            if q>0:
-                for k in range(q):
-                    ans.append(cost[i])
-                N=N%cost[i]
-                if N==0:
-                    break
+        for coin in range(len(money)-1,-1,-1):
+            k=N//money[coin]
+            if k>0:
+                for i in range(k):
+                    ans.append(money[coin])
+                N=N%money[coin]
         return ans
-            
 
 
 #{ 
