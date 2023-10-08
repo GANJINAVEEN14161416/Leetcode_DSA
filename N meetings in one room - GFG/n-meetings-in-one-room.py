@@ -14,7 +14,7 @@ class Solution:
         for i,j in intervals[1:]:
             if stack[-1][1]<i:
                 stack.append([i,j])
-        return ans
+        return len(stack)
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
