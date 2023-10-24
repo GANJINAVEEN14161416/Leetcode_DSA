@@ -1,19 +1,20 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        def lp(s,l,r):
-            n=len(s)
-            while l>=0 and r<n and s[l]==s[r]:
-                l-=1
-                r+=1
-            return l+1,r
-        start=end=0
+        def pal(s,l,r):
+            while(l>=0 and r<len(s)) and s[l]==s[r]:
+                    l-=1
+                    r+=1
+            return l+1,r-1
+        start,end=0,0
+        
         for i in range(len(s)):
-            l,r=lp(s,i,i)
+            l,r=pal(s,i,i)
+            if (r-l)>abs(start-end):
+                start=l
+                end=r
+            l,r=pal(s,i,i+1)
             if (r-l)>(end-start):
                 start=l
                 end=r
-            l,r=lp(s,i,i+1)
-            if (r-l)>(end-start):
-                start=l
-                end=r
-        return s[start:end]
+        return s[start:end+1]
+        
