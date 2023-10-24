@@ -1,14 +1,15 @@
 class Solution:
-    def partition(self, S: str) -> List[List[str]]:
-        n=len(S)
+    def partition(self, s: str) -> List[List[str]]:
+        n=len(s)
         ans=[]
-        def solve(start,path):
-            if start==n:
-                ans.append(path)
-                return 
-            for i in range(start,n):
-                if S[start:i+1]==S[start:i+1][::-1]:
-                    solve(i+1,path+[S[start:i+1]])
-        solve(0,[])
+        mini=-1
+        def solve(ind,temp,ans):
+            if ind>=n:
+                ans.append(temp)
+                return
+            for i in range(ind,n):
+                if s[ind:i+1]==s[ind:i+1][::-1]:
+                    solve(i+1,temp+[s[ind:i+1]],ans)
+        solve(0,[],ans)
         return ans
         
