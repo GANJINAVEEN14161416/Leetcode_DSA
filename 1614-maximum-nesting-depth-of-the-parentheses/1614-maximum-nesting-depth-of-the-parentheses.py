@@ -1,13 +1,11 @@
 class Solution:
     def maxDepth(self, s: str) -> int:
-        out=0
-        count=0
+        maxi=-1
+        open=0
         for i in s:
             if i=="(":
-                count+=1
-                #list1.append(count)
+                open+=1
             if i==")":
-                count-=1
-                #list1.append(count)
-            out=max(out,count)
-        return out
+                open-=1
+            maxi=max(maxi,open)
+        return maxi
