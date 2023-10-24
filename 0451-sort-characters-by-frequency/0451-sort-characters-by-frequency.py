@@ -1,10 +1,11 @@
 class Solution:
     def frequencySort(self, s: str) -> str:
-        m=Counter(s)
-        s1=dict(sorted(m.items(),key=lambda x:x[1],reverse=True))
-        string=""
-        for i,j in s1.items():
-            string+=i*j
-        return string
-
-
+        dic=defaultdict(int)
+        ans=""
+        for i in s:
+            dic[i]+=1
+        d=sorted(dic.items(),key=lambda x:-x[1])
+        for i,v in d:
+            ans+=i*v
+        return ans
+        
