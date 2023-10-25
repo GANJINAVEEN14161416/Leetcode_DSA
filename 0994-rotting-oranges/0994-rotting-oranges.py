@@ -1,31 +1,26 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        n=len(grid)
-        m=len(grid[0])
-        fresh=0
+        m=len(grid)
+        n=len(grid[0])
+        vis=[[False]*n for i in range(len(grid))]
         q=deque()
-        for i in range(n):
-            for j in range(m):
+        maxi=-1
+        ones,cnt=0,0
+        step=0
+        for i in range(m):
+            for j in range(n):
                 if grid[i][j]==2:
                     q.append([i,j,0])
-                if grid[i][j]==1:
-                    fresh+=1
-        visit=[[False]*m for i in range(n)]
-        m1=[0,-1,0,1]
-        m2=[1,0,-1,0]
-        time=0
-        count=0
+                elif grid[i][j]==1:
+                    ones+=1
+        fourdirections=[[1,0],[0,1],[-1,0],[0,-1]]
         while q:
-            r,c,steps=q.popleft()
-            time=max(time,steps)
-            for new in range(4):
-                newrow=r+m1[new]
-                newcol=c+m2[new]
-                if newrow>=0 and newrow<n and newcol<m and newcol>=0 and not visit[newrow][newcol] and grid[newrow][newcol]==1:
-                    visit[newrow][newcol]=True
-                    q.append([newrow,newcol,steps+1])
-                    count+=1
-        return time if count==fresh else -1
-                        
-            
-        
+            x,y,step=q.popleft()
+            for i,j in fourdirections:
+                newrow=x+i
+                newcol=y+j
+                if newrow>=0 and newrow<m and newcol>=0 and newcol<n and grid[newrow][newcol]==1 and not vis[newrow][newcol]:
+                        q.append([newrow,newcol,step+1])
+                        cnt+=1
+                        vis[newrow][newcol]=True
+        return -1 if cnt!=ones else step
