@@ -13,12 +13,12 @@ class Solution:
         fourdirections=[[0,1],[1,0],[-1,0],[0,-1]]
         while q:
             x,y,step=q.popleft()
-            mat[x][y]=step
+           
             for i,j in fourdirections:
                 newrow=x+i
                 newcol=y+j
                 if newrow>=0 and newrow<m and newcol>=0 and newcol<n and not visit[newrow][newcol]:
-                    
+                    mat[newrow][newcol]=step+1
                     q.append([newrow,newcol,step+1])
                     visit[newrow][newcol]=True
         return mat
