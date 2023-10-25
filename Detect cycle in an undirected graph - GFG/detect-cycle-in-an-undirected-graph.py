@@ -2,23 +2,29 @@ from typing import List
 class Solution:
     #Function to detect cycle in an undirected graph.
 	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
-	    def dfs(visit,node,parent,adj):
-	        visit[node]=True
-	        for child in adj[node]:
-	            if not visit[child]:
-	                if dfs(visit,child,node,adj):
-	                    return True
-	            elif child!=parent:
-	                return True
-	        return False
-	                
-	    visit=[False]*V
-		for i in range(V):
-		    if not visit[i]:
-		        if dfs(visit,i,-1,adj):
+		#Code here
+		visit=[False]*V
+		
+		def dfs(i,parent):
+		    visit[i]=True
+		    for child in adj[i]:
+		        if not visit[child]:
+		            if dfs(child,i):
+		                return True
+		        elif parent!=child:
 		            return True
-		return False
-		            
+		    return False
+        for i in range(V):
+            if not visit[i]:
+                if dfs(i,-1):
+                    return True
+        return False
+	    
+		
+		
+		
+		
+		
 
 
 #{ 
