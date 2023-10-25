@@ -1,30 +1,25 @@
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        row=len(mat)
-        col=len(mat[0])
+        m=len(mat)
+        n=len(mat[0])
+        visit=[[False]*(n) for i in range(m)]
+        step=0
         q=deque()
-        steps=0
-        visit=[[False]*col for i in range(row)]
-        for i in range(row):
-            for j in range(col):
+        for i in range(m):
+            for j in range(n):
                 if mat[i][j]==0:
+                    q.append([i,j,step])
                     visit[i][j]=True
-                    q.append([i,j,steps])
-        m1=[0,-1,0,1]
-        m2=[1,0,-1,0]
+        fourdirections=[[0,1],[1,0],[-1,0],[0,-1]]
         while q:
-            r,c,steps=q.popleft()
-            mat[r][c]=steps
-            for new in range(4):
-                newrow=r+m1[new]
-                newcol=c+m2[new]
-                if newrow>=0 and newrow<row and newcol>=0 and newcol<col and not visit[newrow][newcol]:
+            x,y,step=q.popleft()
+            mat[x][y]=step
+            for i,j in fourdirections:
+                newrow=x+i
+                newcol=y+j
+                if newrow>=0 and newrow<m and newcol>=0 and newcol<n and not visit[newrow][newcol]:
+                    
+                    q.append([newrow,newcol,step+1])
                     visit[newrow][newcol]=True
-                    q.append([newrow,newcol,steps+1])     
         return mat
-            
-            
-        
-                
-          
         
