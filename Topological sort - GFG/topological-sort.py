@@ -1,29 +1,20 @@
-from collections import *
 class Solution:
     
     #Function to return list containing vertices in Topological order.
     def topoSort(self, V, adj):
         # Code here
-        indegree=[0]*V
-        q=deque()
-        for i in range(V):
-            for j in adj[i]:
-                indegree[j]+=1
-        for i in range(len(indegree)):
-            if indegree[i]==0:
-                q.append(i)
+        vis=[False]*V
         ans=[]
-        while q:
-            ind=q.popleft()
-            ans.append(ind)
-            for i in adj[ind]:
-                indegree[i]-=1
-                if indegree[i]==0:
-                    q.append(i)
-        
-        return ans
-            
-
+        def dfs(i):
+            vis[i]=True
+            for child in adj[i]:
+                if not vis[child]:
+                    dfs(child)
+            ans.append(i)
+        for i in range(V):
+            if not vis[i]:
+                dfs(i)
+        return ans[::-1]
 
 
 #{ 
