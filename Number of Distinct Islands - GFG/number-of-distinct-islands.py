@@ -8,24 +8,24 @@ class Solution:
         # code here
         m=len(grid)
         n=len(grid[0])
-        visit=[[False]*n for i  in range(m)]
-        four_direction=[[0,1],[1,0],[-1,0],[0,-1]]
-        def dfs(i,j,x,y,list1):
-            visit[i][j]=True
-            list1.append((x-i,y-j))
-            for a,b in four_direction:
+        s=set()
+        four=[[0,1],[1,0],[-1,0],[0,-1]]
+        vis=[[False]*n for i in range(m)]
+        def dfs(i,j,first,second):
+            lst.append((i-first,j-second))
+            vis[i][j]=True
+            for a,b in four:
                 newrow=i+a
                 newcol=j+b
-                if newrow>=0 and newrow<m and newcol>=0 and newcol<n and not visit[newrow][newcol] and grid[newrow][newcol]==1:
-                    visit[newrow][newcol]=True
-                    dfs(newrow,newcol,x,y,list1)
-        s=set()
+                if newrow>=0 and newrow<m and newcol>=0 and newcol<n and not vis[newrow][newcol] and grid[newrow][newcol]==1:
+                    vis[newrow][newcol]=True
+                    dfs(newrow,newcol,first,second)
         for i in range(m):
             for j in range(n):
-                if grid[i][j]==1 and not visit[i][j]:
-                    list1=[]
-                    dfs(i,j,i,j,list1)
-                    s.add(tuple(list1))
+                if grid[i][j]==1 and not vis[i][j]:
+                    lst=[]
+                    dfs(i,j,i,j)
+                    s.add(tuple(lst))
         return len(s)
                     
 
