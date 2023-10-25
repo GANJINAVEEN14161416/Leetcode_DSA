@@ -5,21 +5,21 @@ class Solution:
     #Function to return a list containing the DFS traversal of the graph.
     def dfsOfGraph(self, V, adj):
         # code here
-        def dfs(i):
-            visit[i]=True
-            for child in adj[i]:
-                if not visit[child]:
-                    ans.append(child)
-                    dfs(child)
+        vis=[False]*(V)
         ans=[]
-        visit=[False]*V
         ans.append(0)
+        def dfs(i):
+            vis[i]=True
+            #ans.append(i)  
+            for ch in adj[i]:
+                if not vis[ch]:
+                    ans.append(ch)
+                    dfs(ch)
         for i in range(V):
-            if not visit[i]:
+            if not vis[i]:
                 dfs(i)
         return ans
-        
-
+            
 
 #{ 
  # Driver Code Starts
