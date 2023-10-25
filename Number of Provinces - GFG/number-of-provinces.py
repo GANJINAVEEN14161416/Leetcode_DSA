@@ -1,26 +1,26 @@
 #User function Template for python3
-from collections import *
+
 class Solution:
     def numProvinces(self, adj, V):
-        graph=defaultdict(list)
-        for i in range(len(adj)):
-            for j in range(len(adj)):
-                if adj[i][j]==1 and i!=j:
-                    graph[i+1].append(j+1)
-        def dfs(visit,graph,i):
-            visit[i]=True
-            for child in graph[i]:
-                if not visit[child]:
-                    dfs(visit,graph,child)
-        count=0   
-        visit=[False]*(V+1)
+        # code here 
+        ad=[[] for i in range(V+1)]
+        for i in range(V):
+            for j in range(V):
+                if i!=j and adj[i][j]==1:
+                    ad[i+1].append(j+1)
+        vis=[False]*(V+1)
+        ans=[]
+        count=0
+        def dfs(child):
+            vis[child]=True
+            for w in ad[child]:
+                if not vis[w]:
+                    dfs(w)
         for i in range(1,V+1):
-            if not visit[i]:
+            if not vis[i]:
                 count+=1
-                dfs(visit,graph,i)
-        return count 
-                    
-
+                dfs(i)
+        return count
 
 #{ 
  # Driver Code Starts
