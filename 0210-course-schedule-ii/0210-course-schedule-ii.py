@@ -3,7 +3,6 @@ class Solution:
         adj=defaultdict(list)
         for i in range(len(prerequisites)):
             adj[prerequisites[i][1]].append(prerequisites[i][0])
-        V=len(adj)
         q=deque()
         indegree=[0]*numCourses
         for i in range(numCourses):
@@ -12,15 +11,15 @@ class Solution:
         for i in range(numCourses):
             if indegree[i]==0:
                 q.append(i)
-        count=0
         ans=[]
+        cnt=0
         while q:
-            x=q.popleft()
-            count+=1
-            ans.append(x)
-            for child in adj[x]:
-                indegree[child]-=1
-                if indegree[child]==0:
-                    q.append(child)
-        return ans if count==numCourses else []
-        
+            n=q.popleft()
+            ans.append(n)
+            cnt+=1
+            for i in adj[n]:
+                indegree[i]-=1
+                if indegree[i]==0:
+                    q.append(i)
+        return ans if cnt==numCourses else []
+         
