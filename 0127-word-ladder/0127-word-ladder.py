@@ -1,20 +1,18 @@
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        if endWord not in wordList:
+            return 0
+        s=set(wordList)
         q=deque()
-        visit=set(wordList)
-        if beginWord in visit:
-            visit.remove(beginWord)
         q.append([beginWord,1])
         while q:
-            word,steps=q.popleft()
+            word,count=q.popleft()
             if endWord==word:
-                return steps
+                return count
             for i in range(len(word)):
                 for j in range(97,123):
-                    y=chr(j)
-                    dup =word[:i]+y+word[i+1:]
-                    if dup in visit:
-                        q.append([dup,steps+1])
-                        visit.remove(dup)
+                    dup=word[:i]+chr(j)+word[i+1:]
+                    if dup in s:
+                        s.remove(dup)
+                        q.append([dup,count+1])
         return 0
-        
