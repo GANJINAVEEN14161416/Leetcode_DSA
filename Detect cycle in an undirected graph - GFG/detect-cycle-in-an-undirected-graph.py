@@ -3,28 +3,22 @@ class Solution:
     #Function to detect cycle in an undirected graph.
 	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
 		#Code here
-		visit=[False]*V
-		
-		def dfs(i,parent):
-		    visit[i]=True
-		    for child in adj[i]:
-		        if not visit[child]:
-		            if dfs(child,i):
+		vis=[False]*(V)
+		def dfs(child,i):
+		    vis[child]=True
+		    for h in adj[child]:
+		        if not vis[h]:
+		            if dfs(h,child):
 		                return True
-		        elif parent!=child:
+		        elif h!=i:
 		            return True
 		    return False
-        for i in range(V):
-            if not visit[i]:
-                if dfs(i,-1):
-                    return True
-        return False
-	    
-		
-		
-		
-		
-		
+		for i in range(V):
+		    if not vis[i]:
+		       if  dfs(i,-1):
+		           return True
+		return False
+		      
 
 
 #{ 
