@@ -4,20 +4,21 @@ class Solution:
     
     #Function to return a list containing the DFS traversal of the graph.
     def dfsOfGraph(self, V, adj):
-        ans=[]
-        visit=[False]*V
-        def dfs(adj,visit,i):
+        # code here
+        def dfs(i):
             visit[i]=True
             for child in adj[i]:
                 if not visit[child]:
                     ans.append(child)
-                    dfs(adj,visit,child)
-                    
+                    dfs(child)
+        ans=[]
+        visit=[False]*V
+        ans.append(0)
         for i in range(V):
             if not visit[i]:
-                ans.append(i)
-                dfs(adj,visit,i)
+                dfs(i)
         return ans
+        
 
 
 #{ 
