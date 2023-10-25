@@ -5,21 +5,21 @@ from queue import Queue
 class Solution:
     #Function to return Breadth First Traversal of given graph.
     def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
-        q=deque()
-        q.append(0)
+        # code here
         ans=[]
-        visit=[False]*V
-        visit[0]=True
+        q=deque()
+        vis=[False]*(V)
+        vis[0]=True
         ans.append(0)
+        q.append(0)
         while q:
-            pop=q.popleft()
-            for child in adj[pop]:
-                if not visit[child]:
-                    q.append(child)
-                    ans.append(child)
-                    visit[child]=True
+            pop_index=q.popleft()
+            for u  in adj[pop_index]:
+                if not vis[u]:
+                    ans.append(u)
+                    q.append(u)
+                    vis[u]=True
         return ans
-
 
 #{ 
  # Driver Code Starts
