@@ -4,18 +4,18 @@ class Solution:
     #Function to find the shortest distance of all the vertices
     #from the source vertex S.
     def dijkstra(self, V, adj, S):
-        q=[]
+        #code here
+        heap=[]
         distance=[float('inf')]*V
+        heapq.heappush(heap,[0,S])
         distance[S]=0
-        heapq.heappush(q,[S,0])
-        while q:
-            node,dis=heapq.heappop(q)
-            for child in adj[node]:
-                if child[1]+dis<distance[child[0]]:
-                    distance[child[0]]=dis+child[1]
-                    heapq.heappush(q,[child[0],distance[child[0]]])
+        while heap:
+            weight,node=heapq.heappop(heap)
+            for node2,wt2 in adj[node]:
+                if wt2+weight<distance[node2]:
+                    distance[node2]=wt2+weight
+                    heapq.heappush(heap,[distance[node2],node2])
         return distance
-        
 
 
 #{ 
