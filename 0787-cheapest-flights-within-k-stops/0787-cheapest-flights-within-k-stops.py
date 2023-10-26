@@ -27,5 +27,3 @@ class Solution:
                     distance[child]=dis+wt
                     q.append([dis+wt,child,steps+1])
         return distance[dst] if distance[dst]!=float('inf') else -1
-            
-        
