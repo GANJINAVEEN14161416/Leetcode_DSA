@@ -1,41 +1,32 @@
 #User function Template for python3
-
-from typing import List
 from collections import *
+from typing import List
+
 class Solution:
     
     def shortestPath(self, grid: List[List[int]], source: List[int], destination: List[int]) -> int:
+        m=len(grid)
+        n=len(grid[0])
+        eight_direction=[[0,1],[1,0],[-1,0],[0,-1]]
         q=deque()
-        r1,c1=source[0],source[1]
-        q.append([0,r1,c1])
-        m1=[0,-1,0,1]
-        m2=[1,0,-1,0]
-        rowl=len(grid)
-        coll=len(grid[0])
-        visit=[[False]*coll for i in range(rowl)]
-        visit[r1][c1]=True
-        r2=destination[0]
-        c2=destination[1]
+        s1,s2=source[0],source[1]
+        d1,d2=destination[0],destination[1]
+        q.append([s1,s2,0])
+        visit=[[False]*n for i in range(m)]
+        visit[s1][s2]=True
         while q:
-            dis,r,c=q.popleft()
-            if r==r2 and c==c2:
-                return dis
-                break
-            for new in range(4):
-                row=m1[new]+r
-                col=m2[new]+c
-                if row>=0 and row<rowl and col>=0 and col<coll and grid[row][col]==1 and not visit[row][col]:
-                        visit[row][col]=True
-                        q.append([dis+1,row,col])
-        if visit[r2][c2]==False:
+            x,y,steps=q.popleft()
+            if visit[d1][d2]==True and x==d1 and y==d2:
+                return steps
+            for r,c in eight_direction:
+                newrow=r+x
+                newcol=c+y
+                if newrow>=0 and newcol>=0 and newrow<m and newcol<n and grid[newrow][newcol]==1 and not visit[newrow][newcol]:
+                    q.append([newrow,newcol,steps+1])
+                    visit[newrow][newcol]=True
+        if visit[d1][d2]==False:
             return -1
-        else:
-            return dis
-        
-        
-        
-
-
+        return steps
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
