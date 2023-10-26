@@ -2,43 +2,41 @@
 from collections import *
 class Solution:
     def findOrder(self,alien_dict, N, K):
-        def helper(adj,V):
-            indegree=[0]*V
-            for i in range(V):
-                for j in adj[i]:
-                    indegree[j]+=1
-            q=deque()
-            ans=[]
-            count=0
-            for i in range(V):
-                if indegree[i]==0:
-                    q.append(i)
-            while q:
-                node=q.popleft()
-                count+=1
-                ans.append(node)
-                for child in adj[node]:
-                    indegree[child]-=1
-                    if indegree[child]==0:
-                        q.append(child)
-            if count==V:
-                return ans
-            return []
-        adj=defaultdict(list)
+    # code here
+        graph=defaultdict(list)
         for i in range(N-1):
-            f=alien_dict[i]
-            s=alien_dict[i+1]
-            z=min(len(f),len(s))
-            for j in range(z):
-                if f[j]!=s[j]:
-                    adj[ord(f[j])-97].append(ord(s[j])-97)
+            first=alien_dict[i]
+            second=alien_dict[i+1]
+            n=len(first)
+            m=len(second)
+            for j in  range(min(n,m)):
+                if first[j]!=second[j]:
+                    graph[ord(first[j])-97].append(ord(second[j])-97)
                     break
-        ans=helper(adj,K)
-        s1=""
+        indegree=[0]*K
+        for i in range(K):
+            for j in graph[i]:
+                indegree[j]+=1
+        q=deque()
+        for i in range(K):
+            if indegree[i]==0:
+                q.append(i)
+        count=0
+        ans=[]
+        while q:
+            pop=q.popleft()
+            ans.append(pop)
+            count+=1
+            for child in graph[pop]:
+                indegree[child]-=1
+                if indegree[child]==0:
+                    q.append(child)
+        if count==ans:
+            return ans
+        res=[]
         for i in ans:
-            s1+=chr(i+ord("a"))
-        return s1
-                
+            res.append(chr(i+97))
+        return res
 
 
 
