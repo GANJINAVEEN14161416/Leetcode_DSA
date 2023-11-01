@@ -3,27 +3,26 @@ from collections import *
 class Solution:
     #Function to detect cycle in an undirected graph.
 	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
-		#Code here
-		vis=[False]*V
+	    visit=[False]*V
 		def bfs(i,parent):
-    		q=deque()
-    		q.append([i,parent])
-    		vis[i]=True
-    		while q:
-    		    x,parent=q.popleft()
-    		    for i in adj[x]:
-    		        if not vis[i]:
-        	            q.append([i,x])
-        	            vis[i]=True
-    		        elif i!=parent:
+		    q=deque()
+		    q.append([i,parent])
+		    visit[i]=True
+		    while q:
+		        pop,parent=q.popleft()
+		        for child in adj[pop]:
+		            if not visit[child]:
+    		            q.append([child,pop])
+    		            visit[child]=True
+    		        elif child!=parent:
     		            return True
-    	    return False
-		for i in range(V):
-		    if not vis[i]:
-		        if bfs(i,-1):
-		            return True
-		return False
-		        
+		    return False
+		    
+        for i in range(V):
+            if not visit[i]:
+                if bfs(i,-1):
+                    return True
+        return False
 
 
 #{ 
