@@ -6,26 +6,24 @@ class Solution:
     #Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
         # code here
-        st=[]
-        vis=[False]*(V)
-        path=[False]*(V)
-        def dfs(child):
-            vis[child]=True
-            path[child]=True
-            for i in adj[child]:
-                if path[i]==True:
+        visit=[False]*V
+        path=[False]*V
+        def dfs(i):
+            visit[i]=True
+            path[i]=True
+            for child in adj[i]:
+                if path[child]:
                     return True
-                if not vis[i]:
-                    if dfs(i):
+                elif not visit[child]:
+                    if dfs(child):
                         return True
-            path[child]=False
-            return False
+            path[i]=False
         for i in range(V):
-            if not vis[i]:
+            if not visit[i]:
                 if dfs(i):
                     return True
         return False
-            
+        
         
 
 
