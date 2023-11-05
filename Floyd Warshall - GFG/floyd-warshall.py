@@ -2,7 +2,8 @@
 
 class Solution:
 	def shortest_distance(self, matrix):
-	    n=len(matrix)
+		#Code here
+		n=len(matrix)
 		for i in range(n):
 		    for j in range(n):
 		        if matrix[i][j]<0:
@@ -11,12 +12,12 @@ class Solution:
 		    for i in range(n):
 		        for j in range(n):
 		            matrix[i][j]=min(matrix[i][j],matrix[i][k]+matrix[k][j])
-		for i in range(n):
-		    for j in range(n):
-		        if matrix[i][j]==float('inf'):
-		            matrix[i][j]=-1
+		 
+        for i in range(n):
+            for j in range(n):
+                if matrix[i][j]==float('inf'):
+                    matrix[i][j]=-1
         return matrix
-
 
 #{ 
  # Driver Code Starts
