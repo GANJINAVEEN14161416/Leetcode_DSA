@@ -1,26 +1,18 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
         n=len(matrix)
-        m=len(matrix[0])
-        prev=[0]*(len(matrix[0]))
-        for ind2 in range(m):
-            prev[ind2]=matrix[0][ind2]
-        for ind1 in range(1,n):
-            cur=[0]*(m+1)
-            for ind2 in range(m):
-                left=float('inf')
-                if ind1-1>=0 and ind2-1>=0:
-                    left=matrix[ind1][ind2]+prev[ind2-1]
-                up=float('inf')
-                if ind1-1>=0:
-                    up=matrix[ind1][ind2]+prev[ind2]
-                right=float('inf')
-                if ind2+1<len(matrix[0]) and ind1-1>=0:
-                    right=matrix[ind1][ind2]+prev[ind2+1]
-                cur[ind2]=min(left,up,right)
-            prev=cur
-        ans=float('inf')
+        dp=[[0]*n for i in range(n)]
         for i in range(n):
-            ans=min(ans,prev[i])
-        return ans
-                
+            dp[n-1][i]=matrix[n-1][i]
+        for ind1 in range(n-2,-1,-1):
+            for ind2 in range(n-1,-1,-1):
+                left,right,below=float('inf'),float('inf'),float('inf')
+                if ind1+1<n and ind2-1>=0:
+                    left=dp[ind1+1][ind2-1]+matrix[ind1][ind2]
+                if ind1+1<n:
+                    below=dp[ind1+1][ind2]+matrix[ind1][ind2]
+                if ind1+1<n and ind2+1<n:
+                    right=dp[ind1+1][ind2+1]+matrix[ind1][ind2]
+                dp[ind1][ind2]=min(left,right,below)
+        return min(dp[0])
+        
