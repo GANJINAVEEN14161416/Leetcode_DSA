@@ -1,15 +1,18 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        m=len(triangle)
-        nxt=[0]*m
-        for ind1 in range(m-1,-1,-1):
-            cur=[0]*m
-            for ind2 in range(ind1,-1,-1):
-                if ind1==(m-1):
-                    cur[ind2]=triangle[ind1][ind2]
-                else:
-                    downleft_diag=triangle[ind1][ind2]+nxt[ind2]
-                    downright_diag=triangle[ind1][ind2]+nxt[ind2+1]
-                    cur[ind2]=min(downleft_diag,downright_diag)
-            nxt=cur
-        return nxt[0]
+        n=len(triangle)
+        dp=[[-1]*n for i in range(n)]
+        def solve(ind1,ind2):
+            if ind1==n-1:
+                dp[ind1][ind2]=triangle[n-1][ind2]
+                return triangle[n-1][ind2]
+            if dp[ind1][ind2]!=-1:
+                return dp[ind1][ind2]
+            down=triangle[ind1][ind2]+solve(ind1+1,ind2)
+            diagonal=solve(ind1+1,ind2+1)+triangle[ind1][ind2]
+            dp[ind1][ind2]=min(down,diagonal)
+            return dp[ind1][ind2]
+        return solve(0,0)
+    
+            
+    
