@@ -3,22 +3,17 @@
 class Solution:
     
     #Function to find length of shortest common supersequence of two strings.
-    def shortestCommonSupersequence(self, X, Y, m, n):
-        
-         #code here
-        text1=X
-        text2=Y
-        dp=[[0]*(len(text2)+1) for i in range(len(text1)+1)]
-        for ind1 in range(1,len(text1)+1):
-            for ind2 in range(1,len(text2)+1):
-                if text1[ind1-1]==text2[ind2-1]:
-                    dp[ind1][ind2]=1+dp[ind1-1][ind2-1]
+    def shortestCommonSupersequence(self, s1,s2,x,y):
+        dp=[[0]*(y+1) for i in range(x+1)]
+        for ind1 in range(1,x+1):
+            for ind2 in range(1,y+1):
+                if s1[ind1-1]==s2[ind2-1]:
+                    dp[ind1][ind2]=1+ dp[ind1-1][ind2-1]
                 else:
-                    first=dp[ind1-1][ind2]
-                    second=dp[ind1][ind2-1]
-                    dp[ind1][ind2]=max(first,second)
-        return (len(X)+len(Y))-dp[m][n]
-        
+                    dp[ind1][ind2]=max(dp[ind1-1][ind2],dp[ind1][ind2-1])
+        return x+y-dp[-1][-1]
+         #code here
+
 
 #{ 
  # Driver Code Starts
