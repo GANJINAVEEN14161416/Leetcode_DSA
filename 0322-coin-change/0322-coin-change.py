@@ -1,23 +1,26 @@
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        n=len(coins)
-        prev=[0]*(amount+1)
-        for i in range(amount+1):
-            if i%coins[0]==0:
-                prev[i]=i//coins[0]
+    def coinChange(self, arr: List[int], amount: int) -> int:
+        n=len(arr)
+        dp=[[-1]*(amount+1) for i in range(n+1)]
+        def solve(ind,amount):
+            if ind==0:
+                if amount%arr[ind]==0:
+                    dp[ind][amount]=amount//arr[ind]
+                    return amount//arr[ind]
+                else:
+                    dp[ind][amount]=float('inf')
+                    return float('inf')
+            if dp[ind][amount]!=-1:
+                return dp[ind][amount]
             else:
-                prev[i]=float('inf')
-        for ind in range(1,n+1):
-            cur=[0]*(amount+1)
-            for target in range(1,amount+1):
-                notpick=prev[target]
+                nottake=solve(ind-1,amount)
                 take=float('inf')
-                if coins[ind-1]<=target:
-                    take=1+cur[target-coins[ind-1]]
-                cur[target]=min(take,notpick)
-            prev=cur
-        if cur[amount]==float('inf'):
+                if arr[ind]<=amount:
+                    take=1+solve(ind,amount-arr[ind])
+                dp[ind][amount]=min(take,nottake)
+                return min(take,nottake)
+        ans=solve(n-1,amount)
+        if ans==float('inf'):
             return -1
-        return cur[amount]
-        
+        return ans
         
