@@ -2,22 +2,28 @@ class Solution:
     # Your task is to complete this function
     # Function should return an integer
     def countPS(self,s):
-        n = len(s)
-        dp = [[0] * n for _ in range(n)]
-        for i in range(n):
-            dp[i][i] = 1  # Single characters are palindromes
-    
-        for length in range(2, n + 1):
-            for i in range(n - length, -1, -1):
-                j = i + length - 1
-                if s[i] == s[j]:
-                    dp[i][j] = dp[i + 1][j] + dp[i][j - 1] + 1  # Include both ends and count unique palindromes
-                else:
-                    dp[i][j] = dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1]  # Exclude either end once
-    
-        return dp[0][n - 1]%(10**9+7)
-    
-        
+        # Code here
+        n=len(s)
+        mod=10**9+7
+        dp=[[-1]*n for i in range(n)]
+        def solve(ind1,ind2):
+            if ind1==ind2:
+                dp[ind1][ind2]=1
+                return 1
+            if ind1>ind2:
+                dp[ind1][ind2]=0
+                return 0
+            if dp[ind1][ind2]!=-1:
+                return dp[ind1][ind2]
+            if s[ind1]==s[ind2]:
+                dp[ind1][ind2]=(1+solve(ind1+1,ind2)+solve(ind1,ind2-1))%mod
+                return dp[ind1][ind2]
+            else:
+                dp[ind1][ind2]=(solve(ind1+1,ind2)+solve(ind1,ind2-1)-solve(ind1+1,ind2-1))%mod
+                return dp[ind1][ind2]
+        return solve(0,n-1)
+
+
 
 #{ 
  # Driver Code Starts
