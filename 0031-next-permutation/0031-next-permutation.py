@@ -1,24 +1,23 @@
 class Solution:
-    def nextPermutation(self, arr: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        n=len(arr)
+    def nextPermutation(self, nums: List[int]) -> None:
         index=-1
+        n=len(nums)
         for i in range(n-1,0,-1):
-            if arr[i]>arr[i-1]:
+            if nums[i]>nums[i-1]:
                 index=i-1
                 break
         if index==-1:
-            return arr.sort()
+            return nums.sort()
         for i in range(n-1,0,-1):
-            if arr[i]>arr[index]:
-                arr[index],arr[i]=arr[i],arr[index]
+            if nums[i]>nums[index]:
+                nums[i],nums[index]=nums[index],nums[i]
                 break
-        r=n-1
-        l=index+1
-        while l<=r:
-            arr[l],arr[r]=arr[r],arr[l]
-            r-=1
-            l+=1
+        left=index+1
+        right=n-1
+        while left<right:
+            nums[left],nums[right]=nums[right],nums[left]
+            left+=1
+            right-=1
+        
+            
         
