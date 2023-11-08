@@ -1,18 +1,18 @@
 class Solution:
     def countAndSay(self, n: int) -> str:
-        first="1"
-        for i in range(n-1):
-            s=""
-            current=first[0]
+        stack=["1"]
+        for i in range(n):
+            current=stack[-1][0]
             count=1
-            for c in first[1:]:
-                if c==current:
+            ans=""
+            for k in stack[-1][1:]:
+                if k==current:
                     count+=1
                 else:
-                    s+=str(count)+current
-                    current=c
+                    ans+=str(count)+current
+                    current=k
                     count=1
-            s+=str(count)+current
-            first=s
-        return first
+            ans+=str(count)+current
+            stack.append(ans)
+        return stack[n-1]
         
