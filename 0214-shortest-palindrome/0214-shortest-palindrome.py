@@ -1,10 +1,9 @@
 class Solution:
     def shortestPalindrome(self, s: str) -> str:
-        A=s+"*"+s[::-1]
-        cont=[0]
-        for i in range(1,len(A)):
-            index=cont[i-1]
-            while(index>0 and A[index]!=A[i]):
-                index=cont[index-1]
-            cont.append(index+(1 if A[index]==A[i] else 0))
-        return s[cont[-1]:][::-1]+s
+        rev=""
+        n=len(s)
+        for i in range(n):
+            if s[:n-i]==s[:n-i][::-1]:
+                return s[n-i:][::-1]+s
+        return ""
+                
