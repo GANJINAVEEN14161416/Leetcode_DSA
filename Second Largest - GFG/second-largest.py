@@ -3,11 +3,12 @@ class Solution:
 
 	def print2largest(self,arr, n):
 		# code here
-		a=list(set(arr))
-		a.sort(reverse=True)
-		if len(a)==1:
-		    return -1
-		return a[1]
+        largest=max(arr)
+        ans=-1
+        for i in range(n):
+            if arr[i]<largest and arr[i]>ans:
+                ans=arr[i]
+        return ans
 
 
 #{ 
