@@ -2,16 +2,22 @@
 class Solution:
 
 	def rowWithMax1s(self,arr, n, m):
-        mx=0
-        res=0
-        count=0
-        for i,row in enumerate(arr):
-            m=row.count(1)
-            if m>mx:
-                mx=m
-                res=i
-                count+=1
-        return -1 if count==0 else res
+		maxindex=-1
+		temp=0
+		count=0
+		for i in range(n*m):
+		    if arr[i//m][i%m]==1:
+		        count+=1
+		    if count>temp:
+		        temp=count
+		        maxindex=i//m
+		    if i%m==m-1:
+		        count=0
+	    return maxindex
+		      
+		        
+		
+		
 
 
 #{ 
