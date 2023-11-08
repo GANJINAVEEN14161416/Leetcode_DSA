@@ -10,8 +10,6 @@ class Solution:
             if A[i]>=ans[-1]:
                 ans.append(A[i])
         return ans[::-1]
-            
-                
 
 
 #{ 
