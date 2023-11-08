@@ -1,17 +1,21 @@
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
-        prev=[0]*(len(t)+1)
-        for i in range(len(s)+1):
-            prev[0]=1
-        for ind1 in range(1,len(s)+1):
-            cur=[0]*(len(t)+1)
-            cur[0]=1
-            for ind2 in range(1,len(t)+1):
-                if s[ind1-1]==t[ind2-1]:
-                    cur[ind2]=prev[ind2-1]+prev[ind2]
-                else:
-                    cur[ind2]=prev[ind2]
-            prev=cur
-        return prev[len(t)]
-            
+        m,n=len(s),len(t)
+        dp=[[-1]*n for i in range(m)]
+        def solve(ind1,ind2):
+            if ind2<0:
+                return 1
+            if ind1<0:
+                return 0
+            if dp[ind1][ind2]!=-1:
+                return dp[ind1][ind2]
+            if s[ind1]==t[ind2]:
+                dp[ind1][ind2]=solve(ind1-1,ind2-1)+solve(ind1-1,ind2)
+                return dp[ind1][ind2] 
+            else:
+                dp[ind1][ind2]=solve(ind1-1,ind2)
+                return dp[ind1][ind2] 
+        return solve(m-1,n-1)
+        
+        
         
