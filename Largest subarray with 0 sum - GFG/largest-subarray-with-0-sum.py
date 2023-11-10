@@ -3,14 +3,18 @@
 class Solution:
     def maxLen(self, n, arr):
         dic={0:-1}
-        ans,prefix=0,0
+        prefix=0
+        ans=0
         for i in range(n):
             prefix+=arr[i]
             if prefix in dic:
                 ans=max(ans,i-dic[prefix])
-            if prefix not in dic:
+            else:
                 dic[prefix]=i
         return ans
+        
+        
+
 
 #{ 
  # Driver Code Starts
