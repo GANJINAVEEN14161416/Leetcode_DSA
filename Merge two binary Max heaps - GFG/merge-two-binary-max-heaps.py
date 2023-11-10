@@ -3,14 +3,10 @@ import heapq
 class Solution():
     def mergeHeaps(self, a, b, n, m):
         #your code here
-        c=[]
-        for i in range(n):
-            c.append(-a[i])
-        for i in range(m):
-            c.append(-b[i])
+        c=a+b
         ans=[]
         for i in range(len(c)):
-            heapq.heappush(ans,c[i])
+            heapq.heappush(ans,-c[i])
         res=[]
         for i in ans:
             res.append(-i)
