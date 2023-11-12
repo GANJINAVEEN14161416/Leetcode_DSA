@@ -10,22 +10,18 @@ class Node:
 
 class Solution:
     def addOne(self,head):
+        #Returns new head of linked List.
         ans=""
         cur=head
         while cur:
             ans+=str(cur.data)
             cur=cur.next
         ans=int(ans)+1
-        ans=str(ans)
-        dummy=Node(0)
-        current=dummy
-        i=0
-        while i<len(ans):
-            current.next=Node(ans[i])
-            current=current.next
-            i+=1
+        dummy=node=Node(-1)
+        for i in str(ans):
+            node.next=Node(i)
+            node=node.next
         return dummy.next
-        
 
 #{ 
  # Driver Code Starts
