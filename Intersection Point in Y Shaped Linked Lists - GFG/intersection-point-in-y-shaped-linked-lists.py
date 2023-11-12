@@ -1,34 +1,46 @@
 
+
 #Function to find intersection point in Y shaped Linked Lists.
 def intersetPoint(head1,head2):
-    #code here
-    l1=l2=0
-    cur1=head1
-    while cur1:
-        l1+=1
-        cur1=cur1.next
-    cur2=head2
-    while cur2:
-        l2+=1
-        cur2=cur2.next
     p1=head1
     p2=head2
+    l1,l2=0,0
+    while p1:
+        l1+=1
+        p1=p1.next
+    while p2:
+        l2+=1
+        p2=p2.next
     if l1>l2:
         diff=l1-l2
-        while p1 and diff>0:
-            p1=p1.next
+        while head1 and diff>0:
+            head1=head1.next
             diff-=1
-    else:
+    elif l1<l2:
         diff=l2-l1
-        while p2 and diff>0:
-            p2=p2.next
+        while head2 and diff>0:
+            head2=head2.next
             diff-=1
-    while p1 and p2:
-        if p1==p2:
-            return p1.data
-        p1=p1.next
-        p2=p2.next
+    while head1 and head2:
+        if head1==head2:
+            return head1.data
+        head1=head1.next
+        head2=head2.next
     return -1
+        
+# def intersetPoint(head1,head2):
+#     h1=head1
+#     h2=head2
+#     m=dict()
+#     while (h1!=None):
+#         m[h1]='visited'
+#         h1=h1.next
+#     while (h2!=None):
+#         if h2 in m.keys():
+#             return h2.data
+#         h2=h2.next
+#     return -1
+
 
 
 #{ 
