@@ -7,13 +7,15 @@
 # your task is to complete this function
 # function should return true/false or 1/0
 def isCircular(head):
-    slow=fast=head
-    while fast and fast.next:
-        slow=slow.next
-        fast=fast.next.next
-        if slow==fast:
-            return 1
-    return 0
+    # Code here
+    cur=head
+    while cur and cur.next:
+        if cur.data==10**9:
+            return True
+        cur.data=10**9
+        cur=cur.next
+    return False
+
 
 
 #{ 
