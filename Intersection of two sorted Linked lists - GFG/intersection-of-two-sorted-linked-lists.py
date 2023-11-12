@@ -9,24 +9,22 @@ class Node:
 
 '''
 
-def findIntersection(head1,head2):
-    #return head
-    ans=Node(0)
-    p=ans
-    p1=head1
-    p2=head2
-    while p1 and p2:
-        if p1.data==p2.data:
-            p.next=Node(p1.data)
-            p=p.next
-            p1=p1.next
-            p2=p2.next
-        elif p1.data>p2.data:
-            p2=p2.next
-        else:
-            p1=p1.next
-    return ans.next
-
+class Solution:
+    def findIntersection(self,head1,head2):
+        #return head
+        node=dummy=Node(-1)
+        while head1 and head2:
+            if head1.data==head2.data:
+                node.next=Node(head1.data)   
+                node=node.next
+                head1=head1.next
+                head2=head2.next
+            else:
+                if head1.data<head2.data:
+                    head1=head1.next
+                else:
+                    head2=head2.next
+        return dummy.next
 
 #{ 
  # Driver Code Starts
@@ -69,8 +67,8 @@ if __name__ == '__main__':
         ll2 = linkedList()
         for i in arr2:
             ll2.insert(i)
-        
-        result = findIntersection(ll1.head,ll2.head)
+        ob = Solution()
+        result = ob.findIntersection(ll1.head,ll2.head)
         printList(result)
         print()
 
