@@ -1,22 +1,21 @@
 #User function Template for python3
+from collections import *
 import heapq
-import collections
 class Solution:
     def minValue(self, s, k):
-        dic=collections.Counter(s)
-        heap=[[-count,c] for c,count in dic.items()]
+        # code here
+        c=Counter(s)
+        heap=[[-freq,ch] for ch,freq in c.items()]
         heapq.heapify(heap)
-        while k>0:
-            count,c=heapq.heappop(heap)
-            if count<0:
-                count+=1
-                heapq.heappush(heap,[count,c])
-                k-=1
-        value=0
-        for i,v in heap:
-            value+=(i*i)
-        return value
-
+        ans=0
+        while heap and k:
+            freq,ch=heapq.heappop(heap)
+            freq+=1
+            k-=1
+            heapq.heappush(heap,[freq,ch])
+        for f,i in heap:
+            ans+=f**2
+        return ans
 
 #{ 
  # Driver Code Starts
