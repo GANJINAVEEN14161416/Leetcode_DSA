@@ -8,15 +8,18 @@ class Node:
         self.prev = None
 '''
 
-def reverseDLL(head):
-    cur=head
-    while cur:
-        temp=cur.next
-        cur.next=cur.prev
-        cur.prev=temp
-        dummy=cur
-        cur=temp
-    return dummy
+class Solution:
+    def reverseDLL(self, head):
+        cur=head
+        while cur:
+            nxt=cur.next
+            cur.next=cur.prev
+            cur.prev=cur
+            dummy=cur
+            cur=nxt
+        return dummy
+            
+
 
 
 #{ 
@@ -64,7 +67,8 @@ if __name__ == '__main__':
         for e in arr:
             tail=dll.push(e,tail)
         
-        resHead=reverseDLL(dll.head)
+        ob = Solution()
+        resHead=ob.reverseDLL(dll.head)
         dll.printList(resHead)
         print()
         
