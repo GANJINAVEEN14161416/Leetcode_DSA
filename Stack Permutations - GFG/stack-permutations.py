@@ -2,15 +2,16 @@
 from typing import List
 class Solution:
     def isStackPermutation(self, N : int, A : List[int], B : List[int]) -> int:
-        stack=[]
-        j=0
-        for i in A:
-            stack.append(i)
+        # code here
+        i,j,stack=0,0,[]
+        for i in range(N):
+            stack.append(A[i])
             while stack and stack[-1]==B[j]:
+                pop=stack.pop()
                 j+=1
-                stack.pop()
-        return 1 if (j==len(B)) else 0
-            
+        if j==N:
+            return 1
+        return 0
         
 
 
