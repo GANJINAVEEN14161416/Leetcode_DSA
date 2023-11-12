@@ -1,15 +1,30 @@
-from sys import *
-setrecursionlimit(10**4+1)
+#function Template for python3
+
+"""
+# Node Class
+
+class node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+
+"""
 
 class Solution:
     #Function to reverse a linked list.
     def reverseList(self, head):
-        if not head or not head.next:
-            return head
-        rest=self.reverseList(head.next)
-        head.next.next=head
-        head.next=None
-        return rest
+        # Code here
+        cur=head
+        prev=None
+        while cur:
+            nxt=cur.next
+            cur.next=prev
+            prev=cur
+            cur=nxt
+        return prev
+        
+        
+        
 
 
 
