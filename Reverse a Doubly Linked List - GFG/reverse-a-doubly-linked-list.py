@@ -15,9 +15,9 @@ class Solution:
             nxt=cur.next
             cur.next=cur.prev
             cur.prev=cur
-            dummy=cur
+            if nxt==None:
+                return cur.prev
             cur=nxt
-        return dummy
             
 
 
