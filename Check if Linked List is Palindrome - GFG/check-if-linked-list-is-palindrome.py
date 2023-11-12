@@ -1,25 +1,28 @@
 
-
-
 class Solution:
     def isPalindrome(self, head):
-        slow=fast=head
+        length=0
+        slow=head
+        fast=head.next
         while fast and fast.next:
+            if slow==fast:
+                break
             slow=slow.next
             fast=fast.next.next
-        second=slow
         prev=None
+        second=slow.next
         while second:
             nxt=second.next
             second.next=prev
             prev=second
             second=nxt
-        while prev:
+        while head and prev:
             if head.data!=prev.data:
                 return False
-            prev=prev.next
             head=head.next
+            prev=prev.next
         return True
+        
 
 
 #{ 
