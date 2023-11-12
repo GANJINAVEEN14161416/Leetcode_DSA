@@ -1,11 +1,5 @@
 #User function Template for python3
 
-'''
-class Node:
-    def __init__(self):
-        self.data = None
-        self.next = None
-'''
 
 class Solution:
     def splitList(self, head, head1, head2):
@@ -19,13 +13,19 @@ class Solution:
             cur=cur.next
             n+=1
         end=cur
-        secondpoint=head
-        for i in range(n//2+n%2-1):
-            secondpoint=secondpoint.next
-        end.next=secondpoint.next
-        second=secondpoint.next
-        secondpoint.next=start
-        return start,second
+        first=head
+        half=n//2+n%2-1
+        while half and first:
+            first=first.next
+            half-=1
+        second=first.next
+        first.next=head
+        end.next=second
+        return head,second
+
+
+
+
 
 
 #{ 
