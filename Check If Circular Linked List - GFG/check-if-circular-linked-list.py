@@ -10,9 +10,8 @@ def isCircular(head):
     # Code here
     cur=head
     while cur and cur.next:
-        if cur.data==10**9:
+        if cur.next==head:
             return True
-        cur.data=10**9
         cur=cur.next
     return False
 
