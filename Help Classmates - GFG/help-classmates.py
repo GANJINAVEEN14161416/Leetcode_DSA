@@ -2,14 +2,16 @@
 
 class Solution:
     def help_classmate(self, arr, n):
-        list1=[-1]*n
+        # Your code goes here
+        # Return the list
+        ans=[-1]*n
         stack=[]
         for i in range(n):
             while stack and arr[i]<arr[stack[-1]]:
                 index=stack.pop()
-                list1[index]=arr[i]
+                ans[index]=arr[i]
             stack.append(i)
-        return list1
+        return ans
 
 
 #{ 
