@@ -2,25 +2,20 @@
 class Solution:
 
 	def count(self,arr, n, x):
-        fl,cl=n,n
-        left,right=0,n-1
-        while left<=right:
-            mid=(left+right)//2
-            if arr[mid]>=x:
-                fl=mid
-                right=mid-1
-            else:
-                left=mid+1
-        left,right=0,n-1
-        while left<=right:
-            mid=(left+right)//2
-            if arr[mid]>x:
-                cl=mid
-                right=mid-1
-            else:
-                left=mid+1
-        if fl<=cl:
-            return cl-fl
+		# code here
+		def search(target):
+		    left,right=0,n-1
+		    while left<=right:
+		        mid=(left+right)//2
+		        if arr[mid]<target:
+		            left=mid+1
+		        else:
+		            right=mid-1
+		    return left
+        l=search(x)
+        r=search(x+1)-1
+        if l<=r:
+            return r-l+1
         return 0
 
 
