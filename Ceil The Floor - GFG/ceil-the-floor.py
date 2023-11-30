@@ -1,21 +1,26 @@
+#User function Template for python3
+
+
+
 
 def getFloorAndCeil(arr, n, x):
+    # code here
     arr.sort()
-    ans=[]
-    fl,cl=-1,-1
-    left,right=0,n-1
+    left=0
+    right=n-1
     while left<=right:
         mid=(left+right)//2
-        if arr[mid]<=x:
-            fl=arr[mid]
+        if arr[mid]==x:
+            return [arr[mid],arr[mid]]
+        if arr[mid]<x:
             left=mid+1
-        if arr[mid]>=x:
-            cl=arr[mid]
+        else:
             right=mid-1
-    return [fl,cl]
-
-
-
+    if left>=n:
+        return [arr[right],-1]
+    if right<0:
+        return [-1,arr[left]]
+    return [arr[right],arr[left]]
 
 
 #{ 
