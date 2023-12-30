@@ -1,20 +1,17 @@
 
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        def rowpascal(rowIndex):
-            ans=[]
-            def pascal(r,c):
-                x=1
-                for i in range(c):
-                    x=x*(r-i)//(i+1)
-                return x
-
-            for i in range(rowIndex+1):
-                ans.append(pascal(rowIndex,i))
-            return ans
         ans=[]
         for i in range(numRows):
-            ans.append(rowpascal(i))
+            temp=[]
+            for j in range(i):
+                if i==0 or j==0:
+                    temp.append(1)
+                else:
+                    temp.append(ans[-1][j-1]+ans[-1][j])
+                    
+            temp.append(1)
+            ans.append(temp)
         return ans
         
         
