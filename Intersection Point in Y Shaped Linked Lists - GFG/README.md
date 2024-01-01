@@ -34,5 +34,5 @@ common = 8-&gt;4-&gt;5-&gt;NULL
 <p>&nbsp;</p>
 <p><span style="font-size: 18px;"><strong>Expected Time Complexity:</strong>&nbsp;O(N+M)<br><strong>Expected Auxiliary Space:</strong>&nbsp;O(1)</span></p>
 <p>&nbsp;</p>
-<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ N + M ≤&nbsp;2*10<sup>5</sup><br>-1000&nbsp;≤&nbsp;value ≤&nbsp;1000</span></p>
+<p><span style="font-size: 18px;"><strong>Constraints:<br></strong>Length of Both linkedList before intersection(if any) is greater than 0.<strong><br></strong></span><span style="font-size: 18px;">2 ≤ N + M ≤ 2*10<sup>5</sup><br>-1000&nbsp;≤&nbsp;value ≤&nbsp;1000</span></p>
 <p>&nbsp;</p></div>
