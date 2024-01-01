@@ -1,31 +1,31 @@
 
 
 #Function to find intersection point in Y shaped Linked Lists.
-def intersetPoint(head1,head2):
-    p1=head1
-    p2=head2
+def intersetPoint(firstHead,secondHead):
     l1,l2=0,0
-    while p1:
+    cur1=firstHead
+    cur2=secondHead
+    while cur1:
         l1+=1
-        p1=p1.next
-    while p2:
+        cur1=cur1.next
+    while cur2:
         l2+=1
-        p2=p2.next
-    if l1>l2:
-        diff=l1-l2
-        while head1 and diff>0:
-            head1=head1.next
-            diff-=1
-    elif l1<l2:
-        diff=l2-l1
-        while head2 and diff>0:
-            head2=head2.next
-            diff-=1
-    while head1 and head2:
-        if head1==head2:
-            return head1.data
-        head1=head1.next
-        head2=head2.next
+        cur2=cur2.next 
+    if l1<l2:
+        s3=l2-l1
+        while s3>0:
+            secondHead=secondHead.next 
+            s3-=1
+    else:
+        s3=l1-l2
+        while s3>0:
+            firstHead=firstHead.next
+            s3-=1
+    while secondHead and firstHead:
+        if secondHead==firstHead:
+            return secondHead.data
+        secondHead=secondHead.next
+        firstHead=firstHead.next
     return -1
         
 # def intersetPoint(head1,head2):
