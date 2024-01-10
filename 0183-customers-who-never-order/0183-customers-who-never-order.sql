@@ -1,0 +1,1 @@
+select x.name as Customers from customers X  left join ORDERS Y on (X.id=Y.customerid) where y.id is null
