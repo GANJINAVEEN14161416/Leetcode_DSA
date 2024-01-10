@@ -1,1 +1,1 @@
-select email from person group by email having count(email)>1
+select distinct x.email from person x ,person y where x.id<>y.id and x.email=y.email
