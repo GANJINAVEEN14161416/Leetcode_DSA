@@ -1,5 +1,1 @@
-select name,sum(transactions.amount) as balance
-from users left join transactions
-on users.account=transactions.account
-group by transactions.account
-having balance>10000
+select x.name,sum(y.amount) as balance  from users x join transactions y on x.account=y.account group by x.account having sum(amount)>10000
