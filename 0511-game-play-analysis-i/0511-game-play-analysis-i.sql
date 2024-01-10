@@ -1,6 +1,2 @@
-SELECT Player_Id ,Event_Date AS first_login from 
-(
-    SELECT Player_id,Event_Date,ROW_NUMBER() OVER(PARTITION BY player_id order by event_date) as Row_No
-    from activity
-)as t
-where Row_No=1;
+select player_id ,event_date as first_login from (select player_id,event_date,row_number() over (partition by player_id order by event_date) as row_num from activity ) as t
+where row_num=1
