@@ -1,11 +1,13 @@
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        dic=Counter(nums)
         n=len(nums)
-        for i,j in dic.items():
-            if j==2:
-                rep=i
-        miss=(n*(n+1))//2-(sum(nums)-rep)
-        return [rep,miss]
+        temp1=(n*(n+1))//2-sum(nums)
+        temp2=(n*(n+1)*(2*n+1))//6
+        for i in nums:
+            temp2-=i**2
+        temp3=temp2//temp1
+        miss=(temp1+temp3)//2
+        dup=temp3-miss
+        return [dup,miss]
         
         
