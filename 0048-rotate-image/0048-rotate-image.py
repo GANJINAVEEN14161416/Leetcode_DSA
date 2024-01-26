@@ -1,16 +1,12 @@
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
-        left,right=0,len(matrix)-1
-        while left<right:
-            for i in range(right-left):
-                top,bottom=left,right
-                temp=matrix[top][left+i]
-                matrix[top][left+i]=matrix[bottom-i][left]
-                matrix[bottom-i][left]=matrix[bottom][right-i]
-                matrix[bottom][right-i]=matrix[top+i][right]
-                matrix[top+i][right]=temp
-            left+=1
-            right-=1
-            
-                
+        n = len(matrix)
         
+        # Transpose the matrix
+        for i in range(n):
+            for j in range(i, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        
+        # Reverse each row
+        for i in range(n):
+            matrix[i] = matrix[i][::-1]
