@@ -3,10 +3,14 @@ class Solution:
         dic=defaultdict(int)
         for i in nums:
             dic[i]+=1
-        temp=list(range(1,10**5+1000))
-        for i in temp:
-            if not dic[i]:
-                return i
-        return -1
+        count=1
+        n=len(nums)
+        for i in range(n+n):
+            if dic[count]:
+                count+=1
+            else:
+                return count
+        # TC:O(N)+O(N)
+        # SC:O(N)+O(10**5)
         
         
