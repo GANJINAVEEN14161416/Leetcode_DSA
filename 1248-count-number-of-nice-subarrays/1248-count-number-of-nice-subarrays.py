@@ -1,12 +1,19 @@
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
-        prefixsum=0
-        dic=defaultdict(int)
-        dic[0]=1
         ans=0
-        for i in nums:
-            if i%2==1:
-                prefixsum+=1
-            ans+=dic[prefixsum-k]
-            dic[prefixsum]+=1
+        left=0
+        n=len(nums)
+        count=0
+        nice=0
+        for right in range(n):
+            if nums[right]%2==1:
+                count+=1
+                nice=0
+            while count==k:
+                if nums[left]%2==1:
+                    count-=1
+                nice+=1
+                left+=1
+                print(left)
+            ans+=nice
         return ans
