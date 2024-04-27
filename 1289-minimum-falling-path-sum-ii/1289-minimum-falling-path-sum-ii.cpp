@@ -15,7 +15,6 @@ public:
                 minValue2=i;
             }
         }
-        //cout<<minValue1<<" "<<minValue2;
         for(int row=n-2;row>=0;row--) {
                int temp1=1e9;
                 int temp2=1e9;
@@ -37,12 +36,7 @@ public:
             minValue1=temp1;
             minValue2=temp2;
         }
-        // for(int i=0;i<n;i++){
-        //     for(int j=0;j<n;j++){
-        //         cout<<dp[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
+        
      return dp[0][minValue1];
     }
 };
