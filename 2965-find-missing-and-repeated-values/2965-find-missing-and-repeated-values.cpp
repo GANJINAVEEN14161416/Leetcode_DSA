@@ -2,30 +2,36 @@ class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
         vector<int>nums;
-        int n=grid.size();
-        int m=grid[0].size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                nums.push_back(grid[i][j]);
+        for(auto it:grid){
+            for(auto k:it){
+                nums.push_back(k);
             }
         }
         sort(nums.begin(),nums.end());
-        unordered_map<int,int>mp;
+        int n=nums.size();
+        int l=0;
+        int i=1;
+        int miss=n;
         int repeat=-1;
-        int miss=-1;
-        for(auto it:nums){
-            mp[it]++;
-            if(mp[it]>1){
-                repeat=it;
+        while(l<n and i<=n){
+            if(l+1<n and nums[l]==nums[l+1]){
+                repeat=nums[l];
+                l++;
             }
-        }
-        n=nums.size();
-        for(int i=1;i<=n;i++){
-            if(mp.find(i)==mp.end()){
+            else if(nums[l]!=i){
                 miss=i;
-                break;
+                i++;
+            }
+            else{
+                l++;
+                i++;
+                
             }
         }
+        // for(auto it:nums){
+        //     cout<<it<<endl;
+        // }
         return {repeat,miss};
+        
     }
 };
